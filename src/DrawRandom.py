@@ -17,7 +17,9 @@ Created on Thu Oct 15 09:55:13 2020
 import numpy as np
 from scipy.stats import norm
 from scipy.stats import uniform
-from scipy.stats import gumbel_r
+from scipy.stats import gumbel_r, gumbel_l
+from scipy.stats import lognorm
+from scipy.stats import truncnorm
 from pyDOE import *
 
 class DrawRandom:
@@ -88,11 +90,27 @@ class DrawRandom:
         return out
     
     def TrussRandom(self):
+        # out = np.zeros(10)
+        # rv1 = norm(loc=26.0653,scale=0.099) # E1 and E2
+        # rv2 = norm(loc=-6.2195,scale=0.09975) # A1
+        # rv3 = norm(loc=-6.9127,scale=0.099503) # A2
+        # rv4 = gumbel_r(loc=5e4,scale=(7.5e3/1.28254)) # P1, P2, P3, P4, P5, and P6 
+        # out[0] = np.exp(rv1.rvs())
+        # out[1] = np.exp(rv1.rvs())
+        # out[2] = np.exp(rv2.rvs())
+        # out[3] = np.exp(rv3.rvs())
+        # out[4] = rv4.rvs()
+        # out[5] = rv4.rvs()
+        # out[6] = rv4.rvs()
+        # out[7] = rv4.rvs()
+        # out[8] = rv4.rvs()
+        # out[9] = rv4.rvs()
         out = np.zeros(10)
         rv1 = norm(loc=26.0653,scale=0.099) # E1 and E2
         rv2 = norm(loc=-6.2195,scale=0.09975) # A1
         rv3 = norm(loc=-6.9127,scale=0.099503) # A2
-        rv4 = gumbel_r(loc=5e4,scale=(7.5e3/1.28254)) # P1, P2, P3, P4, P5, and P6 
+        # rv4 = gumbel_r(loc=5e4,scale=(7.5e3/1.28254)) # P1, P2, P3, P4, P5, and P6 
+        rv4 = gumbel_l(loc=46625.862,scale=(5847.726)) # P1, P2, P3, P4, P5, and P6 
         out[0] = np.exp(rv1.rvs())
         out[1] = np.exp(rv1.rvs())
         out[2] = np.exp(rv2.rvs())
@@ -116,7 +134,7 @@ class DrawRandom:
             rv = norm(loc=-6.9127,scale=0.099503) # A2
             out = rv.pdf(np.log(rv_req))
         else:
-            rv = gumbel_r(loc=5e4,scale=(7.5e3/1.28254)) # P1, P2, P3, P4, P5, and P6
+            rv = gumbel_l(loc=46625.862,scale=(5847.726)) # gumbel_l(loc=5e4,scale=(7.5e3/1.28254)) # P1, P2, P3, P4, P5, and P6
             out = rv.pdf((rv_req))
         return out
     
@@ -142,7 +160,7 @@ class DrawRandom:
         rv3 = norm(loc=np.log(0.25),scale=0.1) # vxy
         rv4 = norm(loc=np.log(0.3),scale=0.1) # vxz
         rv5 = norm(loc=np.log(135),scale=0.1) # Gxz
-        rv6 = norm(loc=np.log(0.0025),scale=0.1) # ux, uy, uz
+        rv6 = norm(loc=np.log(0.05),scale=0.5) # ux, uy, uz
         out[0] = np.exp(rv1.rvs())
         out[1] = np.exp(rv2.rvs())
         out[2] = np.exp(rv3.rvs())
@@ -167,9 +185,9 @@ class DrawRandom:
         out[:,2] = uniform(loc=0.176,scale=0.178).ppf(lhd0[:,2]) # vxy
         out[:,3] = uniform(loc=0.211,scale=0.214).ppf(lhd0[:,3]) # vxz
         out[:,4] = uniform(loc=95.132,scale=96.442).ppf(lhd0[:,4]) # Gxz
-        out[:,5] = uniform(loc=0.00176,scale=0.001787).ppf(lhd0[:,5]) # ux
-        out[:,6] = uniform(loc=0.00176,scale=0.001787).ppf(lhd0[:,6]) # uy
-        out[:,7] = uniform(loc=0.00176,scale=0.001787).ppf(lhd0[:,7]) # uz
+        out[:,5] = uniform(loc=0.002231,scale=0.04481).ppf(lhd0[:,5]) # ux
+        out[:,6] = uniform(loc=0.002231,scale=0.04481).ppf(lhd0[:,6]) # uy
+        out[:,7] = uniform(loc=0.002231,scale=0.04481).ppf(lhd0[:,7]) # uz
         out1 = np.zeros((Nsamps,5))
         out1[:,0] = out[:,0]
         out1[:,1] = out[:,2]
@@ -198,7 +216,7 @@ class DrawRandom:
                 rv = norm(loc=np.log(135),scale=0.1) # Gxz
                 out = rv.pdf(np.log(rv_req))
             else:
-                rv = norm(loc=np.log(0.0025),scale=0.1) # ux, uy, uz
+                rv = norm(loc=np.log(0.05),scale=0.5) # ux, uy, uz
                 out = rv.pdf(np.log(rv_req))
                 
         else:
@@ -210,9 +228,143 @@ class DrawRandom:
                 rv = norm(loc=np.log(0.25),scale=0.1) # vxy
                 out = rv.pdf(np.log(rv_req))
             else:
-                rv = norm(loc=np.log(0.0025),scale=0.1) # ux, uy, uz
+                rv = norm(loc=np.log(0.05),scale=0.5) # ux, uy, uz
                 out = rv.pdf(np.log(rv_req))
                 
         return out
+    
+    def FluidRandom(self):
+        out = np.zeros(6)
+        lower, upper = np.log(0.005), np.log(0.05)
+        mu, sigma = np.log(0.025), 0.5
+        rv0 = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Viscosity
+        rv1 = uniform(0.5,1) # Density
+        lower, upper = np.log(0.5), np.log(1.5)
+        mu, sigma = np.log(0.75), 0.25
+        rv2 = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Velocity
+        out[0] = np.exp(rv0.rvs())
+        out[1] = (rv1.rvs())
+        out[2] = -np.exp(rv2.rvs()) # u_Bottom
+        out[3] = np.exp(rv2.rvs()) # u_Top
+        out[4] = -np.exp(rv2.rvs()) # u_Left
+        out[5] = np.exp(rv2.rvs()) # u_Right
+        return out
+    
+    def FluidLHS(self, Nsamps=None):
+        out = np.zeros((Nsamps,6))
+        lhd0 = lhs(6, samples=Nsamps, criterion='centermaximin')
+        out[:,0] = np.exp(uniform(loc=-5.29831,scale=2.30258).ppf(lhd0[:,0])) # Viscosity
+        out[:,1] = (uniform(loc=0.5,scale=1.0).ppf(lhd0[:,1])) # Density
+        out[:,2] = -np.exp(uniform(loc=-0.69314,scale=1.09861).ppf(lhd0[:,2])) # u_Bottom
+        out[:,3] = np.exp(uniform(loc=-0.69314,scale=1.09861).ppf(lhd0[:,3])) # u_Top
+        out[:,4] = -np.exp(uniform(loc=-0.69314,scale=1.09861).ppf(lhd0[:,4])) # u_Left
+        out[:,5] = np.exp(uniform(loc=-0.69314,scale=1.09861).ppf(lhd0[:,5])) # u_Right
+        return out
+    
+    def FluidPDF(self, rv_req=None, index=None):
             
+        if index == 0:
+            lower, upper = np.log(0.005), np.log(0.05)
+            mu, sigma = np.log(0.025), 0.5
+            rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Viscosity
+            out = rv.pdf(np.log(rv_req))
+        elif index == 1:
+            rv = uniform(0.5,1) # Density
+            out = rv.pdf((rv_req))
+        else:
+            lower, upper = np.log(0.5), np.log(1.5)
+            mu, sigma = np.log(0.75), 0.25
+            rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Velocity
+            out = rv.pdf(np.log(np.abs(rv_req)))
+                
+        return out
+            
+    def FluidCDF(self, rv_req=None, index=None):
+            
+        if index == 0:
+            lower, upper = np.log(0.005), np.log(0.05)
+            mu, sigma = np.log(0.025), 0.5
+            rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Viscosity
+            out = rv.cdf(np.log(rv_req))
+        elif index == 1:
+            rv = uniform(0.5,1) # Density
+            out = rv.cdf((rv_req))
+        else:
+            lower, upper = np.log(0.5), np.log(1.5)
+            mu, sigma = np.log(0.75), 0.25
+            rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Velocity
+            out = rv.cdf(np.log(np.abs(rv_req)))
+                
+        return out
+    
+    def FluidPPF(self, rv_rand=None, index=None):
+            
+        if index == 0:
+            lower, upper = np.log(0.005), np.log(0.05)
+            mu, sigma = np.log(0.025), 0.5
+            rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Viscosity
+            out = np.exp(rv.ppf(rv_rand))
+        elif index == 1:
+            rv = uniform(0.5,1) # Density
+            out = rv.ppf(rv_rand)
+        elif index == 2 or index == 4:
+            lower, upper = np.log(0.5), np.log(1.5)
+            mu, sigma = np.log(0.75), 0.25
+            rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Velocity
+            out = -np.exp(rv.ppf(rv_rand))
+        else:
+            lower, upper = np.log(0.5), np.log(1.5)
+            mu, sigma = np.log(0.75), 0.25
+            rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Velocity
+            out = np.exp(rv.ppf(rv_rand))
+                
+        return out
+    
+    def HolesRandom(self):
         
+        out = np.zeros(3)
+        
+        lower, upper = np.log(100), np.log(300)
+        mu, sigma = np.log(200), 0.5
+        rv0 = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Young's modulus
+        lower, upper = np.log(0.15), np.log(0.35)
+        mu, sigma = np.log(0.25), 0.5
+        rv1 = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Poisson ratio
+        lower, upper = np.log(0.001), np.log(0.15)
+        mu, sigma = np.log(0.08), 0.5
+        rv2 = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Displacement
+        out[0] = np.exp(rv0.rvs()) # Young's modulus
+        out[1] = np.exp(rv1.rvs()) # Poisson ratio
+        out[2] = np.exp(rv2.rvs()) # Displacement
+        
+        return out
+    
+    def HolesPDF(self, rv_req=None, index=None):
+        
+        if index == 0:
+            lower, upper = np.log(100), np.log(300)
+            mu, sigma = np.log(200), 0.5
+            rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Young's modulus
+            out = rv.pdf(np.log(rv_req))
+        elif index == 1:
+            lower, upper = np.log(0.15), np.log(0.35)
+            mu, sigma = np.log(0.25), 0.5
+            rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Poisson ratio
+            out = rv.pdf(np.log(rv_req))
+        else:
+            lower, upper = np.log(0.001), np.log(0.15)
+            mu, sigma = np.log(0.08), 0.5
+            rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Displacement
+            out = rv.pdf(np.log(rv_req))
+                
+        return out
+    
+    def HolesLHS(self, Nsamps=None):
+        
+        out = np.zeros((Nsamps,3))
+        lhd0 = lhs(3, samples=Nsamps, criterion='centermaximin')
+        out[:,0] = np.exp(uniform(loc=4.6051,scale=1.0986).ppf(lhd0[:,0])) # Young's modulus
+        out[:,1] = np.exp(uniform(loc=-1.897,scale=0.8472).ppf(lhd0[:,1])) # Poisson ratio
+        out[:,2] = np.exp(uniform(loc=-6.9077,scale=5.0106).ppf(lhd0[:,2])) # Displacement
+        
+        return out

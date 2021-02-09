@@ -39,24 +39,218 @@ parser.add_argument('-s', '--show',
                     default=False, help=helps['show'])
 options = parser.parse_args()
 
-mesh = Mesh.from_file(data_dir + '/meshes/3d/fluid_mesh.inp')
+############## Test Navier-Stokes #################
+
+# mesh = Mesh.from_file(data_dir + '/meshes/3d/fluid_mesh.inp')
+# domain = FEDomain('domain', mesh)
+
+# omega = domain.create_region('Omega', 'all')
+# field_1 = Field.from_args(name='3_velocity', dtype=nm.float64, shape=3, region=omega, approx_order=1)
+# field_2 = Field.from_args(name='pressure', dtype=nm.float64, shape=1, region=omega, approx_order=1)
+
+# region_0 = domain.create_region(name='Walls1', select='vertices in (y < -0.049)', kind='facet')
+# region_1 = domain.create_region(name='Walls2', select='vertices in (y > 0.049)', kind='facet')
+# region_2 = domain.create_region(name='Inlet', select='vertices in (x < -0.499)', kind='facet')
+# region_3 = domain.create_region(name='Outlet', select='vertices in (x > -0.499)', kind='facet')
+
+# ebc_1 = EssentialBC(name='Walls1', region=region_0, dofs={'u.[0,1,2]' : 0.0})
+# ebc_2 = EssentialBC(name='Walls2', region=region_1, dofs={'u.[0,1,2]' : 0.0})
+# ebc_3 = EssentialBC(name='Inlet', region=region_2, dofs={'u.0' : 1.0, 'u.[1,2]' : 0.0})
+# ebc_4 = EssentialBC(name='Outlet', region=region_3, dofs={'p':0.0, 'u.[1,2]' : 0.0})
+
+# viscosity = Material(name='viscosity', value=1.25e-3)
+
+# variable_1 = FieldVariable('u', 'unknown', field_1)
+# variable_2 = FieldVariable(name='v', kind='test', field=field_1, primary_var_name='u')
+# variable_3 = FieldVariable(name='p', kind='unknown', field=field_2)
+# variable_4 = FieldVariable(name='q', kind='test', field=field_2, primary_var_name='p')
+
+# integral_1 = Integral('i1', order=2)
+# integral_2 = Integral('i2', order=3)
+
+# t1 = Term.new(name='dw_div_grad(viscosity.value, v, u)',
+#               integral=integral_2, region=omega, viscosity=viscosity, v=variable_2, u=variable_1)
+# t2 = Term.new(name='dw_convect(v, u)',
+#               integral=integral_2, region=omega, v=variable_2, u=variable_1)
+# t3 = Term.new(name='dw_stokes(v, p)',
+#               integral=integral_1, region=omega, v=variable_2, p=variable_3)
+# t4 = Term.new(name='dw_stokes(u, q)',
+#               integral=integral_1, region=omega, u=variable_1, q=variable_4)
+# eq1 = Equation('balance', t1+t2-t3)
+# eq2 = Equation('incompressibility', t4)
+# eqs = Equations([eq1,eq2])
+
+# ls = ScipyDirect({})
+# nls_status = IndexedStruct()
+# nls = Newton({'i_max' : 20, 'eps_a' : 1e-8, 'eps_r' : 1.0, 'macheps' : 1e-16, 'lin_red' : 1e-2, 'ls_red' : 0.1, 'ls_red_warp' : 0.001, 'ls_on' : 0.99999, 'ls_min' : 1e-5, 'check' : 0, 'delta' : 1e-6}, lin_solver=ls, status=nls_status)
+# pb = Problem('Navier-Stokes', equations=eqs)
+# pb.set_bcs(ebcs=Conditions([ebc_1, ebc_2, ebc_3]))
+# pb.set_solver(nls)
+# status = IndexedStruct()
+# state = pb.solve(status=status, save_results=True)
+
+# out = state.create_output_dict()
+# pb.save_state('Navier_Stokes.vtk', out=out)
+
+# view = Viewer('Navier_Stokes.vtk')
+# view(rel_scaling=2,
+#       is_scalar_bar=True, is_wireframe=True)
+
+############## Navier-Stokes 2D #################
+
+# mesh = Mesh.from_file(data_dir + '/meshes/3d/fluid_mesh2.inp')
+# domain = FEDomain('domain', mesh)
+
+# omega = domain.create_region('Omega', 'all')
+# field_1 = Field.from_args(name='3_velocity', dtype=nm.float64, shape=2, region=omega, approx_order=1)
+# field_2 = Field.from_args(name='pressure', dtype=nm.float64, shape=1, region=omega, approx_order=1)
+
+# region_0 = domain.create_region(name='Right', select='vertices in (x > 0.499)', kind='facet')
+# region_1 = domain.create_region(name='Left', select='vertices in (x < -0.499)', kind='facet')
+# region_2 = domain.create_region(name='Top', select='vertices in (y > 0.499)', kind='facet')
+# region_3 = domain.create_region(name='Bottom', select='vertices in (y < -0.499)', kind='facet')
+
+# ebc_1 = EssentialBC(name='Right', region=region_0, dofs={'p.0' : 0.1}) # , 'p' : 1.0
+# ebc_2 = EssentialBC(name='Left', region=region_1, dofs={'p.0' : 0.2})
+# ebc_3 = EssentialBC(name='Top', region=region_2, dofs={'p.0' : 0.35})
+# ebc_4 = EssentialBC(name='Bottom', region=region_3, dofs={'p.0' : 0.05})
+# # ic_1 = InitialCondition(name='IC',region=omega,dofs={'u.[0,1]' : 0.0})
+
+# viscosity = Material(name='viscosity', value=1.25e-3)
+# density = Material(name='density', value=5.0)
+
+# variable_1 = FieldVariable('u', 'unknown', field_1)
+# variable_2 = FieldVariable(name='v', kind='test', field=field_1, primary_var_name='u')
+# variable_3 = FieldVariable(name='p', kind='unknown', field=field_2)
+# variable_4 = FieldVariable(name='q', kind='test', field=field_2, primary_var_name='p')
+
+# integral_1 = Integral('i1', order=2)
+# integral_2 = Integral('i2', order=3)
+
+# t1 = Term.new(name='dw_div_grad(viscosity.value, v, u)',
+#               integral=integral_2, region=omega, viscosity=viscosity, v=variable_2, u=variable_1)
+# t2 = Term.new(name='dw_convect(v, u)',
+#               integral=integral_2, region=omega, v=variable_2, u=variable_1)
+# t3 = Term.new(name='dw_stokes(density.value, v, p)',
+#               integral=integral_1, density=density, region=omega, v=variable_2, p=variable_3)
+# t4 = Term.new(name='dw_stokes(u, q)',
+#               integral=integral_1, region=omega, u=variable_1, q=variable_4)
+# eq1 = Equation('balance', t1+t2-t3)
+# eq2 = Equation('incompressibility', t4)
+# eqs = Equations([eq1,eq2])
+
+# ls = ScipyDirect({})
+# nls_status = IndexedStruct()
+# nls = Newton({'i_max' : 100, 'eps_a' : 1e-8, 'eps_r' : 1.0, 'macheps' : 1e-16, 'lin_red' : 1e-2, 'ls_red' : 0.1, 'ls_red_warp' : 0.001, 'ls_on' : 0.99999, 'ls_min' : 1e-5, 'check' : 0, 'delta' : 1e-6}, lin_solver=ls, status=nls_status)
+# pb = Problem('Navier-Stokes', equations=eqs)
+# pb.set_bcs(ebcs=Conditions([ebc_1, ebc_2, ebc_3, ebc_4]))
+# # pb.set_ics(ics=Conditions([ic_1]))
+# pb.set_solver(nls)
+# status = IndexedStruct()
+# state = pb.solve(status=status, save_results=True)
+
+# out = state.create_output_dict()
+# pb.save_state('Navier_Stokes.vtk', out=out)
+
+# prb = Probe(out,pb.domain.mesh)
+        
+# # p0 = [-0.5,  -0.5, 0]
+# # p1 = [-0.5, 0.5, 0]
+# # prb.add_line_probe('Test', p0, p1, 100)
+# # pars,vals = prb.__call__('Test','p')
+
+# def Compute_Max_Pressure(probe,num_points,interval):
+#     lens = np.arange(-0.5,0.5,interval)
+#     max_press = 0
+#     for ii in np.arange(0,len(lens),1):
+#         p0 = [lens[ii],  -0.5, 0]
+#         p1 = [lens[ii], 0.5, 0]
+#         prb.add_line_probe('Test', p0, p1, num_points)
+#         pars,vals = prb.__call__('Test','p')
+#         req = np.max(np.abs(vals))
+#         if max_press < req:
+#             max_press = req
+#     return max_press
+
+# Max_pressure = Compute_Max_Pressure(prb,500,0.005);
+
+# view = Viewer('Navier_Stokes.vtk')
+# view(rel_scaling=2,
+#       is_scalar_bar=True, is_wireframe=True)
+
+############## Diffusion 2D #################
+
+# mesh = Mesh.from_file(data_dir + '/meshes/3d/fluid_mesh2.inp')
+# domain = FEDomain('domain', mesh)
+
+# omega = domain.create_region('Omega', 'all')
+# # field_1 = Field.from_args(name='3_velocity', dtype=nm.float64, shape=2, region=omega, approx_order=1)
+# field_2 = Field.from_args(name='pressure', dtype=nm.float64, shape=1, region=omega, approx_order=1)
+
+# region_0 = domain.create_region(name='Right', select='vertices in (x > 0.499)', kind='facet')
+# region_1 = domain.create_region(name='Left', select='vertices in (x < -0.499)', kind='facet')
+# region_2 = domain.create_region(name='Top', select='vertices in (y > 0.499)', kind='facet')
+# region_3 = domain.create_region(name='Bottom', select='vertices in (y < -0.499)', kind='facet')
+
+# ebc_1 = EssentialBC(name='Right', region=region_0, dofs={'p.0' : 0.1}) # , 'p' : 1.0
+# ebc_2 = EssentialBC(name='Left', region=region_1, dofs={'p.0' : 0.2})
+# ebc_3 = EssentialBC(name='Top', region=region_2, dofs={'p.0' : 0.35})
+# ebc_4 = EssentialBC(name='Bottom', region=region_3, dofs={'p.0' : 0.05})
+
+# co_sq = Material(name='co_sq', value=1.0)
+
+# # variable_1 = FieldVariable('u', 'unknown', field_1)
+# # variable_2 = FieldVariable(name='v', kind='test', field=field_1, primary_var_name='u')
+# variable_3 = FieldVariable(name='p', kind='unknown', field=field_2)
+# variable_4 = FieldVariable(name='q', kind='test', field=field_2, primary_var_name='p')
+
+# integral_1 = Integral('i1', order=2)
+# integral_2 = Integral('i2', order=3)
+
+# t1 = Term.new(name='dw_laplace(co_sq.value, q, p)',
+#               integral=integral_2, region=omega, co_sq=co_sq, q=variable_4, p=variable_3)
+# eq1 = Equation('balance', t1)
+# eqs = Equations([eq1])
+
+# ls = ScipyDirect({})
+# nls_status = IndexedStruct()
+# nls = Newton({'i_max' : 2, 'eps_a' : 1e-8, 'eps_r' : 1.0, 'macheps' : 1e-16, 'lin_red' : 1e-2, 'ls_red' : 0.1, 'ls_red_warp' : 0.001, 'ls_on' : 0.99999, 'ls_min' : 1e-5, 'check' : 0, 'delta' : 1e-6}, lin_solver=ls, status=nls_status)
+# pb = Problem('Navier-Stokes', equations=eqs)
+# pb.set_bcs(ebcs=Conditions([ebc_1, ebc_2, ebc_3, ebc_4]))
+# # pb.set_ics(ics=Conditions([ic_1]))
+# pb.set_solver(nls)
+# status = IndexedStruct()
+# state = pb.solve(status=status, save_results=True)
+
+# out = state.create_output_dict()
+# pb.save_state('Navier_Stokes.vtk', out=out)
+
+# view = Viewer('Navier_Stokes.vtk')
+# view(rel_scaling=2,
+#       is_scalar_bar=True, is_wireframe=True)
+
+############## Stokes 2D #################
+
+mesh = Mesh.from_file(data_dir + '/meshes/3d/fluid_mesh2.inp')
 domain = FEDomain('domain', mesh)
 
 omega = domain.create_region('Omega', 'all')
-field_1 = Field.from_args(name='3_velocity', dtype=nm.float64, shape=3, region=omega, approx_order=1)
+field_1 = Field.from_args(name='3_velocity', dtype=nm.float64, shape=2, region=omega, approx_order=1)
 field_2 = Field.from_args(name='pressure', dtype=nm.float64, shape=1, region=omega, approx_order=1)
 
-region_0 = domain.create_region(name='Walls1', select='vertices in (y < -0.049)', kind='facet')
-region_1 = domain.create_region(name='Walls2', select='vertices in (y > 0.049)', kind='facet')
-region_2 = domain.create_region(name='Inlet', select='vertices in (x < -0.499)', kind='facet')
-region_3 = domain.create_region(name='Outlet', select='vertices in (x > -0.499)', kind='facet')
+region_0 = domain.create_region(name='Right', select='vertices in (x > 0.499)', kind='facet')
+region_1 = domain.create_region(name='Left', select='vertices in (x < -0.499)', kind='facet')
+region_2 = domain.create_region(name='Top', select='vertices in (y > 0.499)', kind='facet')
+region_3 = domain.create_region(name='Bottom', select='vertices in (y < -0.499)', kind='facet')
 
-ebc_1 = EssentialBC(name='Walls1', region=region_0, dofs={'u.[0,1,2]' : 0.0})
-ebc_2 = EssentialBC(name='Walls2', region=region_1, dofs={'u.[0,1,2]' : 0.0})
-ebc_3 = EssentialBC(name='Inlet', region=region_2, dofs={'u.0' : 1.0, 'u.[1,2]' : 0.0})
-ebc_4 = EssentialBC(name='Outlet', region=region_3, dofs={'p':0.0, 'u.[1,2]' : 0.0})
+ebc_1 = EssentialBC(name='Right', region=region_0, dofs={'p.0' : 0.1}) # , 'p' : 1.0
+ebc_2 = EssentialBC(name='Left', region=region_1, dofs={'p.0' : 0.2})
+ebc_3 = EssentialBC(name='Top', region=region_2, dofs={'p.0' : 0.35})
+ebc_4 = EssentialBC(name='Bottom', region=region_3, dofs={'p.0' : 0.05})
+# ic_1 = InitialCondition(name='IC',region=omega,dofs={'u.[0,1]' : 0.0})
 
 viscosity = Material(name='viscosity', value=1.25e-3)
+density = Material(name='density', value=5.0)
 
 variable_1 = FieldVariable('u', 'unknown', field_1)
 variable_2 = FieldVariable(name='v', kind='test', field=field_1, primary_var_name='u')
@@ -70,25 +264,48 @@ t1 = Term.new(name='dw_div_grad(viscosity.value, v, u)',
               integral=integral_2, region=omega, viscosity=viscosity, v=variable_2, u=variable_1)
 t2 = Term.new(name='dw_convect(v, u)',
               integral=integral_2, region=omega, v=variable_2, u=variable_1)
-t3 = Term.new(name='dw_stokes(v, p)',
-              integral=integral_1, region=omega, v=variable_2, p=variable_3)
+t3 = Term.new(name='dw_stokes(density.value, v, p)',
+              integral=integral_1, density=density, region=omega, v=variable_2, p=variable_3)
 t4 = Term.new(name='dw_stokes(u, q)',
               integral=integral_1, region=omega, u=variable_1, q=variable_4)
-eq1 = Equation('balance', t1+t2-t3)
+eq1 = Equation('balance', t1-t3)
 eq2 = Equation('incompressibility', t4)
 eqs = Equations([eq1,eq2])
 
 ls = ScipyDirect({})
 nls_status = IndexedStruct()
-nls = Newton({'i_max' : 20, 'eps_a' : 1e-8, 'eps_r' : 1.0, 'macheps' : 1e-16, 'lin_red' : 1e-2, 'ls_red' : 0.1, 'ls_red_warp' : 0.001, 'ls_on' : 0.99999, 'ls_min' : 1e-5, 'check' : 0, 'delta' : 1e-6}, lin_solver=ls, status=nls_status)
+nls = Newton({'i_max' : 100, 'eps_a' : 1e-8, 'eps_r' : 1.0, 'macheps' : 1e-16, 'lin_red' : 1e-2, 'ls_red' : 0.1, 'ls_red_warp' : 0.001, 'ls_on' : 0.99999, 'ls_min' : 1e-5, 'check' : 0, 'delta' : 1e-6}, lin_solver=ls, status=nls_status)
 pb = Problem('Navier-Stokes', equations=eqs)
-pb.set_bcs(ebcs=Conditions([ebc_1, ebc_2, ebc_3]))
+pb.set_bcs(ebcs=Conditions([ebc_1, ebc_2, ebc_3, ebc_4]))
+# pb.set_ics(ics=Conditions([ic_1]))
 pb.set_solver(nls)
 status = IndexedStruct()
 state = pb.solve(status=status, save_results=True)
 
 out = state.create_output_dict()
 pb.save_state('Navier_Stokes.vtk', out=out)
+
+prb = Probe(out,pb.domain.mesh)
+        
+p0 = [-0.5,  -0.5, 0]
+p1 = [-0.5, 0.5, 0]
+prb.add_line_probe('Test', p0, p1, 100)
+pars,vals = prb.__call__('Test','p')
+
+def Compute_Max_Pressure(probe,num_points,interval):
+    lens = np.arange(-0.5,0.5,interval)
+    max_press = 0
+    for ii in np.arange(0,len(lens),1):
+        p0 = [lens[ii],  -0.5, 0]
+        p1 = [lens[ii], 0.5, 0]
+        prb.add_line_probe('Test', p0, p1, num_points)
+        pars,vals = prb.__call__('Test','p')
+        req = np.max(np.abs(vals))
+        if max_press < req:
+            max_press = req
+    return max_press
+
+Max_pressure = Compute_Max_Pressure(prb,500,0.005);
 
 view = Viewer('Navier_Stokes.vtk')
 view(rel_scaling=2,

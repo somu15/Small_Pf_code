@@ -10,6 +10,8 @@ import numpy as np
 from scipy.stats import norm
 from TrussModel import TrussModel as TM
 from MaterialModel import MaterialModel as Mat
+from FluidModel import FluidModel as Fluid
+from HolesModel import HolesModel as Holes
 
 class LimitStateFunctions:
     
@@ -116,7 +118,21 @@ class LimitStateFunctions:
         
         return out1
     
-    def Material_LF(self, Input_vec=None):
+    def Material_HF1(self, Input_vec=None):
+        
+        # Input_vec = [Ex, Ez, vxy, vxz, Gxz, ux, uy, uz]
+        #             [0,  1,   2,   3,   4,   5,  6,  7]
+        
+        siz1 = len(Input_vec[:,0])
+        out1 = np.zeros(siz1)
+        Mat1 = Mat()
+        
+        for ii in np.arange(0,siz1,1):
+            out1[ii] = np.abs(Mat1.HF1(Input_vec[ii,0],Input_vec[ii,1],Input_vec[ii,2],Input_vec[ii,3],Input_vec[ii,4],Input_vec[ii,5],Input_vec[ii,6],Input_vec[ii,7]))
+        
+        return out1
+    
+    def Material_LF1(self, Input_vec=None):
         
         # Input_vec = [E, v, ux, uy, uz]
         #             [0, 1,  2,  3,  4]
@@ -126,10 +142,106 @@ class LimitStateFunctions:
         Mat1 = Mat()
         
         for ii in np.arange(0,siz1,1):
-            out1[ii] = np.abs(Mat1.LF(Input_vec[ii,0],Input_vec[ii,1],Input_vec[ii,2],Input_vec[ii,3],Input_vec[ii,4]))
+            out1[ii] = np.abs(Mat1.LF1(Input_vec[ii,0],Input_vec[ii,1],Input_vec[ii,2],Input_vec[ii,3],Input_vec[ii,4]))
         
         return out1
+    
+    def Fluid_NS(self, Input_vec=None):
         
+        # Input_vec = [viscosity, density, u_Bottom, u_Top, u_Left, u_Right]
+        #             [0,               1,        2,     3,      4,      5]
+        
+        siz1 = len(Input_vec[:,0])
+        out1 = np.zeros(siz1)
+        Fluid1 = Fluid()
+        
+        for ii in np.arange(0,siz1,1):
+            out1[ii] = np.abs(Fluid1.Navier_Stokes(Input_vec[ii,0],Input_vec[ii,1],Input_vec[ii,2],Input_vec[ii,3],Input_vec[ii,4],Input_vec[ii,5]))
+        
+        return out1
+    
+    def Fluid_S(self, Input_vec=None):
+        
+        # Input_vec = [viscosity, density, u_Bottom, u_Top, u_Left, u_Right]
+        #             [0,               1,        2,     3,      4,      5]
+        
+        siz1 = len(Input_vec[:,0])
+        out1 = np.zeros(siz1)
+        Fluid1 = Fluid()
+        
+        for ii in np.arange(0,siz1,1):
+            out1[ii] = np.abs(Fluid1.Stokes(Input_vec[ii,0],Input_vec[ii,1],Input_vec[ii,2],Input_vec[ii,3],Input_vec[ii,4],Input_vec[ii,5]))
+        
+        return out1
+    
+   
+    def Fluid_NS1(self, Input_vec=None):
+        
+        # Input_vec = [viscosity, density, u_Bottom, u_Top, u_Left, u_Right]
+        #             [0,               1,        2,     3,      4,      5]
+        
+        siz1 = len(Input_vec[:,0])
+        out1 = np.zeros(siz1)
+        Fluid1 = Fluid()
+        
+        for ii in np.arange(0,siz1,1):
+            out1[ii] = np.abs(Fluid1.Navier_Stokes1(Input_vec[ii,0],Input_vec[ii,1],Input_vec[ii,2],Input_vec[ii,3],Input_vec[ii,4],Input_vec[ii,5]))
+        
+        return out1
 
-
+    def Fluid_S1(self, Input_vec=None):
+        
+        # Input_vec = [viscosity, density, u_Bottom, u_Top, u_Left, u_Right]
+        #             [0,               1,        2,     3,      4,      5]
+        
+        siz1 = len(Input_vec[:,0])
+        out1 = np.zeros(siz1)
+        Fluid1 = Fluid()
+        
+        for ii in np.arange(0,siz1,1):
+            out1[ii] = np.abs(Fluid1.Stokes1(Input_vec[ii,0],Input_vec[ii,1],Input_vec[ii,2],Input_vec[ii,3],Input_vec[ii,4],Input_vec[ii,5]))
+        
+        return out1
+    
+    def Holes_HF(self, Input_vec=None):
+        
+        # Input_vec = [E, v, ux]
+        #             [0, 1,  2]
+        
+        siz1 = len(Input_vec[:,0])
+        out1 = np.zeros(siz1)
+        Holes1 = Holes()
+        
+        for ii in np.arange(0,siz1,1):
+            out1[ii] = np.abs(Holes1.HF(Input_vec[ii,0],Input_vec[ii,1],Input_vec[ii,2]))
+        
+        return out1
+    
+    def Holes_HF1(self, Input_vec=None):
+        
+        # Input_vec = [E, v, ux]
+        #             [0, 1,  2]
+        
+        siz1 = len(Input_vec[:,0])
+        out1 = np.zeros(siz1)
+        Holes1 = Holes()
+        
+        for ii in np.arange(0,siz1,1):
+            out1[ii] = np.abs(Holes1.HF1(Input_vec[ii,0],Input_vec[ii,1],Input_vec[ii,2]))
+        
+        return out1
+    
+    def Holes_LF1(self, Input_vec=None):
+        
+        # Input_vec = [E, v, ux]
+        #             [0, 1,  2]
+        
+        siz1 = len(Input_vec[:,0])
+        out1 = np.zeros(siz1)
+        Holes1 = Holes()
+        
+        for ii in np.arange(0,siz1,1):
+            out1[ii] = np.abs(Holes1.LF1(Input_vec[ii,0],Input_vec[ii,1],Input_vec[ii,2]))
+        
+        return out1
 

@@ -41,6 +41,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras import regularizers
+np.random.seed(15)
 
 Ndim = 2
 value = 0.0
@@ -150,7 +151,7 @@ for ii in np.arange(0,Ninit_GP,1):
 inp_LFtrain = np.delete(inp_LFtrain, 0, 0)
 y_HF_LFtrain = np.delete(y_HF_LFtrain, 0)
 ML0 = ML_TF(obs_ind = inp_LFtrain, obs = y_HF_LFtrain) # , amp_init=1., len_init=1., var_init=1., num_iters = 1000)
-DNN_model = ML0.DNN_train(dim=Ndim, seed=100, neurons1=6, neurons2=4, learning_rate=0.002, epochs=5000)
+DNN_model = ML0.DNN_train(dim=Ndim, seed=100, neurons1=6, neurons2=4, learning_rate=0.002, epochs=1500)
 
 # Train the model
 
@@ -170,8 +171,8 @@ amp1, len1, var1 = ML.GP_train(amp_init=1., len_init=1., var_init=1., num_iters 
 ## Subset simultion with HF-LF and GP
 
 uni = uniform()
-Nsub = 2500
-Psub = 0.1
+Nsub = 5000
+Psub = 0.10
 Nlim = 2
 y1 = np.zeros((Nsub,Nlim))
 y1_lim = np.zeros(Nlim)
@@ -314,12 +315,13 @@ fig, ax = plt.subplots()
 CS = ax.contour(X, Y, Z)
 CS.collections[0].set_linewidth(0)
 CS.collections[1].set_linewidth(0)
-# CS.collections[2].set_linewidth(0)
-CS.collections[3].set_linewidth(0)
+CS.collections[2].set_linewidth(0)
+# CS.collections[3].set_linewidth(0)
 CS.collections[4].set_linewidth(0)
 CS.collections[5].set_linewidth(0)
 CS.collections[6].set_linewidth(0)
 CS.collections[7].set_linewidth(0)
+CS.collections[8].set_linewidth(0)
 plt.scatter(inp1[:,0,0],inp1[:,1,0],label='Sub 0')
 plt.scatter(inp1[:,0,1],inp1[:,1,1],label='Sub 1')
 # plt.scatter(inp1[:,0,2],inp1[:,1,2],label='Sub 2')
@@ -351,3 +353,6 @@ plt.ylabel('X2')
 # CS.collections[5].set_linewidth(0)
 # CS.collections[6].set_linewidth(0)
 # CS.collections[7].set_linewidth(0)
+
+# 0.07166431, 0.0773866, 0.0693873, 0.06986672, 0.073551
+

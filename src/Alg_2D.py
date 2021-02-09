@@ -6,7 +6,6 @@ Created on Thu Dec  3 13:31:49 2020
 @author: dhulls
 """
 
-
 from os import sys
 import pathlib
 import numpy as np
@@ -131,7 +130,7 @@ def Norm1(X1,X):
 def InvNorm1(X1,X):
     return X1 # (X1*np.std(X,axis=0)+np.mean(X,axis=0))
 
-Ninit_GP = 50
+Ninit_GP = 12
 lhd0 = lhs(2, samples=Ninit_GP, criterion='centermaximin')
 lhd = uniform(loc=-4,scale=8).ppf(lhd0)
 y_HF_LFtrain = np.empty(1, dtype = float)
@@ -143,12 +142,12 @@ for ii in np.arange(0,Ninit_GP,1):
     y_HF_LFtrain = np.concatenate((y_HF_LFtrain, np.array(Convert(LS1.Scalar_LS1_HF_2D(inpp))).reshape(1)))
 inp_LFtrain = np.delete(inp_LFtrain, 0, 0)
 y_HF_LFtrain = np.delete(y_HF_LFtrain, 0)
-ML0 = ML_TF(obs_ind = Norm1(inp_LFtrain,inp_LFtrain), obs = Norm1(y_HF_LFtrain,y_HF_LFtrain), amp_init=1., len_init=1., var_init=1., num_iters = 1000)
-amp0, len0, var0 = ML0.GP_train()
+ML0 = ML_TF(obs_ind = Norm1(inp_LFtrain,inp_LFtrain), obs = Norm1(y_HF_LFtrain,y_HF_LFtrain))
+amp0, len0, var0 = ML0.GP_train(amp_init=1., len_init=1., var_init=1., num_iters = 1000)
 
 Iters = 300
 lhd1 = lhs(2, samples=200, criterion='maximin')
-lhd =  norm().ppf(lhd1)
+lhd =  uniform(loc=-4,scale=8).ppf(lhd1)
 y_LF_GP = np.empty(1, dtype = float)
 y_HF_GP = np.empty(1, dtype = float)
 inp_GPtrain = np.empty([1,2], dtype = float)
@@ -165,15 +164,15 @@ inp_GPtrain = np.delete(inp_GPtrain, 0, 0)
 y_LF_GP = np.delete(y_LF_GP, 0)
 y_HF_GP = np.delete(y_HF_GP, 0)
 
-ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain), obs = Norm1((y_HF_GP-y_LF_GP),(y_HF_GP-y_LF_GP)), amp_init=1., len_init=1., var_init=1., num_iters = 1000)
-amp1, len1, var1 = ML.GP_train()
+ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain), obs = Norm1((y_HF_GP-y_LF_GP),(y_HF_GP-y_LF_GP)))
+amp1, len1, var1 = ML.GP_train(amp_init=1., len_init=1., var_init=1., num_iters = 1000)
 
 ## Subset simultion with HF-LF and GP
 
 uni = uniform()
 Nsub = 5000
-Psub = 0.1
-Nlim = 2
+Psub = 0.15
+Nlim = 3
 y1 = np.zeros((Nsub,Nlim))
 y1_lim = np.zeros(Nlim)
 y1_lim[Nlim-1] = value
@@ -209,8 +208,8 @@ for ii in np.arange(0,Nsub,1):
         y_HF_GP = np.concatenate((y_HF_GP, y1[ii,0].reshape(1)))
         LF_plus_GP = np.concatenate((LF_plus_GP, (LF + np.array(GP_diff).reshape(1))))
         GP_pred = np.concatenate((GP_pred, (np.array(GP_diff).reshape(1))))
-        ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain), obs = Norm1((y_HF_GP-y_LF_GP),(y_HF_GP-y_LF_GP)), amp_init=amp1, len_init=len1, var_init=var1, num_iters = Iters)
-        amp1, len1, var1 = ML.GP_train()
+        ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain), obs = Norm1((y_HF_GP-y_LF_GP),(y_HF_GP-y_LF_GP)))
+        amp1, len1, var1 = ML.GP_train(amp_init=amp1, len_init=len1, var_init=var1, num_iters = Iters)
         var_GP = np.concatenate((var_GP, var1.numpy().reshape(1)))
         subs_info = np.concatenate((subs_info, np.array(0).reshape(1)))
 
@@ -264,8 +263,8 @@ for kk in np.arange(1,Nlim,1):
             y_HF_GP = np.concatenate((y_HF_GP, y_nxt.reshape(1))) # np.concatenate((y_HF_GP, y1[ii,0].reshape(1)))
             LF_plus_GP = np.concatenate((LF_plus_GP, (LF + np.array(GP_diff).reshape(1))))
             GP_pred = np.concatenate((GP_pred, (np.array(GP_diff).reshape(1))))
-            ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain), obs = Norm1((y_HF_GP-y_LF_GP),(y_HF_GP-y_LF_GP)), amp_init=amp1, len_init=len1, var_init=var1, num_iters = Iters)
-            amp1, len1, var1 = ML.GP_train()
+            ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain), obs = Norm1((y_HF_GP-y_LF_GP),(y_HF_GP-y_LF_GP)))
+            amp1, len1, var1 = ML.GP_train(amp_init=amp1, len_init=len1, var_init=var1, num_iters = Iters)
             var_GP = np.concatenate((var_GP, var1.numpy().reshape(1)))
             subs_info = np.concatenate((subs_info, np.array(kk).reshape(1)))
             # GP_diff = 0 ## Comment this
@@ -320,7 +319,7 @@ CS.collections[7].set_linewidth(0)
 CS.collections[8].set_linewidth(0)
 plt.scatter(inp1[:,0,0],inp1[:,1,0],label='Sub 0')
 plt.scatter(inp1[:,0,1],inp1[:,1,1],label='Sub 1')
-# plt.scatter(inp1[:,0,2],inp1[:,1,2],label='Sub 2')
+plt.scatter(inp1[:,0,2],inp1[:,1,2],label='Sub 2')
 # plt.scatter(inp1[:,0,3],inp1[:,1,3],label='Sub 3')
 # plt.scatter(inp1[:,0,4],inp1[:,1,4],label='Sub 4')
 plt.scatter(inp_GPtrain[0:11,0],inp_GPtrain[0:11,1], marker='^', s=100.0,label='HF call (initial)')
