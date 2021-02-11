@@ -186,7 +186,7 @@ amp1, len1, var1 = ML.GP_train(amp_init=1., len_init=1., var_init=1.0, num_iters
 ## Subset simultion with HF-LF and GP
 
 uni = uniform()
-Nsub = 100
+Nsub = 2000
 Psub = 0.1
 Nlim = 5
 y1 = np.zeros((Nsub,Nlim))

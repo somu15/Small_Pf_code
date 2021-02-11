@@ -323,19 +323,19 @@ for kk in np.arange(1,Nlim,1):
         
         for jj in np.arange(0,Ndim,1):
             
-            # if jj == 0:
-            #     rv1 = norm(loc=inp1[ind_max,jj,kk],scale=1.0)
-            # else:
-            #     rv1 = norm(loc=inp1[ind_max,jj,kk],scale=1.0)
-            rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=1.0)
+            if jj == 0:
+                rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.2)
+            else:
+                rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=1.0)
+            # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.5)
             prop = np.exp(rv1.rvs())
             # if jj == 1:
             #     rv1 = rv1 = uniform(loc=(np.log(inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
             #     prop = np.exp(rv1.rvs())
             # else:
-                
-            # rv1 = uniform(loc=((inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
-            # prop = (rv1.rvs())
+            #     rv1 = uniform(loc=((inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
+            #     prop = (rv1.rvs())
+            
                 
             
             r = np.log(DR1.BoreholePDF(rv_req=prop, index=jj)) - np.log(DR1.BoreholePDF(rv_req=(inp1[ind_max,jj,kk]),index=jj)) # np.log(rv.pdf((prop)))-np.log(rv.pdf((inp1[ind_max,jj,kk])))

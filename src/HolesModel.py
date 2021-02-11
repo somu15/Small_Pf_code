@@ -86,7 +86,7 @@ class HolesModel:
         file1.close() 
         
         os.chdir('/Users/dhulls/projects/moose/modules/tensor_mechanics/test/tests/0_Holes')
-        os.system('/Users/dhulls/projects/moose/modules/tensor_mechanics/tensor_mechanics-opt -i LF1_lv2.i')
+        os.system('mpiexec -n 2 /Users/dhulls/projects/moose/modules/tensor_mechanics/tensor_mechanics-opt -i LF1_lv2.i')
         
         path1 = '/Users/dhulls/projects/moose/modules/tensor_mechanics/test/tests/0_Holes/LF1_lv2_out.csv'
         with open(path1) as csvfile:

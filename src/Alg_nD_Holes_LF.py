@@ -70,7 +70,7 @@ DR1 = DR()
 num_s = 500
 
 uni = uniform()
-Nsub = 100
+Nsub = 2000
 Psub = 0.1
 Nlim = 5
 y1 = np.zeros((Nsub,Nlim))
