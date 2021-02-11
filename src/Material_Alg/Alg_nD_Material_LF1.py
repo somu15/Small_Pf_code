@@ -364,7 +364,7 @@ with open(filename, 'wb') as f:
     pickle.dump(y_GPtrain, f)
     pickle.dump(y_HF_GP, f)
     pickle.dump(y_LF_GP, f)
-    
+
 # # req = 2.425e-04 (1000 sims per subset and 4 subsets; Num HF = 86; value=800)
 
 # # plt.scatter(y_HF_GP[12:86],LF_plus_GP)
