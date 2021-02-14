@@ -36,7 +36,7 @@ class DrawRandom:
     
     def BoreholeRandom(self):
         out = np.zeros(8)
-        rv1 = norm(loc=np.log(7.71),scale=1.0056)
+        rv1 = norm(loc=(7.71),scale=1.0056)
         rv2 = uniform()
         out[0] = 0.05 + 0.1 * rv2.rvs()
         out[1] = (rv1.rvs())
@@ -54,7 +54,7 @@ class DrawRandom:
             rv = uniform(loc=0.05,scale=0.1)
             out = rv.pdf((rv_req))
         elif index == 1:
-            rv = norm(loc=np.log(7.71),scale=1.0056)
+            rv = norm(loc=(7.71),scale=1.0056)
             out = rv.pdf((rv_req))
         elif index == 2:
             rv = uniform(loc=63070,scale=52530)
@@ -80,7 +80,7 @@ class DrawRandom:
         out = np.zeros((Nsamps,8))
         lhd0 = lhs(8, samples=Nsamps, criterion='centermaximin')
         out[:,0] = uniform(loc=0.05,scale=0.1).ppf(lhd0[:,0])
-        out[:,1] = uniform(loc=-2.0,scale=9.0).ppf(lhd0[:,1])  # norm(loc=np.log(7.71),scale=1.0056).ppf(lhd0[:,1])
+        out[:,1] = uniform(loc=4.0,scale=7.0).ppf(lhd0[:,1])  # norm(loc=np.log(7.71),scale=1.0056).ppf(lhd0[:,1])
         out[:,2] = uniform(loc=63070,scale=52530).ppf(lhd0[:,2])
         out[:,3] = uniform(loc = 990, scale=120).ppf(lhd0[:,3])
         out[:,4] = uniform(loc=63.1,scale=52.9).ppf(lhd0[:,4])
