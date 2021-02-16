@@ -51,77 +51,77 @@ def Convert(lst):
 
 ## Basic subset simulation
 
-# LS1 = LSF()
-# DR1 = DR()
-# num_s = 500
+LS1 = LSF()
+DR1 = DR()
+num_s = 500
 
-# uni = uniform()
-# Nsub = 5000
-# Psub = 0.1
-# Nlim = 2
-# y1 = np.zeros((Nsub,Nlim))
-# y1_lim = np.zeros(Nlim)
-# y1_lim[Nlim-1] = value
-# inp1 = np.zeros((Nsub,Ndim,Nlim))
-# rv = norm(loc=0,scale=1)
+uni = uniform()
+Nsub = 40000
+Psub = 0.1
+Nlim = 2
+y1 = np.zeros((Nsub,Nlim))
+y1_lim = np.zeros(Nlim)
+y1_lim[Nlim-1] = value
+inp1 = np.zeros((Nsub,Ndim,Nlim))
+rv = norm(loc=0,scale=1)
 
-# for ii in np.arange(0,Nsub,1):
-#     inp = (DR1.StandardNormal_Indep(N=Ndim))
-#     inpp = inp[None,:]
-#     y1[ii,0] = np.array(Convert(LS1.Scalar_LS1_HF_2D(inpp)))
-#     inp1[ii,:,0] = inp
+for ii in np.arange(0,Nsub,1):
+    inp = (DR1.StandardNormal_Indep(N=Ndim))
+    inpp = inp[None,:]
+    y1[ii,0] = np.array(Convert(LS1.Scalar_LS1_HF_2D(inpp)))
+    inp1[ii,:,0] = inp
 
-# inpp = np.zeros(Ndim)
-# count_max = int(Nsub/(Psub*Nsub))
+inpp = np.zeros(Ndim)
+count_max = int(Nsub/(Psub*Nsub))
 
-# for kk in np.arange(1,Nlim,1):
-#     ind_max = 0
-#     ind_sto = -1
-#     count = np.inf
-#     y1[0:(int(Psub*Nsub)),kk] = np.sort(y1[:,kk-1])[int((1-Psub)*Nsub):(len(y1))]
-#     y1_lim[kk-1] = np.min(y1[0:(int(Psub*Nsub)),kk])
-#     indices = (-y1[:,kk-1]).argsort()[:(int(Psub*Nsub))]
-#     inp1[0:(int(Psub*Nsub)),:,kk] = inp1[indices,:,kk-1]
-#     for ii in np.arange((int(Psub*Nsub)),(Nsub),1):
-#         nxt = np.zeros((1,Ndim))
-#         if count > count_max:
-#             # ind_max = random.randint(0,int(Psub*Nsub)) # ind_sto
-#             ind_sto = ind_sto + 1
-#             ind_max = ind_sto
-#             count = 0
-#         else:
-#             ind_max = ii-1
+for kk in np.arange(1,Nlim,1):
+    ind_max = 0
+    ind_sto = -1
+    count = np.inf
+    y1[0:(int(Psub*Nsub)),kk] = np.sort(y1[:,kk-1])[int((1-Psub)*Nsub):(len(y1))]
+    y1_lim[kk-1] = np.min(y1[0:(int(Psub*Nsub)),kk])
+    indices = (-y1[:,kk-1]).argsort()[:(int(Psub*Nsub))]
+    inp1[0:(int(Psub*Nsub)),:,kk] = inp1[indices,:,kk-1]
+    for ii in np.arange((int(Psub*Nsub)),(Nsub),1):
+        nxt = np.zeros((1,Ndim))
+        if count > count_max:
+            # ind_max = random.randint(0,int(Psub*Nsub)) # ind_sto
+            ind_sto = ind_sto + 1
+            ind_max = ind_sto
+            count = 0
+        else:
+            ind_max = ii-1
             
-#         count = count + 1
+        count = count + 1
                 
-#         for jj in np.arange(0,Ndim,1):
-#             rv1 = norm(loc=inp1[ind_max,jj,kk],scale=1.0)
-#             prop = (rv1.rvs())
-#             r = rv.pdf((prop))/rv.pdf((inp1[ii-(int(Psub*Nsub)),jj,kk]))
-#             if r>uni.rvs():
-#                 nxt[0,jj] = prop
-#             else: 
-#                 nxt[0,jj] = inp1[ii-(int(Psub*Nsub)),jj,kk]
-#             inpp[jj] = nxt[0,jj]
-#         # inpp = inpp[None,:]
-#         # inpp = np.array([nxt[0,0], nxt[0,1], nxt[0,2]])[None,:]
-#         y_nxt = np.array(Convert(LS1.Scalar_LS1_HF_2D(inpp[None,:]))).reshape(1)
-#         if y_nxt>y1_lim[kk-1]:
-#             inp1[ii,:,kk] = inpp # np.array([nxt[0,0], nxt[0,1], nxt[0,2]])
-#             y1[ii,kk] = y_nxt
-#         else:
-#             inp1[ii,:,kk] = inp1[ii-(int(Psub*Nsub)),:,kk]
-#             y1[ii,kk] = y1[ii-(int(Psub*Nsub)),kk]
+        for jj in np.arange(0,Ndim,1):
+            rv1 = norm(loc=inp1[ind_max,jj,kk],scale=1.0)
+            prop = (rv1.rvs())
+            r = rv.pdf((prop))/rv.pdf((inp1[ii-(int(Psub*Nsub)),jj,kk]))
+            if r>uni.rvs():
+                nxt[0,jj] = prop
+            else: 
+                nxt[0,jj] = inp1[ii-(int(Psub*Nsub)),jj,kk]
+            inpp[jj] = nxt[0,jj]
+        # inpp = inpp[None,:]
+        # inpp = np.array([nxt[0,0], nxt[0,1], nxt[0,2]])[None,:]
+        y_nxt = np.array(Convert(LS1.Scalar_LS1_HF_2D(inpp[None,:]))).reshape(1)
+        if y_nxt>y1_lim[kk-1]:
+            inp1[ii,:,kk] = inpp # np.array([nxt[0,0], nxt[0,1], nxt[0,2]])
+            y1[ii,kk] = y_nxt
+        else:
+            inp1[ii,:,kk] = inp1[ii-(int(Psub*Nsub)),:,kk]
+            y1[ii,kk] = y1[ii-(int(Psub*Nsub)),kk]
 
-# Pf = 1
-# Pi_sto = np.zeros(Nlim)
-# cov_sq = 0
-# for kk in np.arange(0,Nlim,1):
-#     Pi = len(np.rot90(np.where(y1[:,kk]>np.min([y1_lim[kk],value]))))/(Nsub)
-#     Pf = Pf * Pi
-#     Pi_sto[kk] = Pi
-#     cov_sq = cov_sq + ((1-Pi)/(Pi*Nsub))
-# cov_req = np.sqrt(cov_sq)
+Pf = 1
+Pi_sto = np.zeros(Nlim)
+cov_sq = 0
+for kk in np.arange(0,Nlim,1):
+    Pi = len(np.rot90(np.where(y1[:,kk]>np.min([y1_lim[kk],value]))))/(Nsub)
+    Pf = Pf * Pi
+    Pi_sto[kk] = Pi
+    cov_sq = cov_sq + ((1-Pi)/(Pi*Nsub))
+cov_req = np.sqrt(cov_sq)
 
 
 ## SS with HF and LFGP, and GP diff

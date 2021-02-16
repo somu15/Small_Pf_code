@@ -44,21 +44,182 @@ class ML_TF:
         # self.var_init = var_init
         # self.num_iters = num_iters
         
-    def GP_train(self, amp_init=None, len_init=None, var_init=None, num_iters=None): # Gaussian Process Regression training
+    # def GP_train(self, amp_init=None, len_init=None, var_init=None, num_iters=None): # Gaussian Process Regression training
         
-        def build_gp(amplitude, length_scale, observation_noise_variance):
+    #     def build_gp(amplitude, length_scale, observation_noise_variance):
+
+    #       kernel = tfk.ExponentiatedQuadratic(amplitude, length_scale)
+
+    #       return tfd.GaussianProcess(
+    #           kernel=kernel,
+    #           index_points=self.obs_ind,
+    #           observation_noise_variance=observation_noise_variance) # ,jitter=1e-03
+      
+    #     gp_joint_model = tfd.JointDistributionNamed({
+    #         'amplitude': tfd.LogNormal(loc=0., scale=np.float64(1.)),
+    #         'length_scale': tfd.LogNormal(loc=0., scale=np.float64(1.)),
+    #         'observation_noise_variance': tfd.LogNormal(loc=0., scale=np.float64(1.)),
+    #         'observations': build_gp,
+    #     })
+        
+    #     # constrain_positive = tfb.Shift(np.finfo(np.float64).tiny)(tfb.Exp())
+
+    #     # amplitude_var = tfp.util.TransformedVariable(
+    #     #     initial_value=amp_init,
+    #     #     bijector=constrain_positive,
+    #     #     name='amplitude',
+    #     #     dtype=np.float64)
+        
+    #     # length_scale_var = tfp.util.TransformedVariable(
+    #     #     initial_value=len_init,
+    #     #     bijector=constrain_positive,
+    #     #     name='length_scale',
+    #     #     dtype=np.float64)
+        
+    #     # observation_noise_variance_var = tfp.util.TransformedVariable(
+    #     #     initial_value=var_init,
+    #     #     bijector=constrain_positive,
+    #     #     name='observation_noise_variance_var',
+    #     #     dtype=np.float64)
+        
+    #     # trainable_variables = [v.trainable_variables[0] for v in 
+    #     #                         [amplitude_var,
+    #     #                         length_scale_var,
+    #     #                         observation_noise_variance_var]]
+        
+    #     # @tf.function(autograph=False, experimental_compile=False)
+    #     # def target_log_prob(amplitude, length_scale, observation_noise_variance):
+    #     #   return gp_joint_model.log_prob({
+    #     #       'amplitude': amplitude,
+    #     #       'length_scale': length_scale,
+    #     #       'observation_noise_variance': observation_noise_variance,
+    #     #       'observations': self.obs
+    #     #   })
+        
+      
+    #     # # # num_iters = 1000
+    #     # optimizer = tf.optimizers.Adam(learning_rate=.01)
+        
+    #     # lls_ = np.zeros(num_iters, np.float64)
+    #     # for i in range(num_iters):
+    #     #   with tf.GradientTape() as tape:
+    #     #     loss = -target_log_prob(amplitude_var, length_scale_var,
+    #     #                             observation_noise_variance_var)
+    #     #   grads = tape.gradient(loss, trainable_variables) #  trainable_variables
+    #     #   optimizer.apply_gradients(zip(grads, trainable_variables)) #  trainable_variables
+    #     # lls_[i] = loss
+        
+    #     # print('Trained parameters:')
+    #     # print('amplitude: {}'.format(amplitude_var._value().numpy()))
+    #     # print('length_scale: {}'.format(length_scale_var._value().numpy()))
+    #     # print('observation_noise_variance: {}'.format(observation_noise_variance_var._value().numpy()))
+        
+    #     # return amplitude_var, length_scale_var, observation_noise_variance_var
+        
+        
+        
+    #     amplitude_ = tf.Variable(initial_value=amp_init, name='amplitude_', dtype=np.float64,constraint=lambda z: tf.clip_by_value(z, 1e-4, 10000)) # lambda z: tf.clip_by_value(z, 0, 10000)
+    #     length_scale_ = tf.Variable(initial_value=len_init, name='length_scale_', dtype=np.float64,constraint=lambda z: tf.clip_by_value(z, 1e-4, 10000))
+    #     observation_noise_variance_ = tf.Variable(initial_value=var_init,
+    #                                               name='observation_noise_variance_',
+    #                                               dtype=np.float64,constraint=lambda z: tf.clip_by_value(z, 1e-4, 10000))
+    #     # amplitude_ = tfp.util.TransformedVariable(
+    #     #     initial_value=amp_init,
+    #     #     bijector=constrain_positive,
+    #     #     name='amplitude',
+    #     #     dtype=np.float64)
+        
+    #     # length_scale_ = tfp.util.TransformedVariable(
+    #     #     initial_value=len_init,
+    #     #     bijector=constrain_positive,
+    #     #     name='length_scale',
+    #     #     dtype=np.float64)
+        
+    #     # observation_noise_variance_ = tfp.util.TransformedVariable(
+    #     #     initial_value=var_init,
+    #     #     bijector=constrain_positive,
+    #     #     name='observation_noise_variance_var',
+    #     #     dtype=np.float64)
+        
+    #     # trainable_variables = [v.trainable_variables[0] for v in 
+    #     #                         [amplitude_,
+    #     #                         length_scale_,
+    #     #                         observation_noise_variance_]]
+        
+    #     # @tf.function
+    #     # def neg_log_likelihood():
+    #     #     amplitude = np.finfo(np.float64).tiny + tf.nn.softplus(amplitude_)
+    #     #     length_scale = np.finfo(np.float64).tiny + tf.nn.softplus(length_scale_)
+    #     #     observation_noise_variance = np.finfo(np.float64).tiny + tf.nn.softplus(observation_noise_variance_)
+        
+    #     #     kernel = tfk.ExponentiatedQuadratic(amplitude, length_scale)
+        
+    #     #     gp = tfd.GaussianProcess(
+    #     #         kernel=kernel,
+    #     #         index_points=tf.expand_dims(self.obs_ind, 1),
+    #     #         observation_noise_variance=observation_noise_variance
+    #     #     )
+    #     #     return -gp.log_prob(self.obs)
+        
+    #     @tf.function(autograph=False, experimental_compile=False)
+    #     def target_log_prob(amplitude, length_scale, observation_noise_variance):
+    #       return gp_joint_model.log_prob({
+    #           'amplitude': amplitude,
+    #           'length_scale': length_scale,
+    #           'observation_noise_variance': observation_noise_variance,
+    #           'observations': self.obs
+    #       })
+        
+    #     optimizer = tf.optimizers.Adam(learning_rate=.01)
+        
+    #     # num_iters = 1000
+        
+    #     # nlls = np.zeros(num_iters, np.float64)
+    #     for i in range(num_iters):
+    #         with tf.GradientTape() as tape:
+    #             # loss = neg_log_likelihood()
+    #             loss = -target_log_prob(amplitude_, length_scale_,
+    #                             observation_noise_variance_)
+    #         grads = tape.gradient(loss, [amplitude_, length_scale_, observation_noise_variance_])
+    #         optimizer.apply_gradients(zip(grads, [amplitude_, length_scale_, observation_noise_variance_]))
+    #         # grads = tape.gradient(loss, [trainable_variables[0], trainable_variables[1], trainable_variables[2]])
+    #         # optimizer.apply_gradients(zip(grads, [trainable_variables[0], trainable_variables[1], trainable_variables[2]]))
+          
+    #     print('Trained parameters:')
+    #     print('amplitude: {}'.format(amplitude_.numpy()))
+    #     print('length_scale: {}'.format(length_scale_.numpy()))
+    #     print('observation_noise_variance: {}'.format(observation_noise_variance_.numpy()))
+        
+    #     return amplitude_, length_scale_, observation_noise_variance_
+    
+    # def GP_predict(self, amplitude_var=None, length_scale_var=None, observation_noise_variance_var=None, pred_ind=None, num_samples=None): # Gaussian Process Regression prediction
+        
+    #     # Gaussian Process Regression prediction
+    
+    #     optimized_kernel = tfk.ExponentiatedQuadratic(amplitude_var, length_scale_var)
+    #     gprm = tfd.GaussianProcessRegressionModel(
+    #         kernel=optimized_kernel,
+    #         index_points=pred_ind,
+    #         observation_index_points=self.obs_ind,
+    #         observations=self.obs,
+    #         observation_noise_variance=observation_noise_variance_var,
+    #         predictive_noise_variance=0.)
+        
+    #     return gprm.sample(num_samples)
+    
+    def GP_train(self, amp_init=None, len_init=None, num_iters=None): # Gaussian Process Regression training
+        
+        def build_gp(amplitude, length_scale):
 
           kernel = tfk.ExponentiatedQuadratic(amplitude, length_scale)
 
           return tfd.GaussianProcess(
               kernel=kernel,
-              index_points=self.obs_ind,
-              observation_noise_variance=observation_noise_variance) # ,jitter=1e-03
+              index_points=self.obs_ind) # ,jitter=1e-03
       
         gp_joint_model = tfd.JointDistributionNamed({
             'amplitude': tfd.LogNormal(loc=0., scale=np.float64(1.)),
             'length_scale': tfd.LogNormal(loc=0., scale=np.float64(1.)),
-            'observation_noise_variance': tfd.LogNormal(loc=0., scale=np.float64(1.)),
             'observations': build_gp,
         })
         
@@ -120,9 +281,6 @@ class ML_TF:
         
         amplitude_ = tf.Variable(initial_value=amp_init, name='amplitude_', dtype=np.float64,constraint=lambda z: tf.clip_by_value(z, 1e-4, 10000)) # lambda z: tf.clip_by_value(z, 0, 10000)
         length_scale_ = tf.Variable(initial_value=len_init, name='length_scale_', dtype=np.float64,constraint=lambda z: tf.clip_by_value(z, 1e-4, 10000))
-        observation_noise_variance_ = tf.Variable(initial_value=var_init,
-                                                  name='observation_noise_variance_',
-                                                  dtype=np.float64,constraint=lambda z: tf.clip_by_value(z, 1e-4, 10000))
         # amplitude_ = tfp.util.TransformedVariable(
         #     initial_value=amp_init,
         #     bijector=constrain_positive,
@@ -162,11 +320,10 @@ class ML_TF:
         #     return -gp.log_prob(self.obs)
         
         @tf.function(autograph=False, experimental_compile=False)
-        def target_log_prob(amplitude, length_scale, observation_noise_variance):
+        def target_log_prob(amplitude, length_scale):
           return gp_joint_model.log_prob({
               'amplitude': amplitude,
               'length_scale': length_scale,
-              'observation_noise_variance': observation_noise_variance,
               'observations': self.obs
           })
         
@@ -178,21 +335,19 @@ class ML_TF:
         for i in range(num_iters):
             with tf.GradientTape() as tape:
                 # loss = neg_log_likelihood()
-                loss = -target_log_prob(amplitude_, length_scale_,
-                                observation_noise_variance_)
-            grads = tape.gradient(loss, [amplitude_, length_scale_, observation_noise_variance_])
-            optimizer.apply_gradients(zip(grads, [amplitude_, length_scale_, observation_noise_variance_]))
+                loss = -target_log_prob(amplitude_, length_scale_)
+            grads = tape.gradient(loss, [amplitude_, length_scale_])
+            optimizer.apply_gradients(zip(grads, [amplitude_, length_scale_]))
             # grads = tape.gradient(loss, [trainable_variables[0], trainable_variables[1], trainable_variables[2]])
             # optimizer.apply_gradients(zip(grads, [trainable_variables[0], trainable_variables[1], trainable_variables[2]]))
           
         print('Trained parameters:')
         print('amplitude: {}'.format(amplitude_.numpy()))
         print('length_scale: {}'.format(length_scale_.numpy()))
-        print('observation_noise_variance: {}'.format(observation_noise_variance_.numpy()))
         
-        return amplitude_, length_scale_, observation_noise_variance_
+        return amplitude_, length_scale_
     
-    def GP_predict(self, amplitude_var=None, length_scale_var=None, observation_noise_variance_var=None, pred_ind=None, num_samples=None): # Gaussian Process Regression prediction
+    def GP_predict(self, amplitude_var=None, length_scale_var=None, pred_ind=None, num_samples=None): # Gaussian Process Regression prediction
         
         # Gaussian Process Regression prediction
     
@@ -202,7 +357,6 @@ class ML_TF:
             index_points=pred_ind,
             observation_index_points=self.obs_ind,
             observations=self.obs,
-            observation_noise_variance=observation_noise_variance_var,
             predictive_noise_variance=0.)
         
         return gprm.sample(num_samples)
