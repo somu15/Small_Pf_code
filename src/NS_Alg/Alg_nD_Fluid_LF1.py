@@ -8,6 +8,7 @@ Created on Wed Jan  6 10:09:55 2021
 """
 
 from os import sys
+import os
 import pathlib
 import numpy as np
 import random
@@ -292,14 +293,14 @@ for kk in np.arange(1,Nlim,1):
         count = count + 1
 
         for jj in np.arange(0,Ndim,1):
-            # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.5)
-            # prop = np.exp(rv1.rvs())
-            if jj == 1:
-                rv1 = uniform(loc=((inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
-                prop = (rv1.rvs())
-            else:
-                rv1 = uniform(loc=(np.log(inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
-                prop = np.exp(rv1.rvs())
+            rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.5)
+            prop = np.exp(rv1.rvs())
+            # if jj == 1:
+            #    rv1 = uniform(loc=((inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
+            #    prop = (rv1.rvs())
+            # else:
+            #    rv1 = uniform(loc=(np.log(inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
+            #    prop = np.exp(rv1.rvs())
             r = np.log(DR1.FluidPDF(rv_req=prop, index=jj)) - np.log(DR1.FluidPDF(rv_req=(inp1[ind_max,jj,kk]),index=jj)) # np.log(rv.pdf((prop)))-np.log(rv.pdf((inp1[ind_max,jj,kk])))
             if r>np.log(uni.rvs()):
                 nxt[0,jj] = prop
@@ -405,7 +406,8 @@ for kk in np.arange(1,Nlim,1):
 #             inp1[ii,:,kk] = inp1[ind_max,:,kk]
 #             y1[ii,kk] = y1[ind_max,kk]
 
-
+#value = 0.0
+#y1_lim[Nlim-1] = value 
 Pf = 1
 Pi_sto = np.zeros(Nlim)
 cov_sq = 0
@@ -416,7 +418,8 @@ for kk in np.arange(0,Nlim,1):
     cov_sq = cov_sq + ((1-Pi)/(Pi*Nsub))
 cov_req = np.sqrt(cov_sq)
 
-filename = 'Alg_Run1.pickle'
+filename = 'Alg_Run3.pickle'
+os.chdir('/home/dhullaks/projects/Small_Pf_code/src/NS_Alg')
 with open(filename, 'wb') as f:
     pickle.dump(y1, f)
     pickle.dump(y1_lim, f)

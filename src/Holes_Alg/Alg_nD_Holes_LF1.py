@@ -7,6 +7,7 @@ Created on Tue Feb  9 13:19:23 2021
 """
 
 from os import sys
+import os
 import pathlib
 import numpy as np
 import random
@@ -321,6 +322,7 @@ for kk in np.arange(0,Nlim,1):
 cov_req = np.sqrt(cov_sq)
 
 filename = 'Alg_Run1.pickle'
+os.chdir('/home/dhullaks/projects/Small_Pf_code/src/Holes_Alg')
 with open(filename, 'wb') as f:
     pickle.dump(y1, f)
     pickle.dump(y1_lim, f)

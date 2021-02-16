@@ -7,6 +7,7 @@ Created on Sat Feb  6 12:18:29 2021
 """
 
 from os import sys
+import os
 import pathlib
 import numpy as np
 import random
@@ -31,7 +32,7 @@ from pyDOE import *
 
 Ndim = 8
 Ndim0 = 5
-value = 200.0
+value = 130.0
 
 LS1 = LSF()
 DR1 = DR()
@@ -349,6 +350,7 @@ for kk in np.arange(0,Nlim,1):
 cov_req = np.sqrt(cov_sq)
 
 filename = 'Alg_Run1.pickle'
+os.chdir('/home/dhullaks/projects/Small_Pf_code/src/Material_Alg')
 with open(filename, 'wb') as f:
     pickle.dump(y1, f)
     pickle.dump(y1_lim, f)

@@ -318,7 +318,7 @@ for kk in np.arange(1,Nlim,1):
         for jj in np.arange(0,Ndim,1):
 
             if jj == 0:
-                rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.2)
+                rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.1)
             else:
                 rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=1.0)
             # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.5)
@@ -387,7 +387,7 @@ for kk in np.arange(0,Nlim,1):
     cov_sq = cov_sq + ((1-Pi)/(Pi*Nsub))
 cov_req = np.sqrt(cov_sq)
 
-filename = 'Alg_Run1_DNN.pickle'
+filename = 'Alg_Run2_DNN.pickle'
 with open(filename, 'wb') as f:
     pickle.dump(y1, f)
     pickle.dump(y1_lim, f)
