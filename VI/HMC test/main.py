@@ -122,8 +122,8 @@ def predict(params):
     y_pred, y_var = post_model(X_test, training=False)
     return y_pred, y_var
 
-preds = [predict(chunks(params, 2)) for params in restructured_chain]
-k1,k2=tf.unstack(preds,axis=1)
-plt.plot(k1[:,0])
+# preds = [predict(chunks(params, 2)) for params in restructured_chain]
+# k1,k2=tf.unstack(preds,axis=1)
+# plt.plot(k1[:,0])
 
 
