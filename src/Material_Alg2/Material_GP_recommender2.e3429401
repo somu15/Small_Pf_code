@@ -1,0 +1,176 @@
+2021-02-16 01:27:29.715884: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-02-16 01:47:30.601493: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-02-16 01:47:30.603535: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-02-16 01:47:31.633920: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:1c:00.0 name: Tesla V100-SXM2-32GB computeCapability: 7.0
+coreClock: 1.53GHz coreCount: 80 deviceMemorySize: 31.75GiB deviceMemoryBandwidth: 836.37GiB/s
+2021-02-16 01:47:31.633968: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-02-16 01:47:31.638900: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-02-16 01:47:31.638976: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-02-16 01:47:31.641110: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-02-16 01:47:31.642411: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-02-16 01:47:31.646334: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-02-16 01:47:31.647681: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-02-16 01:47:31.648516: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-02-16 01:47:31.652165: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-02-16 01:47:31.652690: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-02-16 01:47:31.652784: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-02-16 01:47:31.654648: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:1c:00.0 name: Tesla V100-SXM2-32GB computeCapability: 7.0
+coreClock: 1.53GHz coreCount: 80 deviceMemorySize: 31.75GiB deviceMemoryBandwidth: 836.37GiB/s
+2021-02-16 01:47:31.654674: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-02-16 01:47:31.654691: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-02-16 01:47:31.654700: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-02-16 01:47:31.654710: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-02-16 01:47:31.654719: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-02-16 01:47:31.654728: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-02-16 01:47:31.654738: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-02-16 01:47:31.654748: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-02-16 01:47:31.658280: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-02-16 01:47:31.658312: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-02-16 01:47:32.276843: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-02-16 01:47:32.276870: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2021-02-16 01:47:32.276876: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2021-02-16 01:47:32.282524: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30128 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-32GB, pci bus id: 0000:1c:00.0, compute capability: 7.0)
+/home/dhullaks/.local/lib/python3.7/site-packages/numpy/core/_methods.py:205: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+WARNING:tensorflow:From /home/dhullaks/.local/lib/python3.7/site-packages/tensorflow/python/ops/linalg/linear_operator_lower_triangular.py:167: calling LinearOperator.__init__ (from tensorflow.python.ops.linalg.linear_operator) with graph_parents is deprecated and will be removed in a future version.
+Instructions for updating:
+Do not pass `graph_parents`.  They will  no longer be used.
+2021-02-16 01:47:33.062413: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2021-02-16 01:47:33.066083: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2900000000 Hz
+2021-02-16 01:47:33.120200: I tensorflow/core/util/cuda_solvers.cc:180] Creating CudaSolver handles for stream 0x55555a7384c0
+2021-02-16 01:47:33.120266: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-02-16 01:47:33.773001: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-02-16 01:47:34.268066: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-02-16 01:47:34.269335: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+  Elem Information
+   id()=2403, unique_id()=6018, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=2947, processor_id()=0, Point=(x,y,z)=(0.567284, 0.259758, 0.644775)
+    DoFs=(0/0/3180) (0/1/3181) (0/2/3182) 
+    1  Node id()=2948, processor_id()=0, Point=(x,y,z)=(0.960409, 0.252814, 0.796725)
+    DoFs=(0/0/3183) (0/1/3184) (0/2/3185) 
+    2  Node id()=2946, processor_id()=0, Point=(x,y,z)=(0.628999, 0.165287, 0.387911)
+    DoFs=(0/0/3177) (0/1/3178) (0/2/3179) 
+    3  Node id()=2945, processor_id()=0, Point=(x,y,z)=(0.649076, 0.127123, 0.397074)
+    DoFs=(0/0/3174) (0/1/3175) (0/2/3176) 
+    4  Node id()=2943, processor_id()=0, Point=(x,y,z)=(0.553508, 0.128687, 0.460314)
+    DoFs=(0/0/3168) (0/1/3169) (0/2/3170) 
+    5  Node id()=2944, processor_id()=0, Point=(x,y,z)=(0.645281, 0.169936, 0.571508)
+    DoFs=(0/0/3171) (0/1/3172) (0/2/3173) 
+    6  Node id()=2942, processor_id()=0, Point=(x,y,z)=(0.632915, 0.166274, 0.424344)
+    DoFs=(0/0/3165) (0/1/3166) (0/2/3167) 
+    7  Node id()=2941, processor_id()=0, Point=(x,y,z)=(0.590376, 0.134602, 0.380803)
+    DoFs=(0/0/3162) (0/1/3163) (0/2/3164) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=2834
+    neighbor(2)=2415
+    neighbor(3)=2402
+    neighbor(4)=2407
+    neighbor(5)=2401
+   hmin()=0.0366562, hmax()=0.569113
+   volume()=-0.000787362
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/2988) (1/1/2989) (1/2/2990) (1/3/2991) 
+ERROR: negative Jacobian -0.000334204 at point (x,y,z)=(0.634253, 0.212401, 0.584937) in element 2403
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=358, unique_id()=894, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=517, processor_id()=0, Point=(x,y,z)=(0.232712, 0.668032, 0.538675)
+    DoFs=(0/0/1551) (0/1/1552) (0/2/1553) 
+    1  Node id()=516, processor_id()=0, Point=(x,y,z)=(0.353302, 0.618081, 0.538675)
+    DoFs=(0/0/1548) (0/1/1549) (0/2/1550) 
+    2  Node id()=496, processor_id()=0, Point=(x,y,z)=(0.269101, 0.523978, 0.538675)
+    DoFs=(0/0/1488) (0/1/1489) (0/2/1490) 
+    3  Node id()=497, processor_id()=0, Point=(x,y,z)=(0.207981, 0.586809, 0.538675)
+    DoFs=(0/0/1491) (0/1/1492) (0/2/1493) 
+    4  Node id()=450, processor_id()=0, Point=(x,y,z)=(  0.1867, 0.553279, 0.427104)
+    DoFs=(0/0/1350) (0/1/1351) (0/2/1352) 
+    5  Node id()=449, processor_id()=0, Point=(x,y,z)=(0.303624, 0.546672, 0.389412)
+    DoFs=(0/0/1347) (0/1/1348) (0/2/1349) 
+    6  Node id()=429, processor_id()=0, Point=(x,y,z)=(0.255254, 0.495868, 0.370436)
+    DoFs=(0/0/1287) (0/1/1288) (0/2/1289) 
+    7  Node id()=430, processor_id()=0, Point=(x,y,z)=(0.194848, 0.558418, 0.363571)
+    DoFs=(0/0/1290) (0/1/1291) (0/2/1292) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=357
+    neighbor(3)=341
+    neighbor(4)=359
+    neighbor(5)=304
+   hmin()=0.0642596, hmax()=0.243576
+   volume()=0.000866615
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/1432) (1/1/1433) (1/2/1434) (1/3/1435) 
+ERROR: negative Jacobian -1.15387e-05 at point (x,y,z)=(0.218998, 0.569334,  0.43538) in element 358
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+0x00002aaab59bd4b9 in waitpid () from /lib64/libc.so.6
+To enable execution of this file add
+	add-auto-load-safe-path /apps/local/spack/software/gcc-4.8.5/gcc-9.2.0-bxc7mvbmrfcrusa6ij7ux3exfqabmq5y/lib64/libstdc++.so.6.0.27-gdb.py
+line to your configuration file "/home/dhullaks/.gdbinit".
+To completely disable this security protection add
+	set auto-load safe-path /
+line to your configuration file "/home/dhullaks/.gdbinit".
+For more information about this security protection see the
+"Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
+	info "(gdb)Auto-loading safe path"
+#0  0x00002aaab59bd4b9 in waitpid () from /lib64/libc.so.6
+#1  0x00002aaab593af62 in do_system () from /lib64/libc.so.6
+#2  0x00002aaab593b311 in system () from /lib64/libc.so.6
+#3  0x00002aaaae184e12 in libMesh::print_trace(std::ostream&) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#4  0x00002aaaae1812c4 in libMesh::MacroFunctions::report_error(char const*, int, char const*, char const*) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#5  0x00002aaaae3c4f6e in libMesh::FEMap::compute_single_point_map(unsigned int, std::vector<double, std::allocator<double> > const&, libMesh::Elem const*, unsigned int, std::vector<libMesh::Node const*, std::allocator<libMesh::Node const*> > const&, bool) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#6  0x00002aaaae3c8728 in libMesh::FEMap::compute_map(unsigned int, std::vector<double, std::allocator<double> > const&, libMesh::Elem const*, bool) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#7  0x00002aaaae227e72 in libMesh::FE<3u, (libMesh::FEFamily)2>::reinit(libMesh::Elem const*, std::vector<libMesh::Point, std::allocator<libMesh::Point> > const*, std::vector<double, std::allocator<double> > const*) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#8  0x00002aaaad1afec9 in Assembly::reinitFE(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#9  0x00002aaaad1b20a6 in Assembly::reinit(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#10 0x00002aaaaca6274a in DisplacedProblem::prepare(libMesh::Elem const*, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#11 0x00002aaaaca5b56c in FEProblemBase::prepare(libMesh::Elem const*, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#12 0x00002aaaac49ee56 in ComputeElemAuxVarsThread<AuxKernelTempl<double> >::onElement(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#13 0x00002aaaac4dc229 in ThreadedElementLoopBase<libMesh::StoredRange<libMesh::MeshBase::const_element_iterator, libMesh::Elem const*> >::operator()(libMesh::StoredRange<libMesh::MeshBase::const_element_iterator, libMesh::Elem const*> const&, bool) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#14 0x00002aaaac71c1cf in void AuxiliarySystem::computeElementalVarsHelper<AuxKernelTempl<double> >(MooseObjectWarehouse<AuxKernelTempl<double> > const&, std::vector<std::vector<MooseVariableFieldBase*, std::allocator<MooseVariableFieldBase*> >, std::allocator<std::vector<MooseVariableFieldBase*, std::allocator<MooseVariableFieldBase*> > > > const&, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#15 0x00002aaaac600266 in AuxiliarySystem::computeElementalVars(MooseEnumItem) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#16 0x00002aaaac60052c in AuxiliarySystem::compute(MooseEnumItem) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#17 0x00002aaaaca9b6ec in FEProblemBase::computeResidualTags(std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#18 0x00002aaaaca63760 in FEProblemBase::computeResidualInternal(libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&, std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#19 0x00002aaaaca5b1a0 in FEProblemBase::computeResidualSys(libMesh::NonlinearImplicitSystem&, libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#20 0x00002aaaac60069a in ComputeResidualFunctor::residual(libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&, libMesh::NonlinearImplicitSystem&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#21 0x00002aaaae912f8f in libmesh_petsc_snes_residual () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#22 0x00002aaab113c0b9 in SNESComputeFunction () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#23 0x00002aaab113438b in SNESLineSearchApply_BT () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#24 0x00002aaab112c452 in SNESLineSearchApply () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#25 0x00002aaab11658d1 in SNESSolve_NEWTONLS () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#26 0x00002aaab1149ee9 in SNESSolve () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#27 0x00002aaaae9178ff in libMesh::PetscNonlinearSolver<double>::solve(libMesh::SparseMatrix<double>&, libMesh::NumericVector<double>&, libMesh::NumericVector<double>&, double, unsigned int) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#28 0x00002aaaae981e8f in libMesh::NonlinearImplicitSystem::solve() () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#29 0x00002aaaac602952 in NonlinearSystem::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#30 0x00002aaaaca5cdbe in FEProblemBase::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#31 0x00002aaaacf61cb1 in FEProblemSolve::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#32 0x00002aaaacf6318a in PicardSolve::solveStep(double, double&, double, double&, bool, std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#33 0x00002aaaacf666e8 in PicardSolve::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#34 0x00002aaaacf67f03 in Steady::execute() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#35 0x00002aaaad1fa6d7 in MooseApp::executeExecutioner() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#36 0x00002aaaad1fa77d in MooseApp::run() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#37 0x0000000000402540 in main ()
+[Inferior 1 (process 249885) detached]
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase

@@ -1,0 +1,892 @@
+2021-02-16 01:31:03.343294: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-02-16 01:50:22.776164: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-02-16 01:50:22.781221: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2021-02-16 01:50:26.411417: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:1a:00.0 name: Tesla V100-SXM2-32GB computeCapability: 7.0
+coreClock: 1.53GHz coreCount: 80 deviceMemorySize: 31.75GiB deviceMemoryBandwidth: 836.37GiB/s
+2021-02-16 01:50:26.411463: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-02-16 01:50:26.474900: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-02-16 01:50:26.474984: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-02-16 01:50:26.491170: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-02-16 01:50:26.530097: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-02-16 01:50:26.573754: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-02-16 01:50:26.589771: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-02-16 01:50:26.602504: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-02-16 01:50:26.605827: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-02-16 01:50:26.607662: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-02-16 01:50:26.608117: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2021-02-16 01:50:26.609821: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:1a:00.0 name: Tesla V100-SXM2-32GB computeCapability: 7.0
+coreClock: 1.53GHz coreCount: 80 deviceMemorySize: 31.75GiB deviceMemoryBandwidth: 836.37GiB/s
+2021-02-16 01:50:26.609850: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-02-16 01:50:26.609869: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-02-16 01:50:26.609879: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2021-02-16 01:50:26.609889: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2021-02-16 01:50:26.609899: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2021-02-16 01:50:26.609909: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-02-16 01:50:26.609918: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2021-02-16 01:50:26.609928: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2021-02-16 01:50:26.613059: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2021-02-16 01:50:26.613091: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-02-16 01:50:27.527318: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2021-02-16 01:50:27.527344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2021-02-16 01:50:27.527350: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2021-02-16 01:50:27.532318: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30128 MB memory) -> physical GPU (device: 0, name: Tesla V100-SXM2-32GB, pci bus id: 0000:1a:00.0, compute capability: 7.0)
+/home/dhullaks/.local/lib/python3.7/site-packages/numpy/core/_methods.py:205: RuntimeWarning: overflow encountered in multiply
+  x = um.multiply(x, x, out=x)
+WARNING:tensorflow:From /home/dhullaks/.local/lib/python3.7/site-packages/tensorflow/python/ops/linalg/linear_operator_lower_triangular.py:167: calling LinearOperator.__init__ (from tensorflow.python.ops.linalg.linear_operator) with graph_parents is deprecated and will be removed in a future version.
+Instructions for updating:
+Do not pass `graph_parents`.  They will  no longer be used.
+2021-02-16 01:50:28.347702: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:116] None of the MLIR optimization passes are enabled (registered 2)
+2021-02-16 01:50:28.351371: I tensorflow/core/platform/profile_utils/cpu_utils.cc:112] CPU Frequency: 2900000000 Hz
+2021-02-16 01:50:28.437830: I tensorflow/core/util/cuda_solvers.cc:180] Creating CudaSolver handles for stream 0x555570f0df20
+2021-02-16 01:50:28.437899: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2021-02-16 01:50:29.644410: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-02-16 01:50:30.384612: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2021-02-16 01:50:30.385630: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+  Elem Information
+   id()=324, unique_id()=860, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=469, processor_id()=0, Point=(x,y,z)=(0.275979, -0.25893, 0.532215)
+    DoFs=(0/0/1407) (0/1/1408) (0/2/1409) 
+    1  Node id()=470, processor_id()=0, Point=(x,y,z)=(0.250217, -0.336882, 0.532215)
+    DoFs=(0/0/1410) (0/1/1411) (0/2/1412) 
+    2  Node id()=471, processor_id()=0, Point=(x,y,z)=(0.160571, -0.286909, 0.532215)
+    DoFs=(0/0/1413) (0/1/1414) (0/2/1415) 
+    3  Node id()=472, processor_id()=0, Point=(x,y,z)=(0.225795, -0.199345, 0.532215)
+    DoFs=(0/0/1416) (0/1/1417) (0/2/1418) 
+    4  Node id()=402, processor_id()=0, Point=(x,y,z)=(-0.236041, -0.282606, 0.662201)
+    DoFs=(0/0/1206) (0/1/1207) (0/2/1208) 
+    5  Node id()=403, processor_id()=0, Point=(x,y,z)=(-0.253018, -0.350334, 0.659077)
+    DoFs=(0/0/1209) (0/1/1210) (0/2/1211) 
+    6  Node id()=404, processor_id()=0, Point=(x,y,z)=(-0.327831, -0.305019, 0.657007)
+    DoFs=(0/0/1212) (0/1/1213) (0/2/1214) 
+    7  Node id()=405, processor_id()=0, Point=(x,y,z)=(-0.280497, -0.228416, 0.661793)
+    DoFs=(0/0/1215) (0/1/1216) (0/2/1217) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=325
+    neighbor(2)=370
+    neighbor(3)=349
+    neighbor(4)=326
+    neighbor(5)=270
+   hmin()=0.0698937, hmax()=0.61829
+   volume()=-0.000978143
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/1296) (1/1/1297) (1/2/1298) (1/3/1299) 
+ERROR: negative Jacobian -0.00010402 at point (x,y,z)=(0.150699, -0.268021, 0.559511) in element 324
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+0x00002aaab59bd4b9 in waitpid () from /lib64/libc.so.6
+To enable execution of this file add
+	add-auto-load-safe-path /apps/local/spack/software/gcc-4.8.5/gcc-9.2.0-bxc7mvbmrfcrusa6ij7ux3exfqabmq5y/lib64/libstdc++.so.6.0.27-gdb.py
+line to your configuration file "/home/dhullaks/.gdbinit".
+To completely disable this security protection add
+	set auto-load safe-path /
+line to your configuration file "/home/dhullaks/.gdbinit".
+For more information about this security protection see the
+"Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
+	info "(gdb)Auto-loading safe path"
+#0  0x00002aaab59bd4b9 in waitpid () from /lib64/libc.so.6
+#1  0x00002aaab593af62 in do_system () from /lib64/libc.so.6
+#2  0x00002aaab593b311 in system () from /lib64/libc.so.6
+#3  0x00002aaaae184e12 in libMesh::print_trace(std::ostream&) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#4  0x00002aaaae1812c4 in libMesh::MacroFunctions::report_error(char const*, int, char const*, char const*) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#5  0x00002aaaae3c4f6e in libMesh::FEMap::compute_single_point_map(unsigned int, std::vector<double, std::allocator<double> > const&, libMesh::Elem const*, unsigned int, std::vector<libMesh::Node const*, std::allocator<libMesh::Node const*> > const&, bool) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#6  0x00002aaaae3c8728 in libMesh::FEMap::compute_map(unsigned int, std::vector<double, std::allocator<double> > const&, libMesh::Elem const*, bool) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#7  0x00002aaaae227e72 in libMesh::FE<3u, (libMesh::FEFamily)2>::reinit(libMesh::Elem const*, std::vector<libMesh::Point, std::allocator<libMesh::Point> > const*, std::vector<double, std::allocator<double> > const*) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#8  0x00002aaaad1afec9 in Assembly::reinitFE(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#9  0x00002aaaad1b20a6 in Assembly::reinit(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#10 0x00002aaaaca6274a in DisplacedProblem::prepare(libMesh::Elem const*, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#11 0x00002aaaaca5b56c in FEProblemBase::prepare(libMesh::Elem const*, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#12 0x00002aaaac49ee56 in ComputeElemAuxVarsThread<AuxKernelTempl<double> >::onElement(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#13 0x00002aaaac4dc229 in ThreadedElementLoopBase<libMesh::StoredRange<libMesh::MeshBase::const_element_iterator, libMesh::Elem const*> >::operator()(libMesh::StoredRange<libMesh::MeshBase::const_element_iterator, libMesh::Elem const*> const&, bool) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#14 0x00002aaaac71c1cf in void AuxiliarySystem::computeElementalVarsHelper<AuxKernelTempl<double> >(MooseObjectWarehouse<AuxKernelTempl<double> > const&, std::vector<std::vector<MooseVariableFieldBase*, std::allocator<MooseVariableFieldBase*> >, std::allocator<std::vector<MooseVariableFieldBase*, std::allocator<MooseVariableFieldBase*> > > > const&, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#15 0x00002aaaac600266 in AuxiliarySystem::computeElementalVars(MooseEnumItem) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#16 0x00002aaaac60052c in AuxiliarySystem::compute(MooseEnumItem) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#17 0x00002aaaaca9b6ec in FEProblemBase::computeResidualTags(std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#18 0x00002aaaaca63760 in FEProblemBase::computeResidualInternal(libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&, std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#19 0x00002aaaaca5b1a0 in FEProblemBase::computeResidualSys(libMesh::NonlinearImplicitSystem&, libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#20 0x00002aaaac60069a in ComputeResidualFunctor::residual(libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&, libMesh::NonlinearImplicitSystem&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#21 0x00002aaaae912f8f in libmesh_petsc_snes_residual () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#22 0x00002aaab113c0b9 in SNESComputeFunction () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#23 0x00002aaab113438b in SNESLineSearchApply_BT () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#24 0x00002aaab112c452 in SNESLineSearchApply () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#25 0x00002aaab11658d1 in SNESSolve_NEWTONLS () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#26 0x00002aaab1149ee9 in SNESSolve () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#27 0x00002aaaae9178ff in libMesh::PetscNonlinearSolver<double>::solve(libMesh::SparseMatrix<double>&, libMesh::NumericVector<double>&, libMesh::NumericVector<double>&, double, unsigned int) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#28 0x00002aaaae981e8f in libMesh::NonlinearImplicitSystem::solve() () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#29 0x00002aaaac602952 in NonlinearSystem::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#30 0x00002aaaaca5cdbe in FEProblemBase::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#31 0x00002aaaacf61cb1 in FEProblemSolve::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#32 0x00002aaaacf6318a in PicardSolve::solveStep(double, double&, double, double&, bool, std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#33 0x00002aaaacf666e8 in PicardSolve::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#34 0x00002aaaacf67f03 in Steady::execute() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#35 0x00002aaaad1fa6d7 in MooseApp::executeExecutioner() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#36 0x00002aaaad1fa77d in MooseApp::run() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#37 0x0000000000402540 in main ()
+[Inferior 1 (process 106188) detached]
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=363, unique_id()=899, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=522, processor_id()=0, Point=(x,y,z)=(-0.0934241, 0.280331, 0.532215)
+    DoFs=(0/0/1566) (0/1/1567) (0/2/1568) 
+    1  Node id()=521, processor_id()=0, Point=(x,y,z)=(-0.0139648, 0.383885, 0.532215)
+    DoFs=(0/0/1563) (0/1/1564) (0/2/1565) 
+    2  Node id()=501, processor_id()=0, Point=(x,y,z)=(0.0514577, 0.324425, 0.532215)
+    DoFs=(0/0/1503) (0/1/1504) (0/2/1505) 
+    3  Node id()=502, processor_id()=0, Point=(x,y,z)=(0.0293937, 0.237064, 0.532215)
+    DoFs=(0/0/1506) (0/1/1507) (0/2/1508) 
+    4  Node id()=455, processor_id()=0, Point=(x,y,z)=(-0.460021, 0.238694, 0.491662)
+    DoFs=(0/0/1365) (0/1/1366) (0/2/1367) 
+    5  Node id()=454, processor_id()=0, Point=(x,y,z)=(-0.388607, 0.334961, 0.493488)
+    DoFs=(0/0/1362) (0/1/1363) (0/2/1364) 
+    6  Node id()=434, processor_id()=0, Point=(x,y,z)=(-0.349104, 0.275034, 0.504096)
+    DoFs=(0/0/1302) (0/1/1303) (0/2/1304) 
+    7  Node id()=435, processor_id()=0, Point=(x,y,z)=(-0.374331, 0.191291, 0.505491)
+    DoFs=(0/0/1305) (0/1/1306) (0/2/1307) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=362
+    neighbor(3)=344
+    neighbor(4)=364
+    neighbor(5)=309
+   hmin()=0.0725549, hmax()=0.520197
+   volume()=0.000130364
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/1452) (1/1/1453) (1/2/1454) (1/3/1455) 
+ERROR: negative Jacobian -7.59351e-06 at point (x,y,z)=(-0.301422, 0.229249, 0.508715) in element 363
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+0x00002aaab59bd4b9 in waitpid () from /lib64/libc.so.6
+To enable execution of this file add
+	add-auto-load-safe-path /apps/local/spack/software/gcc-4.8.5/gcc-9.2.0-bxc7mvbmrfcrusa6ij7ux3exfqabmq5y/lib64/libstdc++.so.6.0.27-gdb.py
+line to your configuration file "/home/dhullaks/.gdbinit".
+To completely disable this security protection add
+	set auto-load safe-path /
+line to your configuration file "/home/dhullaks/.gdbinit".
+For more information about this security protection see the
+"Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
+	info "(gdb)Auto-loading safe path"
+#0  0x00002aaab59bd4b9 in waitpid () from /lib64/libc.so.6
+#1  0x00002aaab593af62 in do_system () from /lib64/libc.so.6
+#2  0x00002aaab593b311 in system () from /lib64/libc.so.6
+#3  0x00002aaaae184e12 in libMesh::print_trace(std::ostream&) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#4  0x00002aaaae1812c4 in libMesh::MacroFunctions::report_error(char const*, int, char const*, char const*) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#5  0x00002aaaae3c4f6e in libMesh::FEMap::compute_single_point_map(unsigned int, std::vector<double, std::allocator<double> > const&, libMesh::Elem const*, unsigned int, std::vector<libMesh::Node const*, std::allocator<libMesh::Node const*> > const&, bool) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#6  0x00002aaaae3c8766 in libMesh::FEMap::compute_map(unsigned int, std::vector<double, std::allocator<double> > const&, libMesh::Elem const*, bool) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#7  0x00002aaaae227e72 in libMesh::FE<3u, (libMesh::FEFamily)2>::reinit(libMesh::Elem const*, std::vector<libMesh::Point, std::allocator<libMesh::Point> > const*, std::vector<double, std::allocator<double> > const*) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#8  0x00002aaaad1afec9 in Assembly::reinitFE(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#9  0x00002aaaad1b20a6 in Assembly::reinit(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#10 0x00002aaaaca6274a in DisplacedProblem::prepare(libMesh::Elem const*, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#11 0x00002aaaaca5b56c in FEProblemBase::prepare(libMesh::Elem const*, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#12 0x00002aaaac49ee56 in ComputeElemAuxVarsThread<AuxKernelTempl<double> >::onElement(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#13 0x00002aaaac4dc229 in ThreadedElementLoopBase<libMesh::StoredRange<libMesh::MeshBase::const_element_iterator, libMesh::Elem const*> >::operator()(libMesh::StoredRange<libMesh::MeshBase::const_element_iterator, libMesh::Elem const*> const&, bool) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#14 0x00002aaaac71c1cf in void AuxiliarySystem::computeElementalVarsHelper<AuxKernelTempl<double> >(MooseObjectWarehouse<AuxKernelTempl<double> > const&, std::vector<std::vector<MooseVariableFieldBase*, std::allocator<MooseVariableFieldBase*> >, std::allocator<std::vector<MooseVariableFieldBase*, std::allocator<MooseVariableFieldBase*> > > > const&, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#15 0x00002aaaac600266 in AuxiliarySystem::computeElementalVars(MooseEnumItem) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#16 0x00002aaaac60052c in AuxiliarySystem::compute(MooseEnumItem) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#17 0x00002aaaaca9b6ec in FEProblemBase::computeResidualTags(std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#18 0x00002aaaaca63760 in FEProblemBase::computeResidualInternal(libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&, std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#19 0x00002aaaaca5b1a0 in FEProblemBase::computeResidualSys(libMesh::NonlinearImplicitSystem&, libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#20 0x00002aaaac60069a in ComputeResidualFunctor::residual(libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&, libMesh::NonlinearImplicitSystem&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#21 0x00002aaaae912f8f in libmesh_petsc_snes_residual () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#22 0x00002aaab113c0b9 in SNESComputeFunction () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#23 0x00002aaab113438b in SNESLineSearchApply_BT () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#24 0x00002aaab112c452 in SNESLineSearchApply () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#25 0x00002aaab11658d1 in SNESSolve_NEWTONLS () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#26 0x00002aaab1149ee9 in SNESSolve () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#27 0x00002aaaae9178ff in libMesh::PetscNonlinearSolver<double>::solve(libMesh::SparseMatrix<double>&, libMesh::NumericVector<double>&, libMesh::NumericVector<double>&, double, unsigned int) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#28 0x00002aaaae981e8f in libMesh::NonlinearImplicitSystem::solve() () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#29 0x00002aaaac602952 in NonlinearSystem::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#30 0x00002aaaaca5cdbe in FEProblemBase::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#31 0x00002aaaacf61cb1 in FEProblemSolve::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#32 0x00002aaaacf6318a in PicardSolve::solveStep(double, double&, double, double&, bool, std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#33 0x00002aaaacf666e8 in PicardSolve::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#34 0x00002aaaacf67f03 in Steady::execute() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#35 0x00002aaaad1fa6d7 in MooseApp::executeExecutioner() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#36 0x00002aaaad1fa77d in MooseApp::run() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#37 0x0000000000402540 in main ()
+[Inferior 1 (process 106188) detached]
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2595, unique_id()=6210, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3143, processor_id()=0, Point=(x,y,z)=(0.0367052, -0.318127, 0.510738)
+    DoFs=(0/0/3426) (0/1/3427) (0/2/3428) 
+    1  Node id()=3144, processor_id()=0, Point=(x,y,z)=(0.0495863, -0.279151, 0.510738)
+    DoFs=(0/0/3429) (0/1/3430) (0/2/3431) 
+    2  Node id()=3142, processor_id()=0, Point=(x,y,z)=(-0.0509437, -0.283039, 0.597844)
+    DoFs=(0/0/3417) (0/1/3418) (0/2/3419) 
+    3  Node id()=3141, processor_id()=0, Point=(x,y,z)=(-0.0630477, -0.32108,  0.59558)
+    DoFs=(0/0/3414) (0/1/3415) (0/2/3416) 
+    4  Node id()=3137, processor_id()=0, Point=(x,y,z)=(0.00174794, -0.290737, 0.510738)
+    DoFs=(0/0/3432) (0/1/3433) (0/2/3434) 
+    5  Node id()=3138, processor_id()=0, Point=(x,y,z)=(0.0244944, -0.249359, 0.510738)
+    DoFs=(0/0/3435) (0/1/3436) (0/2/3437) 
+    6  Node id()=3134, processor_id()=0, Point=(x,y,z)=(-0.0756584, -0.253907, 0.598356)
+    DoFs=(0/0/3423) (0/1/3424) (0/2/3425) 
+    7  Node id()=3133, processor_id()=0, Point=(x,y,z)=(-0.0973387, -0.294416, 0.596092)
+    DoFs=(0/0/3420) (0/1/3421) (0/2/3422) 
+   n_sides()=6
+    neighbor(0)=2601
+    neighbor(1)=nullptr
+    neighbor(2)=2613
+    neighbor(3)=2594
+    neighbor(4)=2599
+    neighbor(5)=2593
+   hmin()=0.0382065, hmax()=0.170603
+   volume()=-0.000146489
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3300) (1/1/3301) (1/2/3302) (1/3/3303) 
+ERROR: negative Jacobian -1.82394e-05 at point (x,y,z)=(0.0113926, -0.304693, 0.528791) in element 2595
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2593, unique_id()=6208, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3137, processor_id()=0, Point=(x,y,z)=(0.00174794, -0.290737, 0.510738)
+    DoFs=(0/0/3432) (0/1/3433) (0/2/3434) 
+    1  Node id()=3138, processor_id()=0, Point=(x,y,z)=(0.0244944, -0.249359, 0.510738)
+    DoFs=(0/0/3435) (0/1/3436) (0/2/3437) 
+    2  Node id()=3134, processor_id()=0, Point=(x,y,z)=(-0.0756584, -0.253907, 0.598356)
+    DoFs=(0/0/3423) (0/1/3424) (0/2/3425) 
+    3  Node id()=3133, processor_id()=0, Point=(x,y,z)=(-0.0973387, -0.294416, 0.596092)
+    DoFs=(0/0/3420) (0/1/3421) (0/2/3422) 
+    4  Node id()=3139, processor_id()=2, Point=(x,y,z)=(-0.0332094, -0.263348, 0.510738)
+    DoFs=(0/0/10518) (0/1/10519) (0/2/10520) 
+    5  Node id()=3140, processor_id()=0, Point=(x,y,z)=(-0.000597589, -0.219566, 0.510738)
+    DoFs=(0/0/3501) (0/1/3502) (0/2/3503) 
+    6  Node id()=3136, processor_id()=0, Point=(x,y,z)=(-0.100381, -0.224735, 0.598758)
+    DoFs=(0/0/3492) (0/1/3493) (0/2/3494) 
+    7  Node id()=3135, processor_id()=2, Point=(x,y,z)=(-0.131691, -0.26765, 0.596453)
+    DoFs=(0/0/10515) (0/1/10516) (0/2/10517) 
+   n_sides()=6
+    neighbor(0)=2595
+    neighbor(1)=nullptr
+    neighbor(2)=2609
+    neighbor(3)=2592
+    neighbor(4)=2597
+    neighbor(5)=2793
+   hmin()=0.0382415, hmax()=0.179096
+   volume()=-0.000177717
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11628) (1/1/11629) (1/2/11630) (1/3/11631) 
+ERROR: negative Jacobian -2.21364e-05 at point (x,y,z)=(-0.0213542, -0.276942, 0.528893) in element 2593
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2621, unique_id()=6236, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3185, processor_id()=1, Point=(x,y,z)=(0.169896, 0.153807, 0.510738)
+    DoFs=(0/0/7308) (0/1/7309) (0/2/7310) 
+    1  Node id()=3175, processor_id()=0, Point=(x,y,z)=(0.208485, 0.0921554, 0.510738)
+    DoFs=(0/0/3528) (0/1/3529) (0/2/3530) 
+    2  Node id()=3171, processor_id()=0, Point=(x,y,z)=(0.103848, 0.0816097, 0.603105)
+    DoFs=(0/0/3516) (0/1/3517) (0/2/3518) 
+    3  Node id()=3183, processor_id()=1, Point=(x,y,z)=(0.0660309, 0.142233, 0.602605)
+    DoFs=(0/0/7302) (0/1/7303) (0/2/7304) 
+    4  Node id()=3186, processor_id()=1, Point=(x,y,z)=(0.239227, 0.182589, 0.510738)
+    DoFs=(0/0/7311) (0/1/7312) (0/2/7313) 
+    5  Node id()=3177, processor_id()=0, Point=(x,y,z)=(0.284976, 0.121034, 0.510738)
+    DoFs=(0/0/3534) (0/1/3535) (0/2/3536) 
+    6  Node id()=3173, processor_id()=0, Point=(x,y,z)=(0.178289, 0.109913, 0.605183)
+    DoFs=(0/0/3522) (0/1/3523) (0/2/3524) 
+    7  Node id()=3184, processor_id()=1, Point=(x,y,z)=(0.133563, 0.170437, 0.604245)
+    DoFs=(0/0/7305) (0/1/7306) (0/2/7307) 
+   n_sides()=6
+    neighbor(0)=2623
+    neighbor(1)=nullptr
+    neighbor(2)=2617
+    neighbor(3)=2620
+    neighbor(4)=2685
+    neighbor(5)=2713
+   hmin()=0.071453, hmax()=0.238381
+   volume()=-0.000527014
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/7548) (1/1/7549) (1/2/7550) (1/3/7551) 
+ERROR: negative Jacobian -6.35068e-05 at point (x,y,z)=(0.170956, 0.144439, 0.530252) in element 2621
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2595, unique_id()=6210, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3143, processor_id()=0, Point=(x,y,z)=(0.0933033, -0.313072, 0.516108)
+    DoFs=(0/0/3426) (0/1/3427) (0/2/3428) 
+    1  Node id()=3144, processor_id()=0, Point=(x,y,z)=(0.106184, -0.274096, 0.516108)
+    DoFs=(0/0/3429) (0/1/3430) (0/2/3431) 
+    2  Node id()=3142, processor_id()=0, Point=(x,y,z)=(0.00412962, -0.277768, 0.578318)
+    DoFs=(0/0/3417) (0/1/3418) (0/2/3419) 
+    3  Node id()=3141, processor_id()=0, Point=(x,y,z)=(-0.00866475, -0.315657, 0.580117)
+    DoFs=(0/0/3414) (0/1/3415) (0/2/3416) 
+    4  Node id()=3137, processor_id()=0, Point=(x,y,z)=(0.058346, -0.285682, 0.516108)
+    DoFs=(0/0/3432) (0/1/3433) (0/2/3434) 
+    5  Node id()=3138, processor_id()=0, Point=(x,y,z)=(0.0810925, -0.244303, 0.516108)
+    DoFs=(0/0/3435) (0/1/3436) (0/2/3437) 
+    6  Node id()=3134, processor_id()=0, Point=(x,y,z)=(-0.0212815, -0.248677, 0.584464)
+    DoFs=(0/0/3423) (0/1/3424) (0/2/3425) 
+    7  Node id()=3133, processor_id()=0, Point=(x,y,z)=(-0.0439832, -0.289011, 0.589105)
+    DoFs=(0/0/3420) (0/1/3421) (0/2/3422) 
+   n_sides()=6
+    neighbor(0)=2601
+    neighbor(1)=nullptr
+    neighbor(2)=2613
+    neighbor(3)=2594
+    neighbor(4)=2599
+    neighbor(5)=2593
+   hmin()=0.0389513, hmax()=0.167635
+   volume()=-9.41471e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3300) (1/1/3301) (1/2/3302) (1/3/3303) 
+ERROR: negative Jacobian -1.29005e-05 at point (x,y,z)=(0.0675107, -0.299567, 0.529929) in element 2595
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2621, unique_id()=6236, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3185, processor_id()=1, Point=(x,y,z)=(0.226494, 0.158862, 0.516108)
+    DoFs=(0/0/7308) (0/1/7309) (0/2/7310) 
+    1  Node id()=3175, processor_id()=0, Point=(x,y,z)=(0.265083, 0.0972106, 0.516108)
+    DoFs=(0/0/3528) (0/1/3529) (0/2/3530) 
+    2  Node id()=3171, processor_id()=0, Point=(x,y,z)=(0.166147, 0.0873263, 0.543365)
+    DoFs=(0/0/3516) (0/1/3517) (0/2/3518) 
+    3  Node id()=3183, processor_id()=1, Point=(x,y,z)=(0.127007, 0.147898, 0.548999)
+    DoFs=(0/0/7302) (0/1/7303) (0/2/7304) 
+    4  Node id()=3186, processor_id()=1, Point=(x,y,z)=(0.295825, 0.187644, 0.516108)
+    DoFs=(0/0/7311) (0/1/7312) (0/2/7313) 
+    5  Node id()=3177, processor_id()=0, Point=(x,y,z)=(0.341574,  0.12609, 0.516108)
+    DoFs=(0/0/3534) (0/1/3535) (0/2/3536) 
+    6  Node id()=3173, processor_id()=0, Point=(x,y,z)=(0.244633, 0.116137, 0.527056)
+    DoFs=(0/0/3522) (0/1/3523) (0/2/3524) 
+    7  Node id()=3184, processor_id()=1, Point=(x,y,z)=(0.198015, 0.176594, 0.533841)
+    DoFs=(0/0/7305) (0/1/7306) (0/2/7307) 
+   n_sides()=6
+    neighbor(0)=2623
+    neighbor(1)=nullptr
+    neighbor(2)=2617
+    neighbor(3)=2620
+    neighbor(4)=2685
+    neighbor(5)=2713
+   hmin()=0.0299382, hmax()=0.218166
+   volume()=-6.98403e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/7548) (1/1/7549) (1/2/7550) (1/3/7551) 
+ERROR: negative Jacobian -1.66931e-05 at point (x,y,z)=(0.228699, 0.149648, 0.522119) in element 2621
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2593, unique_id()=6208, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3137, processor_id()=0, Point=(x,y,z)=(0.058346, -0.285682, 0.516108)
+    DoFs=(0/0/3432) (0/1/3433) (0/2/3434) 
+    1  Node id()=3138, processor_id()=0, Point=(x,y,z)=(0.0810925, -0.244303, 0.516108)
+    DoFs=(0/0/3435) (0/1/3436) (0/2/3437) 
+    2  Node id()=3134, processor_id()=0, Point=(x,y,z)=(-0.0212815, -0.248677, 0.584464)
+    DoFs=(0/0/3423) (0/1/3424) (0/2/3425) 
+    3  Node id()=3133, processor_id()=0, Point=(x,y,z)=(-0.0439832, -0.289011, 0.589105)
+    DoFs=(0/0/3420) (0/1/3421) (0/2/3422) 
+    4  Node id()=3139, processor_id()=2, Point=(x,y,z)=(0.0233887, -0.258293, 0.516108)
+    DoFs=(0/0/10518) (0/1/10519) (0/2/10520) 
+    5  Node id()=3140, processor_id()=0, Point=(x,y,z)=(0.0560005, -0.214511, 0.516108)
+    DoFs=(0/0/3501) (0/1/3502) (0/2/3503) 
+    6  Node id()=3136, processor_id()=0, Point=(x,y,z)=(-0.0466472, -0.219555, 0.590365)
+    DoFs=(0/0/3492) (0/1/3493) (0/2/3494) 
+    7  Node id()=3135, processor_id()=2, Point=(x,y,z)=(-0.0792682, -0.26228, 0.597867)
+    DoFs=(0/0/10515) (0/1/10516) (0/2/10517) 
+   n_sides()=6
+    neighbor(0)=2595
+    neighbor(1)=nullptr
+    neighbor(2)=2609
+    neighbor(3)=2592
+    neighbor(4)=2597
+    neighbor(5)=2793
+   hmin()=0.0389513, hmax()=0.180896
+   volume()=-0.000128406
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11628) (1/1/11629) (1/2/11630) (1/3/11631) 
+ERROR: negative Jacobian -1.76915e-05 at point (x,y,z)=(0.0345653, -0.271822, 0.531691) in element 2593
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2595, unique_id()=6210, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3143, processor_id()=0, Point=(x,y,z)=(0.149901, -0.308016, 0.521477)
+    DoFs=(0/0/3426) (0/1/3427) (0/2/3428) 
+    1  Node id()=3144, processor_id()=0, Point=(x,y,z)=(0.162783, -0.269041, 0.521477)
+    DoFs=(0/0/3429) (0/1/3430) (0/2/3431) 
+    2  Node id()=3142, processor_id()=0, Point=(x,y,z)=(0.0583514, -0.272544, 0.572124)
+    DoFs=(0/0/3417) (0/1/3418) (0/2/3419) 
+    3  Node id()=3141, processor_id()=0, Point=(x,y,z)=(0.0450821, -0.310411, 0.576739)
+    DoFs=(0/0/3414) (0/1/3415) (0/2/3416) 
+    4  Node id()=3137, processor_id()=0, Point=(x,y,z)=(0.114944, -0.280627, 0.521477)
+    DoFs=(0/0/3432) (0/1/3433) (0/2/3434) 
+    5  Node id()=3138, processor_id()=0, Point=(x,y,z)=(0.137691, -0.239248, 0.521477)
+    DoFs=(0/0/3435) (0/1/3436) (0/2/3437) 
+    6  Node id()=3134, processor_id()=0, Point=(x,y,z)=(0.0324268, -0.243452, 0.582632)
+    DoFs=(0/0/3423) (0/1/3424) (0/2/3425) 
+    7  Node id()=3133, processor_id()=0, Point=(x,y,z)=(0.00901479, -0.283724, 0.592839)
+    DoFs=(0/0/3420) (0/1/3421) (0/2/3422) 
+   n_sides()=6
+    neighbor(0)=2601
+    neighbor(1)=nullptr
+    neighbor(2)=2613
+    neighbor(3)=2594
+    neighbor(4)=2599
+    neighbor(5)=2593
+   hmin()=0.0389513, hmax()=0.170155
+   volume()=-6.4575e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3300) (1/1/3301) (1/2/3302) (1/3/3303) 
+ERROR: negative Jacobian -1.026e-05 at point (x,y,z)=(0.123496, -0.294471, 0.533615) in element 2595
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2623, unique_id()=6238, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3188, processor_id()=1, Point=(x,y,z)=(0.213762, 0.135136, 0.521477)
+    DoFs=(0/0/7317) (0/1/7318) (0/2/7319) 
+    1  Node id()=3181, processor_id()=0, Point=(x,y,z)=(0.245191, 0.0733868, 0.521477)
+    DoFs=(0/0/3546) (0/1/3547) (0/2/3548) 
+    2  Node id()=3179, processor_id()=0, Point=(x,y,z)=(0.144888, 0.063587, 0.538532)
+    DoFs=(0/0/3540) (0/1/3541) (0/2/3542) 
+    3  Node id()=3187, processor_id()=1, Point=(x,y,z)=( 0.11261, 0.124133, 0.545685)
+    DoFs=(0/0/7314) (0/1/7315) (0/2/7316) 
+    4  Node id()=3185, processor_id()=1, Point=(x,y,z)=(0.283092, 0.163917, 0.521477)
+    DoFs=(0/0/7308) (0/1/7309) (0/2/7310) 
+    5  Node id()=3175, processor_id()=0, Point=(x,y,z)=(0.321681, 0.102266, 0.521477)
+    DoFs=(0/0/3528) (0/1/3529) (0/2/3530) 
+    6  Node id()=3171, processor_id()=0, Point=(x,y,z)=(0.225148, 0.0925899, 0.515917)
+    DoFs=(0/0/3516) (0/1/3517) (0/2/3518) 
+    7  Node id()=3183, processor_id()=1, Point=(x,y,z)=(0.185203, 0.153059,  0.52375)
+    DoFs=(0/0/7302) (0/1/7303) (0/2/7304) 
+   n_sides()=6
+    neighbor(0)=2639
+    neighbor(1)=nullptr
+    neighbor(2)=2619
+    neighbor(3)=2622
+    neighbor(4)=2681
+    neighbor(5)=2621
+   hmin()=0.0283088, hmax()=0.211601
+   volume()=2.66518e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/7556) (1/1/7557) (1/2/7558) (1/3/7559)   Elem Information
+   id()=2593, unique_id()=6208, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3137, processor_id()=0, Point=(x,y,z)=(0.114944, -0.280627, 0.521477)
+    DoFs=(0/0/3432) (0/1/3433) (0/2/3434) 
+    1  Node id()=3138, processor_id()=0, Point=(x,y,z)=(0.137691, -0.239248, 0.521477)
+    DoFs=(0/0/3435) (0/1/3436) (0/2/3437) 
+    2  Node id()=3134, processor_id()=0, Point=(x,y,z)=(0.0324268, -0.243452, 0.582632)
+    DoFs=(0/0/3423) (0/1/3424) (0/2/3425) 
+    3  Node id()=3133, processor_id()=0, Point=(x,y,z)=(0.00901479, -0.283724, 0.592839)
+    DoFs=(0/0/3420) (0/1/3421) (0/2/3422) 
+    4  Node id()=3139, processor_id()=2, Point=(x,y,z)=(0.0799868, -0.253238, 0.521477)
+    DoFs=(0/0/10518) (0/1/10519) (0/2/10520) 
+    5  Node id()=3140, processor_id()=0, Point=(x,y,z)=(0.112599, -0.209456, 0.521477)
+    DoFs=(0/0/3501) (0/1/3502) (0/2/3503) 
+    6  Node id()=3136, processor_id()=0, Point=(x,y,z)=(0.00660993, -0.214359, 0.593181)
+    DoFs=(0/0/3492) (0/1/3493) (0/2/3494) 
+    7  Node id()=3135, processor_id()=2, Point=(x,y,z)=(-0.0269232, -0.256983, 0.609489)
+    DoFs=(0/0/10515) (0/1/10516) (0/2/10517) 
+   n_sides()=6
+    neighbor(0)=2595
+    neighbor(1)=nullptr
+    neighbor(2)=2609
+    neighbor(3)=2592
+    neighbor(4)=2597
+    neighbor(5)=2793
+   hmin()=0.0389513, hmax()=0.187506
+   volume()=-0.000102213
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11628) (1/1/11629) (1/2/11630) (1/3/11631) 
+ERROR: negative Jacobian -7.85696e-06 at point (x,y,z)=(0.214187, 0.125908, 0.525287) in element 2623
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+
+ERROR: negative Jacobian -1.60698e-05 at point (x,y,z)=(0.0904071, -0.266721, 0.536788) in element 2593
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2595, unique_id()=6210, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3143, processor_id()=0, Point=(x,y,z)=(  0.2065, -0.302961, 0.526846)
+    DoFs=(0/0/3426) (0/1/3427) (0/2/3428) 
+    1  Node id()=3144, processor_id()=0, Point=(x,y,z)=(0.219381, -0.263985, 0.526846)
+    DoFs=(0/0/3429) (0/1/3430) (0/2/3431) 
+    2  Node id()=3142, processor_id()=0, Point=(x,y,z)=(0.109451, -0.267318, 0.578726)
+    DoFs=(0/0/3417) (0/1/3418) (0/2/3419) 
+    3  Node id()=3141, processor_id()=0, Point=(x,y,z)=(0.0958036, -0.305173, 0.585688)
+    DoFs=(0/0/3414) (0/1/3415) (0/2/3416) 
+    4  Node id()=3137, processor_id()=0, Point=(x,y,z)=(0.171542, -0.275572, 0.526846)
+    DoFs=(0/0/3432) (0/1/3433) (0/2/3434) 
+    5  Node id()=3138, processor_id()=0, Point=(x,y,z)=(0.194289, -0.234193, 0.526846)
+    DoFs=(0/0/3435) (0/1/3436) (0/2/3437) 
+    6  Node id()=3134, processor_id()=0, Point=(x,y,z)=(0.083268, -0.238199, 0.593716)
+    DoFs=(0/0/3423) (0/1/3424) (0/2/3425) 
+    7  Node id()=3133, processor_id()=0, Point=(x,y,z)=(0.0593565, -0.27839, 0.609341)
+    DoFs=(0/0/3420) (0/1/3421) (0/2/3422) 
+   n_sides()=6
+    neighbor(0)=2601
+    neighbor(1)=nullptr
+    neighbor(2)=2613
+    neighbor(3)=2594
+    neighbor(4)=2599
+    neighbor(5)=2593
+   hmin()=0.0389513, hmax()=0.180612
+   volume()=-5.3593e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3300) (1/1/3301) (1/2/3302) (1/3/3303) 
+ERROR: negative Jacobian -1.01242e-05 at point (x,y,z)=(0.178854, -0.289374, 0.539944) in element 2595
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2681, unique_id()=6296, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3253, processor_id()=1, Point=(x,y,z)=(0.312493, 0.226829, 0.526846)
+    DoFs=(0/0/7326) (0/1/7327) (0/2/7328) 
+    1  Node id()=3254, processor_id()=1, Point=(x,y,z)=(0.247549, 0.201755, 0.526846)
+    DoFs=(0/0/7329) (0/1/7330) (0/2/7331) 
+    2  Node id()=3252, processor_id()=1, Point=(x,y,z)=(0.141769, 0.188674, 0.547779)
+    DoFs=(0/0/7323) (0/1/7324) (0/2/7325) 
+    3  Node id()=3251, processor_id()=1, Point=(x,y,z)=(0.210771, 0.214191, 0.520386)
+    DoFs=(0/0/7320) (0/1/7321) (0/2/7322) 
+    4  Node id()=3185, processor_id()=1, Point=(x,y,z)=(0.339691, 0.168973, 0.526846)
+    DoFs=(0/0/7308) (0/1/7309) (0/2/7310) 
+    5  Node id()=3188, processor_id()=1, Point=(x,y,z)=( 0.27036, 0.140191, 0.526846)
+    DoFs=(0/0/7317) (0/1/7318) (0/2/7319) 
+    6  Node id()=3187, processor_id()=1, Point=(x,y,z)=(0.165153, 0.128532, 0.542139)
+    DoFs=(0/0/7314) (0/1/7315) (0/2/7316) 
+    7  Node id()=3183, processor_id()=1, Point=(x,y,z)=(0.238901, 0.157634, 0.515017)
+    DoFs=(0/0/7302) (0/1/7303) (0/2/7304) 
+   n_sides()=6
+    neighbor(0)=2683
+    neighbor(1)=nullptr
+    neighbor(2)=2693
+    neighbor(3)=2680
+    neighbor(4)=2685
+    neighbor(5)=2623
+   hmin()=0.0378663, hmax()=0.199998
+   volume()=7.09433e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/7564) (1/1/7565) (1/2/7566) (1/3/7567) 
+ERROR: negative Jacobian -3.05703e-06 at point (x,y,z)=(0.244146, 0.191527, 0.529797) in element 2681
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2593, unique_id()=6208, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3137, processor_id()=0, Point=(x,y,z)=(0.171542, -0.275572, 0.526846)
+    DoFs=(0/0/3432) (0/1/3433) (0/2/3434) 
+    1  Node id()=3138, processor_id()=0, Point=(x,y,z)=(0.194289, -0.234193, 0.526846)
+    DoFs=(0/0/3435) (0/1/3436) (0/2/3437) 
+    2  Node id()=3134, processor_id()=0, Point=(x,y,z)=(0.083268, -0.238199, 0.593716)
+    DoFs=(0/0/3423) (0/1/3424) (0/2/3425) 
+    3  Node id()=3133, processor_id()=0, Point=(x,y,z)=(0.0593565, -0.27839, 0.609341)
+    DoFs=(0/0/3420) (0/1/3421) (0/2/3422) 
+    4  Node id()=3139, processor_id()=2, Point=(x,y,z)=(0.136585, -0.248182, 0.526846)
+    DoFs=(0/0/10518) (0/1/10519) (0/2/10520) 
+    5  Node id()=3140, processor_id()=0, Point=(x,y,z)=(0.169197,  -0.2044, 0.526846)
+    DoFs=(0/0/3501) (0/1/3502) (0/2/3503) 
+    6  Node id()=3136, processor_id()=0, Point=(x,y,z)=(0.0572516, -0.209124, 0.609289)
+    DoFs=(0/0/3492) (0/1/3493) (0/2/3494) 
+    7  Node id()=3135, processor_id()=2, Point=(x,y,z)=(0.0231267, -0.251585,  0.63498)
+    DoFs=(0/0/10515) (0/1/10516) (0/2/10517) 
+   n_sides()=6
+    neighbor(0)=2595
+    neighbor(1)=nullptr
+    neighbor(2)=2609
+    neighbor(3)=2592
+    neighbor(4)=2597
+    neighbor(5)=2793
+   hmin()=0.0389513, hmax()=0.203204
+   volume()=-9.73293e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11628) (1/1/11629) (1/2/11630) (1/3/11631) 
+ERROR: negative Jacobian -1.74764e-05 at point (x,y,z)=(0.145693, -0.261608, 0.544631) in element 2593
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2595, unique_id()=6210, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3143, processor_id()=0, Point=(x,y,z)=(0.263098, -0.297906, 0.532215)
+    DoFs=(0/0/3426) (0/1/3427) (0/2/3428) 
+    1  Node id()=3144, processor_id()=0, Point=(x,y,z)=(0.275979, -0.25893, 0.532215)
+    DoFs=(0/0/3429) (0/1/3430) (0/2/3431) 
+    2  Node id()=3142, processor_id()=0, Point=(x,y,z)=(0.157489, -0.261799, 0.589485)
+    DoFs=(0/0/3417) (0/1/3418) (0/2/3419) 
+    3  Node id()=3141, processor_id()=0, Point=(x,y,z)=(0.143395, -0.299642, 0.598863)
+    DoFs=(0/0/3414) (0/1/3415) (0/2/3416) 
+    4  Node id()=3137, processor_id()=0, Point=(x,y,z)=( 0.22814, -0.270517, 0.532215)
+    DoFs=(0/0/3432) (0/1/3433) (0/2/3434) 
+    5  Node id()=3138, processor_id()=0, Point=(x,y,z)=(0.250887, -0.229138, 0.532215)
+    DoFs=(0/0/3435) (0/1/3436) (0/2/3437) 
+    6  Node id()=3134, processor_id()=0, Point=(x,y,z)=(0.131043, -0.232614, 0.609626)
+    DoFs=(0/0/3423) (0/1/3424) (0/2/3425) 
+    7  Node id()=3133, processor_id()=0, Point=(x,y,z)=(0.106551, -0.272664, 0.631516)
+    DoFs=(0/0/3420) (0/1/3421) (0/2/3422) 
+   n_sides()=6
+    neighbor(0)=2601
+    neighbor(1)=nullptr
+    neighbor(2)=2613
+    neighbor(3)=2594
+    neighbor(4)=2599
+    neighbor(5)=2593
+   hmin()=0.0389513, hmax()=0.196862
+   volume()=-4.36167e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3300) (1/1/3301) (1/2/3302) (1/3/3303) 
+ERROR: negative Jacobian -1.05592e-05 at point (x,y,z)=(0.233552, -0.284212, 0.547221) in element 2595
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2683, unique_id()=6298, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3257, processor_id()=1, Point=(x,y,z)=(0.341893, 0.289741, 0.532215)
+    DoFs=(0/0/7338) (0/1/7339) (0/2/7340) 
+    1  Node id()=3258, processor_id()=1, Point=(x,y,z)=(0.281335, 0.268373, 0.532215)
+    DoFs=(0/0/7341) (0/1/7342) (0/2/7343) 
+    2  Node id()=3256, processor_id()=1, Point=(x,y,z)=(0.167833, 0.252021, 0.555895)
+    DoFs=(0/0/7335) (0/1/7336) (0/2/7337) 
+    3  Node id()=3255, processor_id()=1, Point=(x,y,z)=(0.232997, 0.274276, 0.522677)
+    DoFs=(0/0/7332) (0/1/7333) (0/2/7334) 
+    4  Node id()=3253, processor_id()=1, Point=(x,y,z)=(0.369091, 0.231885, 0.532215)
+    DoFs=(0/0/7326) (0/1/7327) (0/2/7328) 
+    5  Node id()=3254, processor_id()=1, Point=(x,y,z)=(0.304147,  0.20681, 0.532215)
+    DoFs=(0/0/7329) (0/1/7330) (0/2/7331) 
+    6  Node id()=3252, processor_id()=1, Point=(x,y,z)=(0.191326, 0.192217, 0.549412)
+    DoFs=(0/0/7323) (0/1/7324) (0/2/7325) 
+    7  Node id()=3251, processor_id()=1, Point=(x,y,z)=(0.261303,  0.21802, 0.517042)
+    DoFs=(0/0/7320) (0/1/7321) (0/2/7322) 
+   n_sides()=6
+    neighbor(0)=2737
+    neighbor(1)=nullptr
+    neighbor(2)=2695
+    neighbor(3)=2682
+    neighbor(4)=2687
+    neighbor(5)=2681
+   hmin()=0.0468126, hmax()=0.203644
+   volume()=9.96145e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/7572) (1/1/7573) (1/2/7574) (1/3/7575) 
+ERROR: negative Jacobian -1.74706e-06 at point (x,y,z)=(0.275403, 0.256706, 0.535454) in element 2683
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2593, unique_id()=6208, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3137, processor_id()=0, Point=(x,y,z)=( 0.22814, -0.270517, 0.532215)
+    DoFs=(0/0/3432) (0/1/3433) (0/2/3434) 
+    1  Node id()=3138, processor_id()=0, Point=(x,y,z)=(0.250887, -0.229138, 0.532215)
+    DoFs=(0/0/3435) (0/1/3436) (0/2/3437) 
+    2  Node id()=3134, processor_id()=0, Point=(x,y,z)=(0.131043, -0.232614, 0.609626)
+    DoFs=(0/0/3423) (0/1/3424) (0/2/3425) 
+    3  Node id()=3133, processor_id()=0, Point=(x,y,z)=(0.106551, -0.272664, 0.631516)
+    DoFs=(0/0/3420) (0/1/3421) (0/2/3422) 
+    4  Node id()=3139, processor_id()=2, Point=(x,y,z)=(0.193183, -0.243127, 0.532215)
+    DoFs=(0/0/10518) (0/1/10519) (0/2/10520) 
+    5  Node id()=3140, processor_id()=0, Point=(x,y,z)=(0.225795, -0.199345, 0.532215)
+    DoFs=(0/0/3501) (0/1/3502) (0/2/3503) 
+    6  Node id()=3136, processor_id()=0, Point=(x,y,z)=(0.104779, -0.20355, 0.631267)
+    DoFs=(0/0/3492) (0/1/3493) (0/2/3494) 
+    7  Node id()=3135, processor_id()=2, Point=(x,y,z)=(0.0699077, -0.245707, 0.668644)
+    DoFs=(0/0/10515) (0/1/10516) (0/2/10517) 
+   n_sides()=6
+    neighbor(0)=2595
+    neighbor(1)=nullptr
+    neighbor(2)=2609
+    neighbor(3)=2592
+    neighbor(4)=2597
+    neighbor(5)=2793
+   hmin()=0.0389513, hmax()=0.227246
+   volume()=-9.27631e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11628) (1/1/11629) (1/2/11630) (1/3/11631) 
+ERROR: negative Jacobian -1.97372e-05 at point (x,y,z)=(0.200313, -0.256412, 0.553734) in element 2593
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=358, unique_id()=894, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=517, processor_id()=0, Point=(x,y,z)=(0.172379, 0.718454, 0.555791)
+    DoFs=(0/0/1551) (0/1/1552) (0/2/1553) 
+    1  Node id()=516, processor_id()=0, Point=(x,y,z)=(0.292969, 0.668504, 0.555791)
+    DoFs=(0/0/1548) (0/1/1549) (0/2/1550) 
+    2  Node id()=496, processor_id()=0, Point=(x,y,z)=(0.208768,   0.5744, 0.555791)
+    DoFs=(0/0/1488) (0/1/1489) (0/2/1490) 
+    3  Node id()=497, processor_id()=0, Point=(x,y,z)=(0.147648, 0.637231, 0.555791)
+    DoFs=(0/0/1491) (0/1/1492) (0/2/1493) 
+    4  Node id()=450, processor_id()=0, Point=(x,y,z)=(0.141724, 0.563115, 0.441119)
+    DoFs=(0/0/1350) (0/1/1351) (0/2/1352) 
+    5  Node id()=449, processor_id()=0, Point=(x,y,z)=(0.257672, 0.529977, 0.429694)
+    DoFs=(0/0/1347) (0/1/1348) (0/2/1349) 
+    6  Node id()=429, processor_id()=0, Point=(x,y,z)=(0.194157, 0.509018, 0.385859)
+    DoFs=(0/0/1287) (0/1/1288) (0/2/1289) 
+    7  Node id()=430, processor_id()=0, Point=(x,y,z)=(0.130802, 0.552404, 0.394566)
+    DoFs=(0/0/1290) (0/1/1291) (0/2/1292) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=357
+    neighbor(3)=341
+    neighbor(4)=359
+    neighbor(5)=304
+   hmin()=0.0490017, hmax()=0.270582
+   volume()=0.000700286
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/1432) (1/1/1433) (1/2/1434) (1/3/1435) 
+ERROR: negative Jacobian -1.10202e-05 at point (x,y,z)=(0.167574, 0.582293, 0.455785) in element 358
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+0x00002aaab59bd4b9 in waitpid () from /lib64/libc.so.6
+To enable execution of this file add
+	add-auto-load-safe-path /apps/local/spack/software/gcc-4.8.5/gcc-9.2.0-bxc7mvbmrfcrusa6ij7ux3exfqabmq5y/lib64/libstdc++.so.6.0.27-gdb.py
+line to your configuration file "/home/dhullaks/.gdbinit".
+To completely disable this security protection add
+	set auto-load safe-path /
+line to your configuration file "/home/dhullaks/.gdbinit".
+For more information about this security protection see the
+"Auto-loading safe path" section in the GDB manual.  E.g., run from the shell:
+	info "(gdb)Auto-loading safe path"
+#0  0x00002aaab59bd4b9 in waitpid () from /lib64/libc.so.6
+#1  0x00002aaab593af62 in do_system () from /lib64/libc.so.6
+#2  0x00002aaab593b311 in system () from /lib64/libc.so.6
+#3  0x00002aaaae184e12 in libMesh::print_trace(std::ostream&) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#4  0x00002aaaae1812c4 in libMesh::MacroFunctions::report_error(char const*, int, char const*, char const*) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#5  0x00002aaaae3c4f6e in libMesh::FEMap::compute_single_point_map(unsigned int, std::vector<double, std::allocator<double> > const&, libMesh::Elem const*, unsigned int, std::vector<libMesh::Node const*, std::allocator<libMesh::Node const*> > const&, bool) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#6  0x00002aaaae3c8728 in libMesh::FEMap::compute_map(unsigned int, std::vector<double, std::allocator<double> > const&, libMesh::Elem const*, bool) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#7  0x00002aaaae227e72 in libMesh::FE<3u, (libMesh::FEFamily)2>::reinit(libMesh::Elem const*, std::vector<libMesh::Point, std::allocator<libMesh::Point> > const*, std::vector<double, std::allocator<double> > const*) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#8  0x00002aaaad1afec9 in Assembly::reinitFE(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#9  0x00002aaaad1b20a6 in Assembly::reinit(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#10 0x00002aaaaca6274a in DisplacedProblem::prepare(libMesh::Elem const*, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#11 0x00002aaaaca5b56c in FEProblemBase::prepare(libMesh::Elem const*, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#12 0x00002aaaac49ee56 in ComputeElemAuxVarsThread<AuxKernelTempl<double> >::onElement(libMesh::Elem const*) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#13 0x00002aaaac4dc229 in ThreadedElementLoopBase<libMesh::StoredRange<libMesh::MeshBase::const_element_iterator, libMesh::Elem const*> >::operator()(libMesh::StoredRange<libMesh::MeshBase::const_element_iterator, libMesh::Elem const*> const&, bool) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#14 0x00002aaaac71c1cf in void AuxiliarySystem::computeElementalVarsHelper<AuxKernelTempl<double> >(MooseObjectWarehouse<AuxKernelTempl<double> > const&, std::vector<std::vector<MooseVariableFieldBase*, std::allocator<MooseVariableFieldBase*> >, std::allocator<std::vector<MooseVariableFieldBase*, std::allocator<MooseVariableFieldBase*> > > > const&, unsigned int) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#15 0x00002aaaac600266 in AuxiliarySystem::computeElementalVars(MooseEnumItem) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#16 0x00002aaaac60052c in AuxiliarySystem::compute(MooseEnumItem) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#17 0x00002aaaaca9b6ec in FEProblemBase::computeResidualTags(std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#18 0x00002aaaaca63760 in FEProblemBase::computeResidualInternal(libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&, std::set<unsigned int, std::less<unsigned int>, std::allocator<unsigned int> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#19 0x00002aaaaca5b1a0 in FEProblemBase::computeResidualSys(libMesh::NonlinearImplicitSystem&, libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#20 0x00002aaaac60069a in ComputeResidualFunctor::residual(libMesh::NumericVector<double> const&, libMesh::NumericVector<double>&, libMesh::NonlinearImplicitSystem&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#21 0x00002aaaae912f8f in libmesh_petsc_snes_residual () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#22 0x00002aaab113c0b9 in SNESComputeFunction () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#23 0x00002aaab113438b in SNESLineSearchApply_BT () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#24 0x00002aaab112c452 in SNESLineSearchApply () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#25 0x00002aaab11658d1 in SNESSolve_NEWTONLS () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#26 0x00002aaab1149ee9 in SNESSolve () from /apps/moose/stack/petsc-3.12.5_mvapich2-2.3.3_gcc-9.2.0/lib/libpetsc.so.3.12
+#27 0x00002aaaae9178ff in libMesh::PetscNonlinearSolver<double>::solve(libMesh::SparseMatrix<double>&, libMesh::NumericVector<double>&, libMesh::NumericVector<double>&, double, unsigned int) () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#28 0x00002aaaae981e8f in libMesh::NonlinearImplicitSystem::solve() () from /home/dhullaks/projects/moose/scripts/../libmesh/installed/lib/libmesh_opt.so.0
+#29 0x00002aaaac602952 in NonlinearSystem::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#30 0x00002aaaaca5cdbe in FEProblemBase::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#31 0x00002aaaacf61cb1 in FEProblemSolve::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#32 0x00002aaaacf6318a in PicardSolve::solveStep(double, double&, double, double&, bool, std::set<unsigned long, std::less<unsigned long>, std::allocator<unsigned long> > const&) () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#33 0x00002aaaacf666e8 in PicardSolve::solve() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#34 0x00002aaaacf67f03 in Steady::execute() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#35 0x00002aaaad1fa6d7 in MooseApp::executeExecutioner() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#36 0x00002aaaad1fa77d in MooseApp::run() () from /home/dhullaks/projects/moose/framework/libmoose-opt.so.0
+#37 0x0000000000402540 in main ()
+[Inferior 1 (process 257096) detached]
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase

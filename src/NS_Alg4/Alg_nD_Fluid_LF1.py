@@ -195,7 +195,7 @@ for kk in np.arange(1,Nlim,1):
                 nxt[0,jj] = inp1[ind_max,jj,kk]
             inpp[0,jj] = nxt[0,jj]
         LF = LS1.Fluid_S1(inpp)
-        samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, observation_noise_variance_var=var1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim), num_samples=num_s)
+        samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim), num_samples=num_s)
         GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
         additive = y1_lim[kk-1]
         u_check = (np.abs(LF + GP_diff - additive))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)

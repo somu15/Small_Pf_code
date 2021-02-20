@@ -1,0 +1,1081 @@
+2021-02-16 01:29:07.026282: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+  Elem Information
+   id()=2851, unique_id()=6466, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3449, processor_id()=0, Point=(x,y,z)=(0.423531, 0.396863, 0.509132)
+    DoFs=(0/0/3903) (0/1/3904) (0/2/3905) 
+    1  Node id()=3450, processor_id()=1, Point=(x,y,z)=(0.383802,  0.44864, 0.509132)
+    DoFs=(0/0/7563) (0/1/7564) (0/2/7565) 
+    2  Node id()=3448, processor_id()=1, Point=(x,y,z)=(0.349909, 0.347187, 0.489829)
+    DoFs=(0/0/7560) (0/1/7561) (0/2/7562) 
+    3  Node id()=3447, processor_id()=0, Point=(x,y,z)=(0.389532, 0.300888, 0.486138)
+    DoFs=(0/0/3900) (0/1/3901) (0/2/3902) 
+    4  Node id()=3445, processor_id()=0, Point=(x,y,z)=( 0.36672,  0.35222, 0.509132)
+    DoFs=(0/0/3897) (0/1/3898) (0/2/3899) 
+    5  Node id()=3446, processor_id()=1, Point=(x,y,z)=(0.327523, 0.400277, 0.509132)
+    DoFs=(0/0/7557) (0/1/7558) (0/2/7559) 
+    6  Node id()=3444, processor_id()=1, Point=(x,y,z)=(0.303976, 0.333824, 0.468115)
+    DoFs=(0/0/7554) (0/1/7555) (0/2/7556) 
+    7  Node id()=3443, processor_id()=0, Point=(x,y,z)=(0.343248,  0.28805,  0.46651)
+    DoFs=(0/0/3894) (0/1/3895) (0/2/3896) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2863
+    neighbor(3)=2850
+    neighbor(4)=2855
+    neighbor(5)=2849
+   hmin()=0.0260869, hmax()=0.171027
+   volume()=6.23058e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/7820) (1/1/7821) (1/2/7822) (1/3/7823) 
+ERROR: negative Jacobian -1.0801e-06 at point (x,y,z)=(0.378105, 0.327012, 0.488268) in element 2851
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2961, unique_id()=6576, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3557, processor_id()=0, Point=(x,y,z)=(-0.116578, -0.257478, 0.513698)
+    DoFs=(0/0/3912) (0/1/3913) (0/2/3914) 
+    1  Node id()=3558, processor_id()=0, Point=(x,y,z)=(-0.0640186, -0.282458, 0.513698)
+    DoFs=(0/0/3915) (0/1/3916) (0/2/3917) 
+    2  Node id()=3556, processor_id()=0, Point=(x,y,z)=(-0.0802398, -0.334634, 0.541784)
+    DoFs=(0/0/3909) (0/1/3910) (0/2/3911) 
+    3  Node id()=3555, processor_id()=0, Point=(x,y,z)=(-0.133703, -0.309517, 0.538758)
+    DoFs=(0/0/3906) (0/1/3907) (0/2/3908) 
+    4  Node id()=3147, processor_id()=0, Point=(x,y,z)=(-0.0888225, -0.199597, 0.513698)
+    DoFs=(0/0/3447) (0/1/3448) (0/2/3449) 
+    5  Node id()=3150, processor_id()=0, Point=(x,y,z)=(-0.0439999, -0.224583, 0.513698)
+    DoFs=(0/0/3444) (0/1/3445) (0/2/3446) 
+    6  Node id()=3149, processor_id()=0, Point=(x,y,z)=(-0.059285, -0.272322, 0.509375)
+    DoFs=(0/0/3438) (0/1/3439) (0/2/3440) 
+    7  Node id()=3145, processor_id()=0, Point=(x,y,z)=(-0.103653, -0.247013, 0.505956)
+    DoFs=(0/0/3441) (0/1/3442) (0/2/3443) 
+   n_sides()=6
+    neighbor(0)=2963
+    neighbor(1)=nullptr
+    neighbor(2)=2973
+    neighbor(3)=2960
+    neighbor(4)=2965
+    neighbor(5)=2599
+   hmin()=0.0119927, hmax()=0.138194
+   volume()=8.86412e-06
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3796) (1/1/3797) (1/2/3798) (1/3/3799) 
+ERROR: negative Jacobian -5.97104e-06 at point (x,y,z)=(-0.10344, -0.261324, 0.517668) in element 2961
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2953, unique_id()=6568, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3549, processor_id()=2, Point=(x,y,z)=(-0.215789, -0.194547, 0.513698)
+    DoFs=(0/0/10827) (0/1/10828) (0/2/10829) 
+    1  Node id()=3550, processor_id()=2, Point=(x,y,z)=(-0.169136, -0.232497, 0.513698)
+    DoFs=(0/0/10830) (0/1/10831) (0/2/10832) 
+    2  Node id()=3548, processor_id()=2, Point=(x,y,z)=(-0.185459, -0.28233, 0.530178)
+    DoFs=(0/0/10824) (0/1/10825) (0/2/10826) 
+    3  Node id()=3547, processor_id()=2, Point=(x,y,z)=(-0.231415, -0.242257, 0.518651)
+    DoFs=(0/0/10821) (0/1/10822) (0/2/10823) 
+    4  Node id()=3390, processor_id()=2, Point=(x,y,z)=(-0.175173, -0.138442, 0.513698)
+    DoFs=(0/0/10710) (0/1/10711) (0/2/10712) 
+    5  Node id()=3148, processor_id()=2, Point=(x,y,z)=(-0.133645, -0.174611, 0.513698)
+    DoFs=(0/0/10524) (0/1/10525) (0/2/10526) 
+    6  Node id()=3146, processor_id()=2, Point=(x,y,z)=(-0.148023, -0.221575, 0.503242)
+    DoFs=(0/0/10521) (0/1/10522) (0/2/10523) 
+    7  Node id()=3389, processor_id()=2, Point=(x,y,z)=(-0.188584, -0.184256, 0.496755)
+    DoFs=(0/0/10707) (0/1/10708) (0/2/10709) 
+   n_sides()=6
+    neighbor(0)=2955
+    neighbor(1)=nullptr
+    neighbor(2)=2965
+    neighbor(3)=2952
+    neighbor(4)=2957
+    neighbor(5)=2795
+   hmin()=0.0259688, hmax()=0.145194
+   volume()=4.20546e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/12052) (1/1/12053) (1/2/12054) (1/3/12055) 
+ERROR: negative Jacobian -2.16341e-06 at point (x,y,z)=(-0.174595, -0.222641,  0.51551) in element 2953
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2531, unique_id()=6146, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3079, processor_id()=0, Point=(x,y,z)=(-0.0344473, -0.300592,    1.243)
+    DoFs=(0/0/3252) (0/1/3253) (0/2/3254) 
+    1  Node id()=3080, processor_id()=0, Point=(x,y,z)=(-0.0768335, -0.279392,  1.33394)
+    DoFs=(0/0/3255) (0/1/3256) (0/2/3257) 
+    2  Node id()=3078, processor_id()=0, Point=(x,y,z)=(-0.115345, -0.413893, 0.905029)
+    DoFs=(0/0/3249) (0/1/3250) (0/2/3251) 
+    3  Node id()=3077, processor_id()=0, Point=(x,y,z)=(-0.115771, -0.411199,  0.87628)
+    DoFs=(0/0/3246) (0/1/3247) (0/2/3248) 
+    4  Node id()=3075, processor_id()=0, Point=(x,y,z)=(-0.0928645,  -0.2905,  1.00293)
+    DoFs=(0/0/3240) (0/1/3241) (0/2/3242) 
+    5  Node id()=3076, processor_id()=0, Point=(x,y,z)=(-0.073892, -0.296906,  1.04983)
+    DoFs=(0/0/3243) (0/1/3244) (0/2/3245) 
+    6  Node id()=3074, processor_id()=0, Point=(x,y,z)=(-0.108513, -0.402049, 0.801984)
+    DoFs=(0/0/3237) (0/1/3238) (0/2/3239) 
+    7  Node id()=3073, processor_id()=0, Point=(x,y,z)=(-0.121931, -0.388324, 0.775858)
+    DoFs=(0/0/3234) (0/1/3235) (0/2/3236) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=2962
+    neighbor(2)=2543
+    neighbor(3)=2530
+    neighbor(4)=2535
+    neighbor(5)=2529
+   hmin()=0.0288784, hmax()=0.570401
+   volume()=-0.000184218
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3068) (1/1/3069) (1/2/3070) (1/3/3071) 
+ERROR: negative Jacobian -0.000118324 at point (x,y,z)=(-0.066406, -0.318926,  1.13587) in element 2531
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2535, unique_id()=6150, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3072, processor_id()=2, Point=(x,y,z)=(-0.0620654, -0.319928,  1.07301)
+    DoFs=(0/0/10512) (0/1/10513) (0/2/10514) 
+    1  Node id()=3079, processor_id()=0, Point=(x,y,z)=(-0.0344473, -0.300592,    1.243)
+    DoFs=(0/0/3252) (0/1/3253) (0/2/3254) 
+    2  Node id()=3077, processor_id()=0, Point=(x,y,z)=(-0.115771, -0.411199,  0.87628)
+    DoFs=(0/0/3246) (0/1/3247) (0/2/3248) 
+    3  Node id()=3070, processor_id()=2, Point=(x,y,z)=(-0.135253, -0.403116, 0.812301)
+    DoFs=(0/0/10506) (0/1/10507) (0/2/10508) 
+    4  Node id()=3068, processor_id()=2, Point=(x,y,z)=(-0.12911, -0.286479, 0.913988)
+    DoFs=(0/0/10500) (0/1/10501) (0/2/10502) 
+    5  Node id()=3075, processor_id()=0, Point=(x,y,z)=(-0.0928645,  -0.2905,  1.00293)
+    DoFs=(0/0/3240) (0/1/3241) (0/2/3242) 
+    6  Node id()=3073, processor_id()=0, Point=(x,y,z)=(-0.121931, -0.388324, 0.775858)
+    DoFs=(0/0/3234) (0/1/3235) (0/2/3236) 
+    7  Node id()=3066, processor_id()=2, Point=(x,y,z)=(-0.146161, -0.365936, 0.722607)
+    DoFs=(0/0/10494) (0/1/10495) (0/2/10496) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=2966
+    neighbor(2)=2531
+    neighbor(3)=2534
+    neighbor(4)=2523
+    neighbor(5)=2533
+   hmin()=0.0415258, hmax()=0.536244
+   volume()=9.23986e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11620) (1/1/11621) (1/2/11622) (1/3/11623) 
+ERROR: negative Jacobian -3.011e-05 at point (x,y,z)=(-0.0833712, -0.328368,  1.01564) in element 2535
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2963, unique_id()=6578, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3561, processor_id()=0, Point=(x,y,z)=(-0.114084, -0.220272,  0.52283)
+    DoFs=(0/0/3924) (0/1/3925) (0/2/3926) 
+    1  Node id()=3562, processor_id()=0, Point=(x,y,z)=(-0.0537892, -0.245247,  0.52283)
+    DoFs=(0/0/3927) (0/1/3928) (0/2/3929) 
+    2  Node id()=3560, processor_id()=0, Point=(x,y,z)=(-0.0677058, -0.290246, 0.513932)
+    DoFs=(0/0/3921) (0/1/3922) (0/2/3923) 
+    3  Node id()=3559, processor_id()=0, Point=(x,y,z)=(-0.12897, -0.266198, 0.513495)
+    DoFs=(0/0/3918) (0/1/3919) (0/2/3920) 
+    4  Node id()=3557, processor_id()=0, Point=(x,y,z)=(-0.0863294, -0.162391,  0.52283)
+    DoFs=(0/0/3912) (0/1/3913) (0/2/3914) 
+    5  Node id()=3558, processor_id()=0, Point=(x,y,z)=(-0.0337705, -0.187372,  0.52283)
+    DoFs=(0/0/3915) (0/1/3916) (0/2/3917) 
+    6  Node id()=3556, processor_id()=0, Point=(x,y,z)=(-0.0550854,  -0.2544, 0.519325)
+    DoFs=(0/0/3909) (0/1/3910) (0/2/3911) 
+    7  Node id()=3555, processor_id()=0, Point=(x,y,z)=(-0.107743, -0.230418, 0.517923)
+    DoFs=(0/0/3906) (0/1/3907) (0/2/3908) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2975
+    neighbor(3)=2962
+    neighbor(4)=2967
+    neighbor(5)=2961
+   hmin()=0.00988687, hmax()=0.12951
+   volume()=1.24346e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3804) (1/1/3805) (1/2/3806) (1/3/3807) 
+ERROR: negative Jacobian -3.78656e-07 at point (x,y,z)=(-0.065078, -0.243679, 0.518967) in element 2963
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2961, unique_id()=6576, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3557, processor_id()=0, Point=(x,y,z)=(-0.0712054, -0.114848, 0.527396)
+    DoFs=(0/0/3912) (0/1/3913) (0/2/3914) 
+    1  Node id()=3558, processor_id()=0, Point=(x,y,z)=(-0.0186464, -0.139829, 0.527396)
+    DoFs=(0/0/3915) (0/1/3916) (0/2/3917) 
+    2  Node id()=3556, processor_id()=0, Point=(x,y,z)=(-0.0443847, -0.220794,   0.5556)
+    DoFs=(0/0/3909) (0/1/3910) (0/2/3911) 
+    3  Node id()=3555, processor_id()=0, Point=(x,y,z)=(-0.0969458, -0.196717,   0.5529)
+    DoFs=(0/0/3906) (0/1/3907) (0/2/3908) 
+    4  Node id()=3147, processor_id()=0, Point=(x,y,z)=(-0.0434503, -0.0569672, 0.527396)
+    DoFs=(0/0/3447) (0/1/3448) (0/2/3449) 
+    5  Node id()=3150, processor_id()=0, Point=(x,y,z)=(0.00137232, -0.0819535, 0.527396)
+    DoFs=(0/0/3444) (0/1/3445) (0/2/3446) 
+    6  Node id()=3149, processor_id()=0, Point=(x,y,z)=(-0.0245912, -0.162968, 0.529599)
+    DoFs=(0/0/3438) (0/1/3439) (0/2/3440) 
+    7  Node id()=3145, processor_id()=0, Point=(x,y,z)=(-0.0689025, -0.137772, 0.525881)
+    DoFs=(0/0/3441) (0/1/3442) (0/2/3443) 
+   n_sides()=6
+    neighbor(0)=2963
+    neighbor(1)=nullptr
+    neighbor(2)=2973
+    neighbor(3)=2960
+    neighbor(4)=2965
+    neighbor(5)=2599
+   hmin()=0.023089, hmax()=0.16624
+   volume()=1.39606e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3796) (1/1/3797) (1/2/3798) (1/3/3799) 
+ERROR: negative Jacobian -5.75863e-06 at point (x,y,z)=(-0.06001, -0.125119, 0.531709) in element 2961
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2947, unique_id()=6562, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3545, processor_id()=2, Point=(x,y,z)=(-0.302539, -0.0165172, 0.527396)
+    DoFs=(0/0/10815) (0/1/10816) (0/2/10817) 
+    1  Node id()=3546, processor_id()=2, Point=(x,y,z)=(-0.262809, -0.0682939, 0.527396)
+    DoFs=(0/0/10818) (0/1/10819) (0/2/10820) 
+    2  Node id()=3544, processor_id()=2, Point=(x,y,z)=(-0.280286, -0.121681, 0.532732)
+    DoFs=(0/0/10812) (0/1/10813) (0/2/10814) 
+    3  Node id()=3543, processor_id()=2, Point=(x,y,z)=(-0.319617, -0.0691792, 0.523498)
+    DoFs=(0/0/10809) (0/1/10810) (0/2/10811) 
+    4  Node id()=3541, processor_id()=2, Point=(x,y,z)=(-0.255858, 0.0312811, 0.527396)
+    DoFs=(0/0/10803) (0/1/10804) (0/2/10805) 
+    5  Node id()=3542, processor_id()=2, Point=(x,y,z)=(-0.217068, -0.0139685, 0.527396)
+    DoFs=(0/0/10806) (0/1/10807) (0/2/10808) 
+    6  Node id()=3540, processor_id()=2, Point=(x,y,z)=(-0.239909, -0.0917762, 0.533178)
+    DoFs=(0/0/10800) (0/1/10801) (0/2/10802) 
+    7  Node id()=3539, processor_id()=2, Point=(x,y,z)=(-0.277265, -0.0439097, 0.523283)
+    DoFs=(0/0/10797) (0/1/10798) (0/2/10799) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2959
+    neighbor(3)=2946
+    neighbor(4)=2951
+    neighbor(5)=2945
+   hmin()=0.0286438, hmax()=0.154992
+   volume()=6.81247e-06
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/12028) (1/1/12029) (1/2/12030) (1/3/12031) 
+ERROR: negative Jacobian -1.39019e-06 at point (x,y,z)=(-0.265402, -0.0584857, 0.528125) in element 2947
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2833, unique_id()=6448, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3425, processor_id()=0, Point=(x,y,z)=(0.559915, 0.0735418, 0.521607)
+    DoFs=(0/0/3840) (0/1/3841) (0/2/3842) 
+    1  Node id()=3426, processor_id()=0, Point=(x,y,z)=(0.561466, 0.129389, 0.521607)
+    DoFs=(0/0/3843) (0/1/3844) (0/2/3845) 
+    2  Node id()=3424, processor_id()=0, Point=(x,y,z)=(0.438228, 0.114594, 0.522718)
+    DoFs=(0/0/3837) (0/1/3838) (0/2/3839) 
+    3  Node id()=3423, processor_id()=0, Point=(x,y,z)=(0.443769, 0.0605397, 0.516454)
+    DoFs=(0/0/3834) (0/1/3835) (0/2/3836) 
+    4  Node id()=3293, processor_id()=0, Point=(x,y,z)=(0.502526, 0.0683457, 0.521607)
+    DoFs=(0/0/3720) (0/1/3721) (0/2/3722) 
+    5  Node id()=3294, processor_id()=0, Point=(x,y,z)=(0.514148, 0.115335, 0.521607)
+    DoFs=(0/0/3723) (0/1/3724) (0/2/3725) 
+    6  Node id()=3292, processor_id()=0, Point=(x,y,z)=(0.409598, 0.102859, 0.502588)
+    DoFs=(0/0/3717) (0/1/3718) (0/2/3719) 
+    7  Node id()=3291, processor_id()=0, Point=(x,y,z)=(0.402827, 0.0569124, 0.496646)
+    DoFs=(0/0/3714) (0/1/3715) (0/2/3716) 
+   n_sides()=6
+    neighbor(0)=2835
+    neighbor(1)=nullptr
+    neighbor(2)=2845
+    neighbor(3)=2832
+    neighbor(4)=2837
+    neighbor(5)=2707
+   hmin()=0.0369129, hmax()=0.176189
+   volume()=-2.87765e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3716) (1/1/3717) (1/2/3718) (1/3/3719)   Elem Information
+   id()=2851, unique_id()=6466, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3449, processor_id()=0, Point=(x,y,z)=(0.519105,  0.31581, 0.521607)
+    DoFs=(0/0/3903) (0/1/3904) (0/2/3905) 
+    1  Node id()=3450, processor_id()=1, Point=(x,y,z)=(0.479376, 0.367587, 0.521607)
+    DoFs=(0/0/7563) (0/1/7564) (0/2/7565) 
+    2  Node id()=3448, processor_id()=1, Point=(x,y,z)=(0.326937, 0.342653, 0.540162)
+    DoFs=(0/0/7560) (0/1/7561) (0/2/7562) 
+    3  Node id()=3447, processor_id()=0, Point=(x,y,z)=(0.361848, 0.293169, 0.544411)
+    DoFs=(0/0/3900) (0/1/3901) (0/2/3902) 
+    4  Node id()=3445, processor_id()=0, Point=(x,y,z)=(0.462294, 0.271167, 0.521607)
+    DoFs=(0/0/3897) (0/1/3898) (0/2/3899) 
+    5  Node id()=3446, processor_id()=1, Point=(x,y,z)=(0.423097, 0.319223, 0.521607)
+    DoFs=(0/0/7557) (0/1/7558) (0/2/7559) 
+    6  Node id()=3444, processor_id()=1, Point=(x,y,z)=(0.319825, 0.303612, 0.503969)
+    DoFs=(0/0/7554) (0/1/7555) (0/2/7556) 
+    7  Node id()=3443, processor_id()=0, Point=(x,y,z)=(0.357201, 0.256189, 0.506046)
+    DoFs=(0/0/3894) (0/1/3895) (0/2/3896) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2863
+    neighbor(3)=2850
+    neighbor(4)=2855
+    neighbor(5)=2849
+   hmin()=0.0534877, hmax()=0.200431
+   volume()=-0.000146288
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/7820) (1/1/7821) (1/2/7822) (1/3/7823) 
+ERROR: negative Jacobian -4.14576e-07 at point (x,y,z)=(0.524459, 0.0810995,  0.51991) in element 2833
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+
+ERROR: negative Jacobian -1.56974e-05 at point (x,y,z)=(0.468012, 0.312622, 0.524544) in element 2851
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2931, unique_id()=6546, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3529, processor_id()=2, Point=(x,y,z)=(-0.302748, -0.0436549, 0.532411)
+    DoFs=(0/0/10767) (0/1/10768) (0/2/10769) 
+    1  Node id()=3530, processor_id()=2, Point=(x,y,z)=(-0.29423, -0.10836, 0.532411)
+    DoFs=(0/0/10770) (0/1/10771) (0/2/10772) 
+    2  Node id()=3528, processor_id()=2, Point=(x,y,z)=( -0.3372, -0.114178, 0.511411)
+    DoFs=(0/0/10764) (0/1/10765) (0/2/10766) 
+    3  Node id()=3527, processor_id()=2, Point=(x,y,z)=(-0.348262, -0.0499518, 0.511339)
+    DoFs=(0/0/10761) (0/1/10762) (0/2/10763) 
+    4  Node id()=3525, processor_id()=2, Point=(x,y,z)=(-0.250193, -0.0411424, 0.532411)
+    DoFs=(0/0/10755) (0/1/10756) (0/2/10757) 
+    5  Node id()=3526, processor_id()=2, Point=(x,y,z)=(-0.251654, -0.0949312, 0.532411)
+    DoFs=(0/0/10758) (0/1/10759) (0/2/10760) 
+    6  Node id()=3524, processor_id()=2, Point=(x,y,z)=(-0.326439, -0.103517, 0.523818)
+    DoFs=(0/0/10752) (0/1/10753) (0/2/10754) 
+    7  Node id()=3523, processor_id()=2, Point=(x,y,z)=(-0.328022, -0.0501694, 0.521883)
+    DoFs=(0/0/10749) (0/1/10750) (0/2/10751) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2943
+    neighbor(3)=2930
+    neighbor(4)=2935
+    neighbor(5)=2929
+   hmin()=0.0195801, hmax()=0.115522
+   volume()=8.89222e-06
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11964) (1/1/11965) (1/2/11966) (1/3/11967) 
+ERROR: negative Jacobian -8.01354e-07 at point (x,y,z)=(-0.32622, -0.0974642, 0.517839) in element 2931
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2923, unique_id()=6538, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3521, processor_id()=2, Point=(x,y,z)=(-0.239837, 0.0927713, 0.543215)
+    DoFs=(0/0/10743) (0/1/10744) (0/2/10745) 
+    1  Node id()=3522, processor_id()=2, Point=(x,y,z)=(-0.248356, 0.0280665, 0.543215)
+    DoFs=(0/0/10746) (0/1/10747) (0/2/10748) 
+    2  Node id()=3520, processor_id()=2, Point=(x,y,z)=(-0.304243, 0.021008, 0.539658)
+    DoFs=(0/0/10740) (0/1/10741) (0/2/10742) 
+    3  Node id()=3519, processor_id()=2, Point=(x,y,z)=(-0.297956, 0.0865372, 0.535804)
+    DoFs=(0/0/10737) (0/1/10738) (0/2/10739) 
+    4  Node id()=3517, processor_id()=2, Point=(x,y,z)=(-0.172234, 0.0801109, 0.543215)
+    DoFs=(0/0/10731) (0/1/10732) (0/2/10733) 
+    5  Node id()=3518, processor_id()=2, Point=(x,y,z)=(-0.18582, 0.019663, 0.543215)
+    DoFs=(0/0/10734) (0/1/10735) (0/2/10736) 
+    6  Node id()=3516, processor_id()=2, Point=(x,y,z)=(-0.277459, 0.00863227, 0.548821)
+    DoFs=(0/0/10728) (0/1/10729) (0/2/10730) 
+    7  Node id()=3515, processor_id()=2, Point=(x,y,z)=(-0.264208, 0.0690596, 0.542185)
+    DoFs=(0/0/10725) (0/1/10726) (0/2/10727) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2935
+    neighbor(3)=2922
+    neighbor(4)=2927
+    neighbor(5)=2921
+   hmin()=0.0308944, hmax()=0.144679
+   volume()=-8.80413e-06
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11932) (1/1/11933) (1/2/11934) (1/3/11935) 
+ERROR: negative Jacobian -5.51798e-07 at point (x,y,z)=(-0.278751, 0.0707851, 0.539174) in element 2923
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2779, unique_id()=6394, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3377, processor_id()=2, Point=(x,y,z)=(-0.0718151, -0.0245967, 0.554018)
+    DoFs=(0/0/10671) (0/1/10672) (0/2/10673) 
+    1  Node id()=3378, processor_id()=2, Point=(x,y,z)=(-0.0832563, -0.0674695, 0.554018)
+    DoFs=(0/0/10674) (0/1/10675) (0/2/10676) 
+    2  Node id()=3376, processor_id()=2, Point=(x,y,z)=(-0.189519, -0.0791924,  0.57014)
+    DoFs=(0/0/10668) (0/1/10669) (0/2/10670) 
+    3  Node id()=3375, processor_id()=2, Point=(x,y,z)=(-0.177899, -0.0364395, 0.561069)
+    DoFs=(0/0/10665) (0/1/10666) (0/2/10667) 
+    4  Node id()=3371, processor_id()=2, Point=(x,y,z)=(-0.0303902, -0.0540549, 0.554018)
+    DoFs=(0/0/10653) (0/1/10654) (0/2/10655) 
+    5  Node id()=3372, processor_id()=2, Point=(x,y,z)=(-0.0532354, -0.0999218, 0.554018)
+    DoFs=(0/0/10656) (0/1/10657) (0/2/10658) 
+    6  Node id()=3368, processor_id()=2, Point=(x,y,z)=(-0.158262, -0.110998, 0.557969)
+    DoFs=(0/0/10644) (0/1/10645) (0/2/10646) 
+    7  Node id()=3367, processor_id()=2, Point=(x,y,z)=(-0.134353, -0.065223, 0.547967)
+    DoFs=(0/0/10641) (0/1/10642) (0/2/10643) 
+   n_sides()=6
+    neighbor(0)=2929
+    neighbor(1)=nullptr
+    neighbor(2)=2941
+    neighbor(3)=2778
+    neighbor(4)=2783
+    neighbor(5)=2777
+   hmin()=0.0442087, hmax()=0.161906
+   volume()=3.50699e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11820) (1/1/11821) (1/2/11822) (1/3/11823) 
+ERROR: negative Jacobian -3.3497e-07 at point (x,y,z)=(-0.0963694, -0.0675872, 0.556468) in element 2779
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2919, unique_id()=6534, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3506, processor_id()=1, Point=(x,y,z)=(-0.118457, 0.285083, 0.554018)
+    DoFs=(0/0/7731) (0/1/7732) (0/2/7733) 
+    1  Node id()=3513, processor_id()=1, Point=(x,y,z)=(-0.143432, 0.224788, 0.554018)
+    DoFs=(0/0/7743) (0/1/7744) (0/2/7745) 
+    2  Node id()=3511, processor_id()=1, Point=(x,y,z)=(-0.210827, 0.217706, 0.556479)
+    DoFs=(0/0/7740) (0/1/7741) (0/2/7742) 
+    3  Node id()=3504, processor_id()=1, Point=(x,y,z)=(-0.182734, 0.278012, 0.548027)
+    DoFs=(0/0/7725) (0/1/7726) (0/2/7727) 
+    4  Node id()=3502, processor_id()=1, Point=(x,y,z)=(-0.0570482, 0.263449, 0.554018)
+    DoFs=(0/0/7719) (0/1/7720) (0/2/7721) 
+    5  Node id()=3509, processor_id()=1, Point=(x,y,z)=(-0.0763926, 0.205512, 0.554018)
+    DoFs=(0/0/7737) (0/1/7738) (0/2/7739) 
+    6  Node id()=3507, processor_id()=1, Point=(x,y,z)=(-0.177267, 0.192311,   0.5591)
+    DoFs=(0/0/7734) (0/1/7735) (0/2/7736) 
+    7  Node id()=3500, processor_id()=1, Point=(x,y,z)=(-0.153526, 0.249975, 0.551258)
+    DoFs=(0/0/7713) (0/1/7714) (0/2/7715) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2915
+    neighbor(3)=2918
+    neighbor(4)=2907
+    neighbor(5)=2917
+   hmin()=0.0272745, hmax()=0.160457
+   volume()=4.18339e-06
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/8060) (1/1/8061) (1/2/8062) (1/3/8063) 
+ERROR: negative Jacobian -4.88223e-07 at point (x,y,z)=(-0.139825, 0.231579, 0.554284) in element 2919
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2771, unique_id()=6386, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3365, processor_id()=2, Point=(x,y,z)=(0.0211908, 0.0814838, 0.564822)
+    DoFs=(0/0/10635) (0/1/10636) (0/2/10637) 
+    1  Node id()=3366, processor_id()=2, Point=(x,y,z)=(0.00253718, 0.0252927, 0.564822)
+    DoFs=(0/0/10638) (0/1/10639) (0/2/10640) 
+    2  Node id()=3364, processor_id()=2, Point=(x,y,z)=(-0.116363, 0.0115298, 0.586235)
+    DoFs=(0/0/10632) (0/1/10633) (0/2/10634) 
+    3  Node id()=3363, processor_id()=2, Point=(x,y,z)=(-0.0947364, 0.0674095, 0.573704)
+    DoFs=(0/0/10629) (0/1/10630) (0/2/10631) 
+    4  Node id()=3361, processor_id()=2, Point=(x,y,z)=(0.0876665, 0.0585099, 0.564822)
+    DoFs=(0/0/10623) (0/1/10624) (0/2/10625) 
+    5  Node id()=3362, processor_id()=2, Point=(x,y,z)=(0.055366, -0.00117123, 0.564822)
+    DoFs=(0/0/10626) (0/1/10627) (0/2/10628) 
+    6  Node id()=3360, processor_id()=2, Point=(x,y,z)=(-0.0586275, -0.0139688, 0.563456)
+    DoFs=(0/0/10620) (0/1/10621) (0/2/10622) 
+    7  Node id()=3359, processor_id()=2, Point=(x,y,z)=(-0.0227217, 0.0453206, 0.549421)
+    DoFs=(0/0/10617) (0/1/10618) (0/2/10619) 
+   n_sides()=6
+    neighbor(0)=2921
+    neighbor(1)=nullptr
+    neighbor(2)=2783
+    neighbor(3)=2770
+    neighbor(4)=2775
+    neighbor(5)=2769
+   hmin()=0.0357255, hmax()=0.210461
+   volume()=8.5042e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11788) (1/1/11789) (1/2/11790) (1/3/11791) 
+ERROR: negative Jacobian -1.42658e-06 at point (x,y,z)=(-0.00651609, 0.0288506, 0.567756) in element 2771
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2907, unique_id()=6522, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3505, processor_id()=1, Point=(x,y,z)=(-0.0158163, 0.343877, 0.564822)
+    DoFs=(0/0/7728) (0/1/7729) (0/2/7730) 
+    1  Node id()=3506, processor_id()=1, Point=(x,y,z)=(-0.055546,   0.2921, 0.564822)
+    DoFs=(0/0/7731) (0/1/7732) (0/2/7733) 
+    2  Node id()=3504, processor_id()=1, Point=(x,y,z)=(-0.129777, 0.282893, 0.579186)
+    DoFs=(0/0/7725) (0/1/7726) (0/2/7727) 
+    3  Node id()=3503, processor_id()=1, Point=(x,y,z)=(-0.0886413, 0.333918, 0.564553)
+    DoFs=(0/0/7722) (0/1/7723) (0/2/7724) 
+    4  Node id()=3501, processor_id()=1, Point=(x,y,z)=(0.0312438, 0.318195, 0.564822)
+    DoFs=(0/0/7716) (0/1/7717) (0/2/7718) 
+    5  Node id()=3502, processor_id()=1, Point=(x,y,z)=(0.00586293, 0.270466, 0.564822)
+    DoFs=(0/0/7719) (0/1/7720) (0/2/7721) 
+    6  Node id()=3500, processor_id()=1, Point=(x,y,z)=(-0.102561, 0.255238, 0.579544)
+    DoFs=(0/0/7713) (0/1/7714) (0/2/7715) 
+    7  Node id()=3499, processor_id()=1, Point=(x,y,z)=(-0.0714861, 0.302975, 0.566711)
+    DoFs=(0/0/7710) (0/1/7711) (0/2/7712) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2919
+    neighbor(3)=2906
+    neighbor(4)=2911
+    neighbor(5)=2905
+   hmin()=0.0193889, hmax()=0.165469
+   volume()=-4.96714e-06
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/8028) (1/1/8029) (1/2/8030) (1/3/8031) 
+ERROR: negative Jacobian -4.84024e-07 at point (x,y,z)=(-0.0304549, 0.325375, 0.565498) in element 2907
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2834, unique_id()=6449, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3427, processor_id()=0, Point=(x,y,z)=(0.589819, 0.102729, 0.432687)
+    DoFs=(0/0/3846) (0/1/3847) (0/2/3848) 
+    1  Node id()=3428, processor_id()=0, Point=(x,y,z)=(0.390643, 0.110621, 0.557013)
+    DoFs=(0/0/3849) (0/1/3850) (0/2/3851) 
+    2  Node id()=2948, processor_id()=0, Point=(x,y,z)=(0.584004, 0.151901, 0.372421)
+    DoFs=(0/0/3183) (0/1/3184) (0/2/3185) 
+    3  Node id()=2947, processor_id()=0, Point=(x,y,z)=(0.568437, 0.0912004,  0.36453)
+    DoFs=(0/0/3180) (0/1/3181) (0/2/3182) 
+    4  Node id()=3423, processor_id()=0, Point=(x,y,z)=(0.520366, 0.0726214, 0.444417)
+    DoFs=(0/0/3834) (0/1/3835) (0/2/3836) 
+    5  Node id()=3424, processor_id()=0, Point=(x,y,z)=(0.547888, 0.138627,  0.42653)
+    DoFs=(0/0/3837) (0/1/3838) (0/2/3839) 
+    6  Node id()=2944, processor_id()=0, Point=(x,y,z)=(0.514843, 0.133021, 0.360789)
+    DoFs=(0/0/3171) (0/1/3172) (0/2/3173) 
+    7  Node id()=2943, processor_id()=0, Point=(x,y,z)=(0.518398, 0.0784079, 0.362798)
+    DoFs=(0/0/3168) (0/1/3169) (0/2/3170) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=2835
+    neighbor(2)=2846
+    neighbor(3)=2403
+    neighbor(4)=2838
+    neighbor(5)=2832
+   hmin()=0.0516771, hmax()=0.270494
+   volume()=0.000136455
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3720) (1/1/3721) (1/2/3722) (1/3/3723) 
+ERROR: negative Jacobian -1.34983e-06 at point (x,y,z)=(0.479321, 0.117154, 0.479766) in element 2834
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2699, unique_id()=6314, processor_id()=0
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3277, processor_id()=0, Point=(x,y,z)=(0.482537, -0.0309487,  0.52122)
+    DoFs=(0/0/3672) (0/1/3673) (0/2/3674) 
+    1  Node id()=3278, processor_id()=0, Point=(x,y,z)=(0.491329, 0.0261997,  0.52122)
+    DoFs=(0/0/3675) (0/1/3676) (0/2/3677) 
+    2  Node id()=3276, processor_id()=0, Point=(x,y,z)=(0.384427, 0.010586, 0.515562)
+    DoFs=(0/0/3669) (0/1/3670) (0/2/3671) 
+    3  Node id()=3275, processor_id()=0, Point=(x,y,z)=(0.376628, -0.0457652, 0.513944)
+    DoFs=(0/0/3666) (0/1/3667) (0/2/3668) 
+    4  Node id()=3273, processor_id()=0, Point=(x,y,z)=(0.413102, -0.0191919,  0.52122)
+    DoFs=(0/0/3660) (0/1/3661) (0/2/3662) 
+    5  Node id()=3274, processor_id()=0, Point=(x,y,z)=(0.417552, 0.047223,  0.52122)
+    DoFs=(0/0/3663) (0/1/3664) (0/2/3665) 
+    6  Node id()=3272, processor_id()=0, Point=(x,y,z)=(0.317307, 0.0323702, 0.506522)
+    DoFs=(0/0/3657) (0/1/3658) (0/2/3659) 
+    7  Node id()=3271, processor_id()=0, Point=(x,y,z)=(0.313246, -0.0333243, 0.506083)
+    DoFs=(0/0/3654) (0/1/3655) (0/2/3656) 
+   n_sides()=6
+    neighbor(0)=3017
+    neighbor(1)=nullptr
+    neighbor(2)=2711
+    neighbor(3)=2698
+    neighbor(4)=2703
+    neighbor(5)=2697
+   hmin()=0.0417252, hmax()=0.188377
+   volume()=1.86908e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/3516) (1/1/3517) (1/2/3518) (1/3/3519) 
+ERROR: negative Jacobian -8.98026e-07 at point (x,y,z)=(0.386864, -0.027675, 0.514399) in element 2699
+[0] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2923, unique_id()=6538, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3521, processor_id()=2, Point=(x,y,z)=(-0.365235, 0.0835812,  0.52122)
+    DoFs=(0/0/10743) (0/1/10744) (0/2/10745) 
+    1  Node id()=3522, processor_id()=2, Point=(x,y,z)=(-0.373754, 0.0188764,  0.52122)
+    DoFs=(0/0/10746) (0/1/10747) (0/2/10748) 
+    2  Node id()=3520, processor_id()=2, Point=(x,y,z)=(-0.41977, 0.0104875, 0.502447)
+    DoFs=(0/0/10740) (0/1/10741) (0/2/10742) 
+    3  Node id()=3519, processor_id()=2, Point=(x,y,z)=(-0.413652, 0.0757121, 0.499839)
+    DoFs=(0/0/10737) (0/1/10738) (0/2/10739) 
+    4  Node id()=3517, processor_id()=2, Point=(x,y,z)=(-0.297632, 0.0709208,  0.52122)
+    DoFs=(0/0/10731) (0/1/10732) (0/2/10733) 
+    5  Node id()=3518, processor_id()=2, Point=(x,y,z)=(-0.311219, 0.0104729,  0.52122)
+    DoFs=(0/0/10734) (0/1/10735) (0/2/10736) 
+    6  Node id()=3516, processor_id()=2, Point=(x,y,z)=(-0.390939, -0.00187874, 0.516692)
+    DoFs=(0/0/10728) (0/1/10729) (0/2/10730) 
+    7  Node id()=3515, processor_id()=2, Point=(x,y,z)=(-0.378477, 0.0587318,  0.51269)
+    DoFs=(0/0/10725) (0/1/10726) (0/2/10727) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2935
+    neighbor(3)=2922
+    neighbor(4)=2927
+    neighbor(5)=2921
+   hmin()=0.0273245, hmax()=0.137558
+   volume()=1.8299e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11932) (1/1/11933) (1/2/11934) (1/3/11935)   Elem Information
+   id()=2849, unique_id()=6464, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3445, processor_id()=0, Point=(x,y,z)=(0.462718,  0.27601,  0.52122)
+    DoFs=(0/0/3897) (0/1/3898) (0/2/3899) 
+    1  Node id()=3446, processor_id()=1, Point=(x,y,z)=(0.423521, 0.324067,  0.52122)
+    DoFs=(0/0/7557) (0/1/7558) (0/2/7559) 
+    2  Node id()=3444, processor_id()=1, Point=(x,y,z)=( 0.31016,  0.30322, 0.530638)
+    DoFs=(0/0/7554) (0/1/7555) (0/2/7556) 
+    3  Node id()=3443, processor_id()=0, Point=(x,y,z)=(0.347852, 0.255924, 0.532996)
+    DoFs=(0/0/3894) (0/1/3895) (0/2/3896) 
+    4  Node id()=3301, processor_id()=0, Point=(x,y,z)=(0.405907, 0.231367,  0.52122)
+    DoFs=(0/0/3735) (0/1/3736) (0/2/3737) 
+    5  Node id()=3302, processor_id()=1, Point=(x,y,z)=(0.367243, 0.275703,  0.52122)
+    DoFs=(0/0/7395) (0/1/7396) (0/2/7397) 
+    6  Node id()=3300, processor_id()=1, Point=(x,y,z)=(0.265022, 0.257798, 0.509577)
+    DoFs=(0/0/7392) (0/1/7393) (0/2/7394) 
+    7  Node id()=3299, processor_id()=0, Point=(x,y,z)=(0.302407, 0.213967, 0.510963)
+    DoFs=(0/0/3732) (0/1/3733) (0/2/3734) 
+   n_sides()=6
+    neighbor(0)=2851
+    neighbor(1)=nullptr
+    neighbor(2)=2861
+    neighbor(3)=2848
+    neighbor(4)=2853
+    neighbor(5)=2715
+   hmin()=0.0300985, hmax()=0.198874
+   volume()=-6.46404e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/7812) (1/1/7813) (1/2/7814) (1/3/7815) 
+ERROR: negative Jacobian -1.6294e-06 at point (x,y,z)=(-0.372686, 0.0516991, 0.512969) in element 2923
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+
+ERROR: negative Jacobian -7.29318e-06 at point (x,y,z)=(0.418752, 0.272409, 0.522629) in element 2849
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2915, unique_id()=6530, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3513, processor_id()=1, Point=(x,y,z)=(-0.268618, 0.218019,  0.53183)
+    DoFs=(0/0/7743) (0/1/7744) (0/2/7745) 
+    1  Node id()=3514, processor_id()=2, Point=(x,y,z)=(-0.293594, 0.157724,  0.53183)
+    DoFs=(0/0/10722) (0/1/10723) (0/2/10724) 
+    2  Node id()=3512, processor_id()=2, Point=(x,y,z)=(-0.351645, 0.147909, 0.526087)
+    DoFs=(0/0/10719) (0/1/10720) (0/2/10721) 
+    3  Node id()=3511, processor_id()=1, Point=(x,y,z)=(-0.327627, 0.208174, 0.522153)
+    DoFs=(0/0/7740) (0/1/7741) (0/2/7742) 
+    4  Node id()=3509, processor_id()=1, Point=(x,y,z)=(-0.201579, 0.198744,  0.53183)
+    DoFs=(0/0/7737) (0/1/7738) (0/2/7739) 
+    5  Node id()=3510, processor_id()=2, Point=(x,y,z)=(-0.220923, 0.140807,  0.53183)
+    DoFs=(0/0/10716) (0/1/10717) (0/2/10718) 
+    6  Node id()=3508, processor_id()=2, Point=(x,y,z)=(-0.312677, 0.125876, 0.536546)
+    DoFs=(0/0/10713) (0/1/10714) (0/2/10715) 
+    7  Node id()=3507, processor_id()=1, Point=(x,y,z)=(-0.292217, 0.183727, 0.531801)
+    DoFs=(0/0/7734) (0/1/7735) (0/2/7736) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2927
+    neighbor(3)=2914
+    neighbor(4)=2919
+    neighbor(5)=2913
+   hmin()=0.0260389, hmax()=0.158546
+   volume()=-6.17639e-06
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11916) (1/1/11917) (1/2/11918) (1/3/11919)   Elem Information
+   id()=2919, unique_id()=6534, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3506, processor_id()=1, Point=(x,y,z)=(-0.243643, 0.278315,  0.53183)
+    DoFs=(0/0/7731) (0/1/7732) (0/2/7733) 
+    1  Node id()=3513, processor_id()=1, Point=(x,y,z)=(-0.268618, 0.218019,  0.53183)
+    DoFs=(0/0/7743) (0/1/7744) (0/2/7745) 
+    2  Node id()=3511, processor_id()=1, Point=(x,y,z)=(-0.327627, 0.208174, 0.522153)
+    DoFs=(0/0/7740) (0/1/7741) (0/2/7742) 
+    3  Node id()=3504, processor_id()=1, Point=(x,y,z)=(-0.301482, 0.267821,  0.51763)
+    DoFs=(0/0/7725) (0/1/7726) (0/2/7727) 
+    4  Node id()=3502, processor_id()=1, Point=(x,y,z)=(-0.182234, 0.256681,  0.53183)
+    DoFs=(0/0/7719) (0/1/7720) (0/2/7721) 
+    5  Node id()=3509, processor_id()=1, Point=(x,y,z)=(-0.201579, 0.198744,  0.53183)
+    DoFs=(0/0/7737) (0/1/7738) (0/2/7739) 
+    6  Node id()=3507, processor_id()=1, Point=(x,y,z)=(-0.292217, 0.183727, 0.531801)
+    DoFs=(0/0/7734) (0/1/7735) (0/2/7736) 
+    7  Node id()=3500, processor_id()=1, Point=(x,y,z)=(-0.270347,  0.24113, 0.527165)
+    DoFs=(0/0/7713) (0/1/7714) (0/2/7715) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2915
+    neighbor(3)=2918
+    neighbor(4)=2907
+    neighbor(5)=2917
+   hmin()=0.0236405, hmax()=0.153576
+   volume()=1.03271e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/8060) (1/1/8061) (1/2/8062) (1/3/8063) 
+ERROR: negative Jacobian -1.26684e-07 at point (x,y,z)=(-0.311201, 0.192689,  0.52649) in element 2915
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+
+ERROR: negative Jacobian -1.00681e-06 at point (x,y,z)=(-0.264371, 0.237575,  0.52733) in element 2919
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2771, unique_id()=6386, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3365, processor_id()=2, Point=(x,y,z)=(-0.103783, 0.0771369,  0.54244)
+    DoFs=(0/0/10635) (0/1/10636) (0/2/10637) 
+    1  Node id()=3366, processor_id()=2, Point=(x,y,z)=(-0.122437, 0.0209457,  0.54244)
+    DoFs=(0/0/10638) (0/1/10639) (0/2/10640) 
+    2  Node id()=3364, processor_id()=2, Point=(x,y,z)=(-0.228253, 0.00460558, 0.559018)
+    DoFs=(0/0/10632) (0/1/10633) (0/2/10634) 
+    3  Node id()=3363, processor_id()=2, Point=(x,y,z)=(-0.20834, 0.0603556, 0.550613)
+    DoFs=(0/0/10629) (0/1/10630) (0/2/10631) 
+    4  Node id()=3361, processor_id()=2, Point=(x,y,z)=(-0.0373077, 0.054163,  0.54244)
+    DoFs=(0/0/10623) (0/1/10624) (0/2/10625) 
+    5  Node id()=3362, processor_id()=2, Point=(x,y,z)=(-0.0696082, -0.00551814,  0.54244)
+    DoFs=(0/0/10626) (0/1/10627) (0/2/10628) 
+    6  Node id()=3360, processor_id()=2, Point=(x,y,z)=(-0.174016, -0.0213289, 0.545199)
+    DoFs=(0/0/10620) (0/1/10621) (0/2/10622) 
+    7  Node id()=3359, processor_id()=2, Point=(x,y,z)=(-0.140203, 0.0379051, 0.535689)
+    DoFs=(0/0/10617) (0/1/10618) (0/2/10619) 
+   n_sides()=6
+    neighbor(0)=2921
+    neighbor(1)=nullptr
+    neighbor(2)=2783
+    neighbor(3)=2770
+    neighbor(4)=2775
+    neighbor(5)=2769
+   hmin()=0.025472, hmax()=0.197967
+   volume()=3.57442e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11788) (1/1/11789) (1/2/11790) (1/3/11791) 
+ERROR: negative Jacobian -5.80638e-07 at point (x,y,z)=(-0.116367, 0.0567483, 0.543887) in element 2771
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2907, unique_id()=6522, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3505, processor_id()=1, Point=(x,y,z)=(-0.140791,  0.33953,  0.54244)
+    DoFs=(0/0/7728) (0/1/7729) (0/2/7730) 
+    1  Node id()=3506, processor_id()=1, Point=(x,y,z)=(-0.18052, 0.287753,  0.54244)
+    DoFs=(0/0/7731) (0/1/7732) (0/2/7733) 
+    2  Node id()=3504, processor_id()=1, Point=(x,y,z)=(-0.247211, 0.274593,  0.54659)
+    DoFs=(0/0/7725) (0/1/7726) (0/2/7727) 
+    3  Node id()=3503, processor_id()=1, Point=(x,y,z)=(-0.208139, 0.325181, 0.537926)
+    DoFs=(0/0/7722) (0/1/7723) (0/2/7724) 
+    4  Node id()=3501, processor_id()=1, Point=(x,y,z)=(-0.0937305, 0.313848,  0.54244)
+    DoFs=(0/0/7716) (0/1/7717) (0/2/7718) 
+    5  Node id()=3502, processor_id()=1, Point=(x,y,z)=(-0.119111, 0.266119,  0.54244)
+    DoFs=(0/0/7719) (0/1/7720) (0/2/7721) 
+    6  Node id()=3500, processor_id()=1, Point=(x,y,z)=(-0.217677, 0.248298, 0.553699)
+    DoFs=(0/0/7713) (0/1/7714) (0/2/7715) 
+    7  Node id()=3499, processor_id()=1, Point=(x,y,z)=(-0.189065, 0.295949, 0.544909)
+    DoFs=(0/0/7710) (0/1/7711) (0/2/7712) 
+   n_sides()=6
+    neighbor(0)=nullptr
+    neighbor(1)=nullptr
+    neighbor(2)=2919
+    neighbor(3)=2906
+    neighbor(4)=2911
+    neighbor(5)=2905
+   hmin()=0.0120946, hmax()=0.158475
+   volume()=-1.0002e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/8028) (1/1/8029) (1/2/8030) (1/3/8031) 
+ERROR: negative Jacobian -1.69617e-06 at point (x,y,z)=(-0.175297,  0.29091, 0.543246) in element 2907
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2763, unique_id()=6378, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3357, processor_id()=1, Point=(x,y,z)=(-0.00829298, 0.198345,  0.55305)
+    DoFs=(0/0/7551) (0/1/7552) (0/2/7553) 
+    1  Node id()=3358, processor_id()=2, Point=(x,y,z)=(-0.0220067, 0.142766,  0.55305)
+    DoFs=(0/0/10614) (0/1/10615) (0/2/10616) 
+    2  Node id()=3356, processor_id()=2, Point=(x,y,z)=(-0.135737, 0.123591, 0.571288)
+    DoFs=(0/0/10611) (0/1/10612) (0/2/10613) 
+    3  Node id()=3355, processor_id()=1, Point=(x,y,z)=(-0.119753, 0.178628, 0.563765)
+    DoFs=(0/0/7548) (0/1/7549) (0/2/7550) 
+    4  Node id()=3353, processor_id()=1, Point=(x,y,z)=(0.0627267, 0.188453,  0.55305)
+    DoFs=(0/0/7545) (0/1/7546) (0/2/7547) 
+    5  Node id()=3354, processor_id()=2, Point=(x,y,z)=(0.0581159, 0.123282,  0.55305)
+    DoFs=(0/0/10608) (0/1/10609) (0/2/10610) 
+    6  Node id()=3352, processor_id()=2, Point=(x,y,z)=(-0.0512532, 0.105029, 0.545153)
+    DoFs=(0/0/10605) (0/1/10606) (0/2/10607) 
+    7  Node id()=3351, processor_id()=1, Point=(x,y,z)=(-0.0451068, 0.169413, 0.541576)
+    DoFs=(0/0/7542) (0/1/7543) (0/2/7544) 
+   n_sides()=6
+    neighbor(0)=2913
+    neighbor(1)=nullptr
+    neighbor(2)=2775
+    neighbor(3)=2762
+    neighbor(4)=2767
+    neighbor(5)=2761
+   hmin()=0.0370853, hmax()=0.209589
+   volume()=7.55514e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11772) (1/1/11773) (1/2/11774) (1/3/11775) 
+ERROR: negative Jacobian -1.9501e-06 at point (x,y,z)=(-0.0263281, 0.146785, 0.555438) in element 2763
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+  Elem Information
+   id()=2905, unique_id()=6520, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3501, processor_id()=1, Point=(x,y,z)=(-0.0306073, 0.323286,  0.55305)
+    DoFs=(0/0/7716) (0/1/7717) (0/2/7718) 
+    1  Node id()=3502, processor_id()=1, Point=(x,y,z)=(-0.0559882, 0.275557,  0.55305)
+    DoFs=(0/0/7719) (0/1/7720) (0/2/7721) 
+    2  Node id()=3500, processor_id()=1, Point=(x,y,z)=(-0.165651, 0.255344,  0.58451)
+    DoFs=(0/0/7713) (0/1/7714) (0/2/7715) 
+    3  Node id()=3499, processor_id()=1, Point=(x,y,z)=(-0.13561, 0.303206, 0.570558)
+    DoFs=(0/0/7710) (0/1/7711) (0/2/7712) 
+    4  Node id()=3344, processor_id()=1, Point=(x,y,z)=(0.0164528, 0.297604,  0.55305)
+    DoFs=(0/0/7521) (0/1/7522) (0/2/7523) 
+    5  Node id()=3346, processor_id()=1, Point=(x,y,z)=(0.00542076, 0.253923,  0.55305)
+    DoFs=(0/0/7527) (0/1/7528) (0/2/7529) 
+    6  Node id()=3342, processor_id()=1, Point=(x,y,z)=(-0.10337, 0.233763, 0.556789)
+    DoFs=(0/0/7515) (0/1/7516) (0/2/7517) 
+    7  Node id()=3340, processor_id()=1, Point=(x,y,z)=(-0.0898358, 0.277026, 0.551372)
+    DoFs=(0/0/7509) (0/1/7510) (0/2/7511) 
+   n_sides()=6
+    neighbor(0)=2907
+    neighbor(1)=nullptr
+    neighbor(2)=2917
+    neighbor(3)=2904
+    neighbor(4)=2909
+    neighbor(5)=2753
+   hmin()=0.033921, hmax()=0.189572
+   volume()=3.10631e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/8020) (1/1/8021) (1/2/8022) (1/3/8023) 
+ERROR: negative Jacobian -2.17367e-06 at point (x,y,z)=(-0.0478201, 0.303687, 0.556436) in element 2905
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
+  Elem Information
+   id()=2753, unique_id()=6368, processor_id()=1
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3343, processor_id()=1, Point=(x,y,z)=(0.132093, 0.313799,  0.56366)
+    DoFs=(0/0/7518) (0/1/7519) (0/2/7520) 
+    1  Node id()=3344, processor_id()=1, Point=(x,y,z)=(0.0795759, 0.307043,  0.56366)
+    DoFs=(0/0/7521) (0/1/7522) (0/2/7523) 
+    2  Node id()=3340, processor_id()=1, Point=(x,y,z)=(-0.0361154,  0.28435, 0.574499)
+    DoFs=(0/0/7509) (0/1/7510) (0/2/7511) 
+    3  Node id()=3339, processor_id()=1, Point=(x,y,z)=(0.0203817, 0.291495, 0.552106)
+    DoFs=(0/0/7506) (0/1/7507) (0/2/7508) 
+    4  Node id()=3345, processor_id()=1, Point=(x,y,z)=(0.130461, 0.263061,  0.56366)
+    DoFs=(0/0/7524) (0/1/7525) (0/2/7526) 
+    5  Node id()=3346, processor_id()=1, Point=(x,y,z)=(0.0685439, 0.263362,  0.56366)
+    DoFs=(0/0/7527) (0/1/7528) (0/2/7529) 
+    6  Node id()=3342, processor_id()=1, Point=(x,y,z)=(-0.0502668,  0.24105, 0.582355)
+    DoFs=(0/0/7515) (0/1/7516) (0/2/7517) 
+    7  Node id()=3341, processor_id()=1, Point=(x,y,z)=(0.0164271, 0.241389, 0.555541)
+    DoFs=(0/0/7512) (0/1/7513) (0/2/7514) 
+   n_sides()=6
+    neighbor(0)=2755
+    neighbor(1)=nullptr
+    neighbor(2)=2905
+    neighbor(3)=2752
+    neighbor(4)=2757
+    neighbor(5)=2767
+   hmin()=0.0450525, hmax()=0.197223
+   volume()=6.05894e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/7764) (1/1/7765) (1/2/7766) (1/3/7767)   Elem Information
+   id()=2763, unique_id()=6378, processor_id()=2
+   type()=HEX8
+   dim()=3
+   n_nodes()=8
+    0  Node id()=3357, processor_id()=1, Point=(x,y,z)=(0.0548301, 0.207783,  0.56366)
+    DoFs=(0/0/7551) (0/1/7552) (0/2/7553) 
+    1  Node id()=3358, processor_id()=2, Point=(x,y,z)=(0.0411164, 0.152204,  0.56366)
+    DoFs=(0/0/10614) (0/1/10615) (0/2/10616) 
+    2  Node id()=3356, processor_id()=2, Point=(x,y,z)=(-0.0843317, 0.130828, 0.604028)
+    DoFs=(0/0/10611) (0/1/10612) (0/2/10613) 
+    3  Node id()=3355, processor_id()=1, Point=(x,y,z)=(-0.0674876, 0.185862,  0.59272)
+    DoFs=(0/0/7548) (0/1/7549) (0/2/7550) 
+    4  Node id()=3353, processor_id()=1, Point=(x,y,z)=( 0.12585, 0.197891,  0.56366)
+    DoFs=(0/0/7545) (0/1/7546) (0/2/7547) 
+    5  Node id()=3354, processor_id()=2, Point=(x,y,z)=(0.121239, 0.132721,  0.56366)
+    DoFs=(0/0/10608) (0/1/10609) (0/2/10610) 
+    6  Node id()=3352, processor_id()=2, Point=(x,y,z)=(0.00287188, 0.112763, 0.565524)
+    DoFs=(0/0/10605) (0/1/10606) (0/2/10607) 
+    7  Node id()=3351, processor_id()=1, Point=(x,y,z)=(0.0094118, 0.177053, 0.560553)
+    DoFs=(0/0/7542) (0/1/7543) (0/2/7544) 
+   n_sides()=6
+    neighbor(0)=2913
+    neighbor(1)=nullptr
+    neighbor(2)=2775
+    neighbor(3)=2762
+    neighbor(4)=2767
+    neighbor(5)=2761
+   hmin()=0.0404018, hmax()=0.224284
+   volume()=5.54791e-05
+   active()=1, ancestor()=0, subactive()=0, has_children()=0
+   parent()=nullptr
+   level()=0, p_level()=0
+   refinement_flag()=DO_NOTHING
+   p_refinement_flag()=DO_NOTHING
+   DoFs=(1/0/11772) (1/1/11773) (1/2/11774) (1/3/11775) 
+ERROR: negative Jacobian -2.67158e-07 at point (x,y,z)=(0.0587775, 0.268138, 0.566104) in element 2753
+[1] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+
+ERROR: negative Jacobian -6.68931e-06 at point (x,y,z)=(0.0416322, 0.188963,  0.56881) in element 2763
+[2] /home/dhullaks/projects/moose/scripts/../libmesh/src/fe/fe_map.C, line 1172, compiled Dec 15 2020 at 15:06:17
+We caught a libMesh error in ThreadedElementLoopBase
