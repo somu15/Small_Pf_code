@@ -44,8 +44,8 @@ class ML_TF:
               index_points=self.obs_ind) # ,jitter=1e-03
 
         gp_joint_model = tfd.JointDistributionNamed({
-            'amplitude': tfd.LogNormal(loc=0., scale=np.float64(1.)),
-            'length_scale': tfd.LogNormal(loc=0., scale=np.float64(1.)),
+            'amplitude': tfd.LogNormal(loc=amp_init, scale=np.float64(1.)),
+            'length_scale': tfd.LogNormal(loc=len_init, scale=np.float64(1.)),
             'observations': build_gp,
         })
 
@@ -88,7 +88,7 @@ class ML_TF:
 
         return gprm.sample(num_samples)
 
-    def GP_predict_mean(self, amplitude_var=None, length_scale_var=None, observation_noise_variance_var=None, pred_ind=None): # Gaussian Process Regression prediction
+    def GP_predict_mean(self, amplitude_var=None, length_scale_var=None, pred_ind=None): # Gaussian Process Regression prediction
 
         # Gaussian Process Regression prediction
 
@@ -98,11 +98,25 @@ class ML_TF:
             index_points=pred_ind,
             observation_index_points=self.obs_ind,
             observations=self.obs,
-            observation_noise_variance=observation_noise_variance_var,
+            observation_noise_variance=0.,
             predictive_noise_variance=0.)
 
         return np.array(gprm.mean())
 
+    def GP_predict_std(self, amplitude_var=None, length_scale_var=None, pred_ind=None): # Gaussian Process Regression prediction
+
+        # Gaussian Process Regression prediction
+
+        optimized_kernel = tfk.ExponentiatedQuadratic(amplitude_var, length_scale_var)
+        gprm = tfd.GaussianProcessRegressionModel(
+            kernel=optimized_kernel,
+            index_points=pred_ind,
+            observation_index_points=self.obs_ind,
+            observations=self.obs,
+            observation_noise_variance=0.,
+            predictive_noise_variance=0.)
+
+        return np.array(gprm.stddev())
 
     def GP_dependencies(self, Samples=None, LF=None):
         siz = len(Samples[0,:])

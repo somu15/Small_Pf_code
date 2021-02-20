@@ -83,6 +83,7 @@ y1_lim[Nlim-1] = value
 inp1 = np.zeros((Nsub,Ndim,Nlim))
 rv = norm(loc=0,scale=1)
 y_seed = np.zeros(int(Psub*Nsub))
+Indicator = np.ones((Nsub,Nlim))
 
 for ii in np.arange(0,Nsub,1):
     inp, inp_LF = (DR1.MaterialRandom())
@@ -93,41 +94,46 @@ for ii in np.arange(0,Nsub,1):
 
 inpp = np.zeros(Ndim)
 count_max = Nsub/(Psub*Nsub)
-count = 100000
-ind_max = 1
+seeds_outs = np.zeros(int(Psub*Nsub))
+seeds = np.zeros((int(Psub*Nsub),Ndim))
+markov_seed = np.zeros(Ndim)
+markov_out = 0.0
 r_sto = np.zeros((Nsub-int(Psub*Nsub),Nlim-1,Ndim))
 # ind_sto = 3
 prop_std_req = np.array([0.1,0.1,0.1,0.1,0.1,0.5,0.5,0.5])*0.75
 
 for kk in np.arange(1,Nlim,1):
+    count = np.inf
     ind_max = 0
     ind_sto = -1
-    count = np.inf
-    y1[0:(int(Psub*Nsub)),kk] = np.sort(y1[:,kk-1])[int((1-Psub)*Nsub):(len(y1))]
-    y1_lim[kk-1] = np.min(y1[0:(int(Psub*Nsub)),kk])
-    indices = (-y1[:,kk-1]).argsort()[:(int(Psub*Nsub))]
-    inp1[0:(int(Psub*Nsub)),:,kk] = inp1[indices,:,kk-1]
+    seeds_outs = np.sort(y1[:,kk-1])[int((1-Psub)*Nsub):(len(y1))]
+    y1_lim[kk-1] = np.min(seeds_outs)
+    k = (y1[:,kk-1]).argsort()
+    indices = k[int((1-Psub)*Nsub):(len(y1))]
+    seeds = inp1[indices,:,kk-1]
+
     for ii in np.arange((int(Psub*Nsub)),(Nsub),1):
         print(ii)
         print(kk)
         nxt = np.zeros((1,Ndim))
         if count > count_max:
-            # ind_max = random.randint(0,int(Psub*Nsub)) # ind_sto
             ind_sto = ind_sto + 1
-            ind_max = ind_sto
             count = 0
+            markov_seed = seeds[ind_sto,:]
+            markov_out = seeds_outs[ind_sto]
         else:
-            ind_max = ii-1
+            markov_seed = inp1[ii-1,:,kk]
+            markov_out = y1[ii-1,kk]
 
         count = count + 1
 
         for jj in np.arange(0,Ndim,1):
-            # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=1.0)
-            # prop = np.exp(rv1.rvs())
+            rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.7)
+            prop = np.exp(rv1.rvs())
             # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=prop_std_req[jj])
             # prop = np.exp(rv1.rvs())
-            rv1 = uniform(loc=(np.log(inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
-            prop = np.exp(rv1.rvs())
+            # rv1 = uniform(loc=(np.log(inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
+            # prop = np.exp(rv1.rvs())
             r = np.log(DR1.MaterialPDF(rv_req=prop, index=jj, LF=0)) - np.log(DR1.MaterialPDF(rv_req=(inp1[ind_max,jj,kk]),index=jj,LF=0)) # rv.pdf((prop))/rv.pdf((inp1[ii-(int(Psub*Nsub)),jj,kk]))
             r_sto[ii-(int(Psub*Nsub)),kk-1,jj] = r
             if r>np.log(uni.rvs()):
@@ -140,8 +146,9 @@ for kk in np.arange(1,Nlim,1):
             inp1[ii,:,kk] = inpp # np.array([nxt[0,0], nxt[0,1], nxt[0,2]])
             y1[ii,kk] = y_nxt
         else:
-            inp1[ii,:,kk] = inp1[ind_max,:,kk]
-            y1[ii,kk] = y1[ind_max,kk]
+            inp1[ii,:,kk] = markov_seed
+            y1[ii,kk] = markov_out
+            Indicator[ii,kk] = 0.0
 
 Pf = 1
 Pi_sto = np.zeros(Nlim)
@@ -163,6 +170,7 @@ with open(filename, 'wb') as f:
     pickle.dump(Nlim, f)
     pickle.dump(Nsub, f)
     pickle.dump(Pi_sto, f)
+    pickle.dump(Indicator, f)
 
 ## Pf =
 

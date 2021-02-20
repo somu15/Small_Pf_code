@@ -89,30 +89,33 @@ inp0 = np.zeros((Nsub,Ndim0,Nlim))
 rv = norm(loc=0,scale=1)
 u_lim_vec = np.array([2,2,2,2,2,2,2,2,2])
 
-u_GP = np.empty(1, dtype = float)
-std_GPdiff = np.empty(1, dtype = float)
+u_GP = np.zeros((Nsub,Nlim))
+subs_info = np.zeros((Nsub,Nlim))
 LF_plus_GP = np.empty(1, dtype = float)
 GP_pred = np.empty(1, dtype = float)
-subs_info = np.zeros((Nsub,Nlim))
 additive = value
-prop_std_req = np.array([0.1,0.1,0.1,0.1,0.1,0.5,0.5,0.5])*0.75
+Indicator = np.ones((Nsub,Nlim))
 
 for ii in np.arange(0,Nsub,1):
     inp_HF, inp = DR1.MaterialRandom()
     inpp = inp[None,:]
-    # samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, observation_noise_variance_var=var0, pred_ind = Norm1(inpp,inp_LFtrain,Ndim), num_samples=num_s)
-    # LF = np.array(InvNorm2(np.mean(np.array(samples0),axis=0),y_HF_LFtrain))
+
     LF = LS1.Material_LF1(inpp)
     inp0[ii,:,0] = inp
     inp1[ii,:,0] = inp_HF[None,:]
-    samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim), num_samples=num_s)
-    GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
+
+    GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim)).reshape(1)
+    additive = 0.0
+    u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim)).reshape(1)
+    u_GP[ii,0] = u_check
+    # samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, observation_noise_variance_var=var1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim), num_samples=num_s)
+    # GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
     # if ii > 9:
     #     additive = np.percentile(y1[:,0],90)
-    additive = 0.0
-    u_check = (np.abs(LF + GP_diff-additive))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
-    u_GP = np.concatenate((u_GP, np.array(u_check).reshape(1)))
-    std_GPdiff = np.concatenate((std_GPdiff, np.array(np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)).reshape(1)))
+    # additive = 0.0
+    # u_check = (np.abs(LF + GP_diff-additive))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
+    # u_GP = np.concatenate((u_GP, np.array(u_check).reshape(1)))
+    # std_GPdiff = np.concatenate((std_GPdiff, np.array(np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)).reshape(1)))
     u_lim = u_lim_vec[0]
     print(ii)
     if u_check > u_lim:
@@ -130,65 +133,89 @@ for ii in np.arange(0,Nsub,1):
         amp1, len1 = ML.GP_train(amp_init=amp1, len_init=len1, num_iters = Iters)
         subs_info[ii,0] = 1.0
 
-u_GP = np.delete(u_GP, 0)
 std_GPdiff = np.delete(std_GPdiff, 0)
 LF_plus_GP = np.delete(LF_plus_GP, 0)
 GP_pred = np.delete(GP_pred, 0)
 
-count_max = int(Nsub/(Psub*Nsub))
+inpp = np.zeros((1,Ndim))
+count_max = int(Nsub/(Psub*Nsub))-1
+seeds_outs = np.zeros(int(Psub*Nsub))
+seeds = np.zeros((int(Psub*Nsub),Ndim))
+seeds0 = np.zeros((int(Psub*Nsub),Ndim0))
+markov_seed = np.zeros(Ndim)
+markov_seed0 = np.zeros(Ndim0)
+markov_out = 0.0
 
 prop_std = np.array([1.0,1.0,1.0,1.0,1.0])
 ind_LF = [0,2,5,6,7]
 inpp = np.zeros((1,Ndim))
 for kk in np.arange(1,Nlim,1):
+    # count = np.inf
+    # ind_max = 0
+    # ind_sto = -1
+    # y1[0:(int(Psub*Nsub)),kk] = np.sort(y1[:,kk-1])[int((1-Psub)*Nsub):(len(y1))]
+    # y1_lim[kk-1] = np.min(y1[0:(int(Psub*Nsub)),kk])
+    # indices = (-y1[:,kk-1]).argsort()[:(int(Psub*Nsub))]
+    # inp1[0:(int(Psub*Nsub)),:,kk] = inp1[indices,:,kk-1]
+    # inp0[0:(int(Psub*Nsub)),:,kk] = inp0[indices,:,kk-1]
+
     count = np.inf
     ind_max = 0
     ind_sto = -1
-    y1[0:(int(Psub*Nsub)),kk] = np.sort(y1[:,kk-1])[int((1-Psub)*Nsub):(len(y1))]
-    y1_lim[kk-1] = np.min(y1[0:(int(Psub*Nsub)),kk])
-    indices = (-y1[:,kk-1]).argsort()[:(int(Psub*Nsub))]
-    inp1[0:(int(Psub*Nsub)),:,kk] = inp1[indices,:,kk-1]
-    inp0[0:(int(Psub*Nsub)),:,kk] = inp0[indices,:,kk-1]
+    seeds_outs = np.sort(y1[:,kk-1])[int((1-Psub)*Nsub):(len(y1))]
+    y1_lim[kk-1] = np.min(seeds_outs)
+    k = (y1[:,kk-1]).argsort()
+    indices = k[int((1-Psub)*Nsub):(len(y1))]
+    seeds = inp1[indices,:,kk-1]
+    seeds0 = inp0[indices,:,kk-1]
+
     for ii in np.arange((int(Psub*Nsub)),(Nsub),1):
         nxt = np.zeros((1,Ndim))
 
         if count > count_max:
-            # ind_max = random.randint(0,int(Psub*Nsub))
             ind_sto = ind_sto + 1
-            ind_max = ind_sto
             count = 0
+            markov_seed = seeds[ind_sto,:]
+            markov_seed0 = seeds0[ind_sto,:]
+            markov_out = seeds_outs[ind_sto]
         else:
-            ind_max = ii-1
+            markov_seed = inp1[ii-1,:,kk]
+            markov_seed0 = inp0[ii-1,:,kk]
+            markov_out = y1[ii-1,kk]
 
         count = count + 1
 
         for jj in np.arange(0,Ndim,1):
-            # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=1.0)
-            # prop = np.exp(rv1.rvs())
+            rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.7)
+            prop = np.exp(rv1.rvs())
             # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=prop_std_req[jj])
             # prop = np.exp(rv1.rvs())
-            rv1 = uniform(loc=(np.log(inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
-            prop = np.exp(rv1.rvs())
-            r = np.log(DR1.MaterialPDF(rv_req=prop, index=jj, LF=0)) - np.log(DR1.MaterialPDF(rv_req=(inp1[ind_max,jj,kk]),index=jj,LF=0)) # np.log(rv.pdf((prop)))-np.log(rv.pdf((inp1[ind_max,jj,kk])))
+            # rv1 = uniform(loc=(np.log(inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
+            # prop = np.exp(rv1.rvs())
+            r = np.log(DR1.MaterialPDF(rv_req=prop, index=jj, LF=0)) - np.log(DR1.MaterialPDF(rv_req=(markov_seed[jj]),index=jj,LF=0)) # np.log(rv.pdf((prop)))-np.log(rv.pdf((inp1[ind_max,jj,kk])))
             if r>np.log(uni.rvs()):
                 nxt[0,jj] = prop
             else:
-                nxt[0,jj] = inp1[ind_max,jj,kk]
+                nxt[0,jj] = markov_seed[jj]
             inpp[0,jj] = nxt[0,jj]
         # samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, observation_noise_variance_var=var0, pred_ind = Norm1(inpp,inp_LFtrain,Ndim), num_samples=num_s)
         # LF = np.array(InvNorm2(np.mean(np.array(samples0),axis=0),y_HF_LFtrain))
         LF = LS1.Material_LF1(inpp[0,ind_LF].reshape(1,Ndim0))
-        samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim), num_samples=num_s)
-        GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
-        # if ii > (int(Psub*Nsub)+9): # and kk < (Nlim-1):
-        #     additive = np.percentile(y1[1:ii,kk],90)
-        # else:
-        #     additive = value
+        # samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, observation_noise_variance_var=var1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim), num_samples=num_s)
+        # GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
+
+        GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
         additive = y1_lim[kk-1]
-        u_check = (np.abs(LF + GP_diff - additive))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
-        u_GP = np.concatenate((u_GP, np.array(u_check).reshape(1)))
-        std_GPdiff = np.concatenate((std_GPdiff, np.array(np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)).reshape(1)))
-        u_lim = u_lim_vec[0]
+        u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
+
+        u_GP[ii,kk] = u_check
+        u_lim = u_lim_vec[kk]
+
+        # additive = y1_lim[kk-1]
+        # u_check = (np.abs(LF + GP_diff - additive))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
+        # u_GP = np.concatenate((u_GP, np.array(u_check).reshape(1)))
+        # std_GPdiff = np.concatenate((std_GPdiff, np.array(np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)).reshape(1)))
+        # u_lim = u_lim_vec[0]
         print(ii)
         print(kk)
         if u_check > u_lim: # and ii > (int(Psub*Nsub)+num_retrain):
@@ -211,9 +238,10 @@ for kk in np.arange(1,Nlim,1):
             inp0[ii,:,kk] = inpp[0,ind_LF]
             y1[ii,kk] = y_nxt
         else:
-            inp1[ii,:,kk] = inp1[ind_max,:,kk]
-            inp0[ii,:,kk] = inp0[ind_max,:,kk]
-            y1[ii,kk] = y1[ind_max,kk]
+            inp1[ii,:,kk] = markov_seed
+            inp0[ii,:,kk] = markov_seed0
+            y1[ii,kk] = markov_out
+            Indicator[ii,kk] = 0.0
 
 
 Pf = 1
@@ -237,10 +265,11 @@ with open(filename, 'wb') as f:
     pickle.dump(Nsub, f)
     pickle.dump(Pi_sto, f)
     pickle.dump(u_GP, f)
+    pickle.dump(subs_info, f)
     pickle.dump(y_GPtrain, f)
     pickle.dump(y_HF_GP, f)
     pickle.dump(y_LF_GP, f)
-    pickle.dump(subs_info, f)
+    pickle.dump(Indicator, f)
 
 # # req = 2.425e-04 (1000 sims per subset and 4 subsets; Num HF = 86; value=800)
 
