@@ -4,6 +4,7 @@
 #PBS -N Holes_SubsetSim5
 #PBS -P moose
 #PBS -l select=1:ncpus=1:mpiprocs=4:ngpus=1
+#PBS -q gpu
 #PBS -l walltime=100:00:00
 
 JOB_NUM=${PBS_JOBID%%\.*}

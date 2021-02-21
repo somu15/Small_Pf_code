@@ -105,7 +105,7 @@ for ii in np.arange(0,Nsub,1):
     inp1[ii,:,0] = inp_HF[None,:]
 
     GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim)).reshape(1)
-    additive = 0.0
+    additive = value
     u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim)).reshape(1)
     u_GP[ii,0] = u_check
     # samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, observation_noise_variance_var=var1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim), num_samples=num_s)
@@ -169,7 +169,7 @@ for kk in np.arange(1,Nlim,1):
     seeds = inp1[indices,:,kk-1]
     seeds0 = inp0[indices,:,kk-1]
 
-    for ii in np.arange((int(Psub*Nsub)),(Nsub),1):
+    for ii in np.arange(0,(Nsub),1):
         nxt = np.zeros((1,Ndim))
 
         if count > count_max:
@@ -186,7 +186,7 @@ for kk in np.arange(1,Nlim,1):
         count = count + 1
 
         for jj in np.arange(0,Ndim,1):
-            rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.7)
+            rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.2)
             prop = np.exp(rv1.rvs())
             # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=prop_std_req[jj])
             # prop = np.exp(rv1.rvs())

@@ -112,7 +112,7 @@ for kk in np.arange(1,Nlim,1):
     indices = k[int((1-Psub)*Nsub):(len(y1))]
     seeds = inp1[indices,:,kk-1]
 
-    for ii in np.arange((int(Psub*Nsub)),(Nsub),1):
+    for ii in np.arange(0,Nsub,1):
         print(ii)
         print(kk)
         nxt = np.zeros((1,Ndim))
@@ -128,18 +128,18 @@ for kk in np.arange(1,Nlim,1):
         count = count + 1
 
         for jj in np.arange(0,Ndim,1):
-            rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.7)
+            rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.2)
             prop = np.exp(rv1.rvs())
             # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=prop_std_req[jj])
             # prop = np.exp(rv1.rvs())
             # rv1 = uniform(loc=(np.log(inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
             # prop = np.exp(rv1.rvs())
-            r = np.log(DR1.MaterialPDF(rv_req=prop, index=jj, LF=0)) - np.log(DR1.MaterialPDF(rv_req=(inp1[ind_max,jj,kk]),index=jj,LF=0)) # rv.pdf((prop))/rv.pdf((inp1[ii-(int(Psub*Nsub)),jj,kk]))
+            r = np.log(DR1.MaterialPDF(rv_req=prop, index=jj, LF=0)) - np.log(DR1.MaterialPDF(rv_req=(markov_seed[jj]),index=jj,LF=0)) # rv.pdf((prop))/rv.pdf((inp1[ii-(int(Psub*Nsub)),jj,kk]))
             r_sto[ii-(int(Psub*Nsub)),kk-1,jj] = r
             if r>np.log(uni.rvs()):
                 nxt[0,jj] = prop
             else:
-                nxt[0,jj] = inp1[ind_max,jj,kk]
+                nxt[0,jj] = markov_seed[jj]
             inpp[jj] = nxt[0,jj]
         y_nxt = np.array(LS1.Material_HF(inpp[None,:])).reshape(1)
         if y_nxt>y1_lim[kk-1]:

@@ -111,7 +111,7 @@ for ii in np.arange(0,Nsub,1):
     inp1[ii,:,0] = inp
     # samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim), num_samples=num_s)
     GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
-    additive = 0.0
+    additive = value
     u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
     u_GP[ii,0] = u_check
 
@@ -173,9 +173,9 @@ for kk in np.arange(1,Nlim,1):
         for jj in np.arange(0,Ndim,1):
 
             if jj == 0:
-                rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.2)
+                rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.1)
             else:
-                rv1 = norm(loc=np.log(markov_seed[jj]),scale=1.0)
+                rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.15)
             # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.5)
             prop = np.exp(rv1.rvs())
             # if jj == 1:

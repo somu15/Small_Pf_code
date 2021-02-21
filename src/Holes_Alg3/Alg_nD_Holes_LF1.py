@@ -169,7 +169,7 @@ for kk in np.arange(1,Nlim,1):
         count = count + 1
 
         for jj in np.arange(0,Ndim,1):
-            rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.7)
+            rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.3)
             prop = np.exp(rv1.rvs())
             # rv1 = uniform(loc=(np.log(inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
             # prop = np.exp(rv1.rvs())
