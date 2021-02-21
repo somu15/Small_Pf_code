@@ -104,9 +104,13 @@ for ii in np.arange(0,Nsub,1):
     inp0[ii,:,0] = inp
     inp1[ii,:,0] = inp_HF[None,:]
 
-    GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim)).reshape(1)
+    # GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim)).reshape(1)
+    # additive = value
+    # u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim)).reshape(1)
+    samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim), num_samples=num_s)
+    GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
     additive = value
-    u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim)).reshape(1)
+    u_check = (np.abs(LF + GP_diff - additive))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
     u_GP[ii,0] = u_check
     # samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, observation_noise_variance_var=var1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim), num_samples=num_s)
     # GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
@@ -186,7 +190,7 @@ for kk in np.arange(1,Nlim,1):
         count = count + 1
 
         for jj in np.arange(0,Ndim,1):
-            rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.2)
+            rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.75)
             prop = np.exp(rv1.rvs())
             # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=prop_std_req[jj])
             # prop = np.exp(rv1.rvs())
@@ -204,9 +208,13 @@ for kk in np.arange(1,Nlim,1):
         # samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, observation_noise_variance_var=var1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim), num_samples=num_s)
         # GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
 
-        GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
+        # GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
+        # additive = y1_lim[kk-1]
+        # u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
+        samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_HF[None,:],inp_GPtrain,Ndim), num_samples=num_s)
+        GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
         additive = y1_lim[kk-1]
-        u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
+        u_check = (np.abs(LF + GP_diff - additive))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
 
         u_GP[ii,kk] = u_check
         u_lim = u_lim_vec[kk]
