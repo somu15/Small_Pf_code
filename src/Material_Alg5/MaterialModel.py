@@ -25,13 +25,14 @@ class MaterialModel:
 
         file1 = open('/home/dhullaks/projects/moose/modules/tensor_mechanics/test/tests/0_Cylinder/Cylinder_HF_R5.i', 'r')
         Lines = file1.readlines()
-        # Lines[97] = "    "+"value = '"+str(ux)+"'\n"
-        # Lines[103] = "    "+"value = '"+str(uy)+"'\n"
-        # Lines[109] = "    "+"value = '"+str(uz)+"'\n"
-        Lines[135] = "    "+"y = '0.0 "+str(1/3*ux)+ " " +str(2/3*ux) + " " +str(ux)+"'\n"
-        Lines[140] = "    "+"y = '0.0 "+str(1/3*uy)+ " " +str(2/3*uy) + " " +str(uy)+"'\n"
-        Lines[145] = "    "+"y = '0.0 "+str(1/3*uz)+ " " +str(2/3*uz) + " " +str(uz)+"'\n"
-        Lines[152] = "    "+"C_ijkl = '"+str(A1[0,0])+" "+str(A1[0,1])+" "+str(A1[0,2])+" "+str(A1[2,2])+" "+str(A1[3,3])+"'\n"
+        Lines[97] = "    "+"value = '"+str(ux)+"'\n"
+        Lines[103] = "    "+"value = '"+str(uy)+"'\n"
+        Lines[109] = "    "+"value = '"+str(uz)+"'\n"
+        Lines[116] = "    "+"C_ijkl = '"+str(A1[0,0])+" "+str(A1[0,1])+" "+str(A1[0,2])+" "+str(A1[2,2])+" "+str(A1[3,3])+"'\n"
+        # Lines[135] = "    "+"y = '0.0 "+str(1/3*ux)+ " " +str(2/3*ux) + " " +str(ux)+"'\n"
+        # Lines[140] = "    "+"y = '0.0 "+str(1/3*uy)+ " " +str(2/3*uy) + " " +str(uy)+"'\n"
+        # Lines[145] = "    "+"y = '0.0 "+str(1/3*uz)+ " " +str(2/3*uz) + " " +str(uz)+"'\n"
+        # Lines[152] = "    "+"C_ijkl = '"+str(A1[0,0])+" "+str(A1[0,1])+" "+str(A1[0,2])+" "+str(A1[2,2])+" "+str(A1[3,3])+"'\n"
 
         file1 = open('/home/dhullaks/projects/moose/modules/tensor_mechanics/test/tests/0_Cylinder/Cylinder_HF_R5.i', 'w')
         file1.writelines(Lines)
@@ -50,7 +51,7 @@ class MaterialModel:
                     Samp0.append(float(row[1]))
                 count = count + 1
 
-        stress_von = Samp0[3]
+        stress_von = Samp0[1]
 
         return stress_von
 
@@ -61,14 +62,14 @@ class MaterialModel:
 
         file1 = open('/home/dhullaks/projects/moose/modules/tensor_mechanics/test/tests/0_Cylinder/Cylinder_HF1_R5.i', 'r')
         Lines = file1.readlines()
-        # Lines[97] = "    "+"value = '"+str(ux)+"'\n"
-        # Lines[103] = "    "+"value = '"+str(uy)+"'\n"
-        # Lines[109] = "    "+"value = '"+str(uz)+"'\n"
-        # Lines[116] = "    "+"C_ijkl = '"+str(A1[0,0])+" "+str(A1[0,1])+" "+str(A1[0,2])+" "+str(A1[2,2])+" "+str(A1[3,3])+"'\n"
-        Lines[135] = "    "+"y = '0.0 "+str(1/3*ux)+ " " +str(2/3*ux) + " " +str(ux)+"'\n"
-        Lines[140] = "    "+"y = '0.0 "+str(1/3*uy)+ " " +str(2/3*uy) + " " +str(uy)+"'\n"
-        Lines[145] = "    "+"y = '0.0 "+str(1/3*uz)+ " " +str(2/3*uz) + " " +str(uz)+"'\n"
-        Lines[152] = "    "+"C_ijkl = '"+str(A1[0,0])+" "+str(A1[0,1])+" "+str(A1[0,2])+" "+str(A1[2,2])+" "+str(A1[3,3])+"'\n"
+        Lines[97] = "    "+"value = '"+str(ux)+"'\n"
+        Lines[103] = "    "+"value = '"+str(uy)+"'\n"
+        Lines[109] = "    "+"value = '"+str(uz)+"'\n"
+        Lines[116] = "    "+"C_ijkl = '"+str(A1[0,0])+" "+str(A1[0,1])+" "+str(A1[0,2])+" "+str(A1[2,2])+" "+str(A1[3,3])+"'\n"
+        # Lines[135] = "    "+"y = '0.0 "+str(1/3*ux)+ " " +str(2/3*ux) + " " +str(ux)+"'\n"
+        # Lines[140] = "    "+"y = '0.0 "+str(1/3*uy)+ " " +str(2/3*uy) + " " +str(uy)+"'\n"
+        # Lines[145] = "    "+"y = '0.0 "+str(1/3*uz)+ " " +str(2/3*uz) + " " +str(uz)+"'\n"
+        # Lines[152] = "    "+"C_ijkl = '"+str(A1[0,0])+" "+str(A1[0,1])+" "+str(A1[0,2])+" "+str(A1[2,2])+" "+str(A1[3,3])+"'\n"
 
         file1 = open('/home/dhullaks/projects/moose/modules/tensor_mechanics/test/tests/0_Cylinder/Cylinder_HF1_R5.i', 'w')
         file1.writelines(Lines)
@@ -87,7 +88,7 @@ class MaterialModel:
                     Samp0.append(float(row[1]))
                 count = count + 1
 
-        stress_von = Samp0[3]
+        stress_von = Samp0[1]
 
         return stress_von
 

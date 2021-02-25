@@ -160,7 +160,7 @@ class DrawRandom:
         rv3 = norm(loc=np.log(0.25),scale=0.1) # vxy
         rv4 = norm(loc=np.log(0.3),scale=0.1) # vxz
         rv5 = norm(loc=np.log(135),scale=0.1) # Gxz
-        rv6 = norm(loc=np.log(0.05),scale=0.5) # ux, uy, uz
+        rv6 = norm(loc=np.log(0.15),scale=0.5) # ux, uy, uz
         out[0] = np.exp(rv1.rvs())
         out[1] = np.exp(rv2.rvs())
         out[2] = np.exp(rv3.rvs())
@@ -185,9 +185,9 @@ class DrawRandom:
         out[:,2] = uniform(loc=0.176,scale=0.178).ppf(lhd0[:,2]) # vxy
         out[:,3] = uniform(loc=0.211,scale=0.214).ppf(lhd0[:,3]) # vxz
         out[:,4] = uniform(loc=95.132,scale=96.442).ppf(lhd0[:,4]) # Gxz
-        out[:,5] = uniform(loc=0.002231,scale=0.04481).ppf(lhd0[:,5]) # ux
-        out[:,6] = uniform(loc=0.002231,scale=0.04481).ppf(lhd0[:,6]) # uy
-        out[:,7] = uniform(loc=0.002231,scale=0.04481).ppf(lhd0[:,7]) # uz
+        out[:,5] = uniform(loc=0.05,scale=0.75).ppf(lhd0[:,5]) # ux
+        out[:,6] = uniform(loc=0.05,scale=0.75).ppf(lhd0[:,6]) # uy
+        out[:,7] = uniform(loc=0.05,scale=0.75).ppf(lhd0[:,7]) # uz
         out1 = np.zeros((Nsamps,5))
         out1[:,0] = out[:,0]
         out1[:,1] = out[:,2]
@@ -216,7 +216,7 @@ class DrawRandom:
                 rv = norm(loc=np.log(135),scale=0.1) # Gxz
                 out = rv.pdf(np.log(rv_req))
             else:
-                rv = norm(loc=np.log(0.05),scale=0.5) # ux, uy, uz
+                rv = norm(loc=np.log(0.15),scale=0.5) # ux, uy, uz
                 out = rv.pdf(np.log(rv_req))
 
         else:
@@ -228,7 +228,7 @@ class DrawRandom:
                 rv = norm(loc=np.log(0.25),scale=0.1) # vxy
                 out = rv.pdf(np.log(rv_req))
             else:
-                rv = norm(loc=np.log(0.05),scale=0.5) # ux, uy, uz
+                rv = norm(loc=np.log(0.15),scale=0.5) # ux, uy, uz
                 out = rv.pdf(np.log(rv_req))
 
         return out

@@ -330,8 +330,8 @@ class DrawRandom:
         lower, upper = np.log(0.15), np.log(0.35)
         mu, sigma = np.log(0.25), 0.5
         rv1 = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Poisson ratio
-        lower, upper = np.log(0.001), np.log(0.15)
-        mu, sigma = np.log(0.08), 0.5
+        lower, upper = np.log(0.1), np.log(1.0)
+        mu, sigma = np.log(0.55), 0.5
         rv2 = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Displacement
         out[0] = np.exp(rv0.rvs()) # Young's modulus
         out[1] = np.exp(rv1.rvs()) # Poisson ratio
@@ -352,8 +352,8 @@ class DrawRandom:
             rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Poisson ratio
             out = rv.pdf(np.log(rv_req))
         else:
-            lower, upper = np.log(0.001), np.log(0.15)
-            mu, sigma = np.log(0.08), 0.5
+            lower, upper = np.log(0.1), np.log(1.0)
+            mu, sigma = np.log(0.55), 0.5
             rv = truncnorm((lower - mu) / sigma, (upper - mu) / sigma, loc=mu, scale=sigma) # Displacement
             out = rv.pdf(np.log(rv_req))
 
@@ -365,6 +365,6 @@ class DrawRandom:
         lhd0 = lhs(3, samples=Nsamps, criterion='centermaximin')
         out[:,0] = np.exp(uniform(loc=4.6051,scale=1.0986).ppf(lhd0[:,0])) # Young's modulus
         out[:,1] = np.exp(uniform(loc=-1.897,scale=0.8472).ppf(lhd0[:,1])) # Poisson ratio
-        out[:,2] = np.exp(uniform(loc=-6.9077,scale=5.0106).ppf(lhd0[:,2])) # Displacement
+        out[:,2] = np.exp(uniform(loc=-2.3025,scale=2.3025).ppf(lhd0[:,2])) # Displacement
 
         return out
