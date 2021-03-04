@@ -17,6 +17,7 @@ from scipy.stats import norm
 from scipy.stats import rayleigh
 from scipy.stats import uniform
 from scipy.stats import cauchy
+import csv
 import matplotlib.pyplot as plt
 from UQpy.SampleMethods import MH
 from UQpy.Distributions import Distribution
@@ -85,6 +86,7 @@ for ii in np.arange(0,Ninit_GP,1):
     y_LF_GP = np.concatenate((y_LF_GP, np.array(np.mean(np.array(samples0),axis=0)).reshape(1)))
     y_HF_GP = np.concatenate((y_HF_GP, np.array(Convert(LS1.Scalar_LS1_HF_2D(inpp))).reshape(1)))
 
+
 inp_GPtrain = np.delete(inp_GPtrain, 0, 0)
 y_LF_GP = np.delete(y_LF_GP, 0)
 y_HF_GP = np.delete(y_HF_GP, 0)
@@ -95,7 +97,7 @@ amp1, len1 = ML.GP_train(amp_init=1., len_init=1., num_iters = 1000)
 ## Subset simultion with HF-LF and GP
 
 uni = uniform()
-Nsub = 2000
+Nsub = 10000
 Psub = 0.1
 Nlim = 3
 y1 = np.zeros((Nsub,Nlim))
@@ -111,6 +113,8 @@ LF_plus_GP = np.empty(1, dtype = float)
 GP_pred = np.empty(1, dtype = float)
 additive = value
 Indicator = np.ones((Nsub,Nlim))
+counter = 1
+y_sto_all = np.zeros((Nsub,Nlim))
 
 for ii in np.arange(0,Nsub,1):
     inp = DR1.StandardNormal_Indep(N=Ndim)
@@ -134,7 +138,7 @@ for ii in np.arange(0,Nsub,1):
         y1[ii,0] = LF + GP_diff
     else:
         y1[ii,0] = np.array(Convert(LS1.Scalar_LS1_HF_2D(inpp))).reshape(1)
-        inp_GPtrain = np.concatenate((inp_GPtrain, inp.reshape(1,2)))
+        inp_GPtrain = np.concatenate((inp_GPtrain, inpp.reshape(1,2)))
         y_LF_GP = np.concatenate((y_LF_GP, LF))
         y_HF_GP = np.concatenate((y_HF_GP, y1[ii,0].reshape(1)))
         LF_plus_GP = np.concatenate((LF_plus_GP, (LF + np.array(GP_diff).reshape(1))))
@@ -142,6 +146,13 @@ for ii in np.arange(0,Nsub,1):
         ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain), obs = Norm1((y_HF_GP-y_LF_GP),(y_HF_GP-y_LF_GP)))
         amp1, len1 = ML.GP_train(amp_init=amp1, len_init=len1, num_iters = Iters)
         subs_info[ii,0] = 1.0
+    # file1 = open('/Users/dhulls/projects/Small Pf/Small_Pf_code/src/Results.csv','r')
+    # Lines = file1.readlines()
+    # Lines = np.concatenate((Lines,np.array(str(counter)+","+str(y1[ii,0])+","+str(subs_info[ii,0])+"\n").reshape(1)))
+    # file1 = open('/Users/dhulls/projects/Small Pf/Small_Pf_code/src/Results.csv','w')
+    # file1.writelines(Lines)
+    # file1.close()
+    # counter = counter + 1
 
 inpp = np.zeros((1,Ndim))
 count_max = int(Nsub/(Psub*Nsub))-1
@@ -149,7 +160,8 @@ seeds_outs = np.zeros(int(Psub*Nsub))
 seeds = np.zeros((int(Psub*Nsub),Ndim))
 markov_seed = np.zeros(Ndim)
 markov_out = 0.0
-
+u_req = np.zeros(Nsub)
+u_check1 = 10.0
 
 for kk in np.arange(1,Nlim,1):
     count = np.inf
@@ -160,7 +172,7 @@ for kk in np.arange(1,Nlim,1):
     k = (y1[:,kk-1]).argsort()
     indices = k[int((1-Psub)*Nsub):(len(y1))]
     seeds = inp1[indices,:,kk-1]
-    
+
     for ii in np.arange(0,(Nsub),1):
         nxt = np.zeros((1,Ndim))
 
@@ -192,7 +204,7 @@ for kk in np.arange(1,Nlim,1):
         GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = inpp).reshape(1)
         additive = y1_lim[kk-1]
         u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = inpp).reshape(1)
-        
+
         # if kk < (Nlim-1):
         #     additive = y1_lim[kk-1]
         #     u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = inpp).reshape(1)
@@ -202,12 +214,17 @@ for kk in np.arange(1,Nlim,1):
         #     additive = value
         #     u_check1 = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = inpp).reshape(1)
         #     u_check = np.array(np.min([u_check,u_check1])).reshape(1)
-        
+
         u_GP[ii,kk] = u_check
         u_lim = u_lim_vec[kk]
+        if kk == (Nlim-1):
+            additive = 0
+            u_check1 = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = inpp).reshape(1)
+            u_req[ii] = u_check1
+
         print(ii)
         print(kk)
-        if u_check > u_lim:
+        if u_check >= u_lim and u_check1 >= u_lim:
             y_nxt = LF + GP_diff
         else:
             y_nxt = np.array(Convert(LS1.Scalar_LS1_HF_2D(inpp))).reshape(1)
@@ -219,6 +236,7 @@ for kk in np.arange(1,Nlim,1):
             ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain), obs = Norm1((y_HF_GP-y_LF_GP),(y_HF_GP-y_LF_GP)))
             amp1, len1 = ML.GP_train(amp_init=amp1, len_init=len1, num_iters = Iters)
             subs_info[ii,kk] = 1.0
+        y_sto_all[ii,kk] = y_nxt
         if (y_nxt)>y1_lim[kk-1]:
             inp1[ii,:,kk] = inpp
             y1[ii,kk] = y_nxt
@@ -226,6 +244,18 @@ for kk in np.arange(1,Nlim,1):
             inp1[ii,:,kk] = markov_seed
             y1[ii,kk] = markov_out
             Indicator[ii,kk] = 0.0
+
+## Recheck failure domain
+
+# u_req = np.zeros(Nsub)
+# for ii in np.arange(0,(Nsub),1):
+#     LF = ML0.GP_predict_mean(amplitude_var = amp0, length_scale_var=len0, pred_ind = inp1[ii,:,2].reshape(1,2)).reshape(1)
+#     GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = inp1[ii,:,2].reshape(1,2)).reshape(1)
+#     additive = 0
+#     print(ii)
+#     u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = inp1[ii,:,2].reshape(1,2)).reshape(1)
+#     u_req[ii] = u_check
+
 
 Pf = 1
 Pi_sto = np.zeros(Nlim)
@@ -341,7 +371,7 @@ cov_req = np.sqrt(cov_sq)
 # subs_info = np.zeros((Nsub,Nlim))
 # LF_plus_GP = np.empty(1, dtype = float)
 # GP_pred = np.empty(1, dtype = float)
-# # corrs = 
+# # corrs =
 # additive = value
 
 # for ii in np.arange(0,Nsub,1):
@@ -392,7 +422,7 @@ cov_req = np.sqrt(cov_sq)
 #     k = (y1[:,kk-1]).argsort()
 #     indices = k[int((1-Psub)*Nsub):(len(y1))]
 #     seeds = inp1[indices,:,kk-1]
-    
+
 #     for ii in np.arange(0,(Nsub),1):
 #         nxt = np.zeros((1,Ndim))
 
@@ -487,41 +517,41 @@ cov_req = np.sqrt(cov_sq)
 
 ## Plotting
 
-x = np.arange(-5.0, 6.0, 0.25)
-y = np.arange(-5.0, 6.0, 0.25)
-X, Y = np.meshgrid(x, y)
-Z = np.zeros((len(x),len(y)))
-GP_LF = np.zeros((len(x),len(y)))
-for ii in np.arange(0,len(x),1):
-    for jj in np.arange(0,len(y),1):
-        inp = np.array([x[ii], y[jj]])
-        Z[ii,jj] = np.array(Convert(LS1.Scalar_LS1_HF_2D(inp[None,:])))
-        # samples0 = ML0.GP_predict_mean(amplitude_var = amp0, length_scale_var=len0, observation_noise_variance_var=var0, pred_ind = inp[None,:])
-        # samples1 = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, observation_noise_variance_var=var1, pred_ind = inp[None,:])
-        GP_LF[ii,jj] = np.array(ML0.GP_predict_mean(amplitude_var = amp0, length_scale_var=len0, pred_ind = inp[None,:]) + ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = inp[None,:]))
+# x = np.arange(-5.0, 6.0, 0.25)
+# y = np.arange(-5.0, 6.0, 0.25)
+# X, Y = np.meshgrid(x, y)
+# Z = np.zeros((len(x),len(y)))
+# GP_LF = np.zeros((len(x),len(y)))
+# for ii in np.arange(0,len(x),1):
+#     for jj in np.arange(0,len(y),1):
+#         inp = np.array([x[ii], y[jj]])
+#         Z[ii,jj] = np.array(Convert(LS1.Scalar_LS1_HF_2D(inp[None,:])))
+#         # samples0 = ML0.GP_predict_mean(amplitude_var = amp0, length_scale_var=len0, observation_noise_variance_var=var0, pred_ind = inp[None,:])
+#         # samples1 = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, observation_noise_variance_var=var1, pred_ind = inp[None,:])
+#         GP_LF[ii,jj] = np.array(ML0.GP_predict_mean(amplitude_var = amp0, length_scale_var=len0, pred_ind = inp[None,:]) + ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = inp[None,:]))
 
-fig, ax = plt.subplots()
-CS = ax.contour(X, Y, Z)
-CS.collections[0].set_linewidth(0)
-CS.collections[1].set_linewidth(0)
-CS.collections[2].set_linewidth(0)
-# CS.collections[3].set_linewidth(0)
-CS.collections[4].set_linewidth(0)
-CS.collections[5].set_linewidth(0)
-CS.collections[6].set_linewidth(0)
-CS.collections[7].set_linewidth(0)
-CS.collections[8].set_linewidth(0)
-CS = ax.contour(X, Y, GP_LF)
-# ax.clabel(CS, fontsize=9, inline=1)
-CS.collections[0].set_linewidth(0)
-CS.collections[1].set_linewidth(0)
-CS.collections[2].set_linewidth(0)
-CS.collections[3].set_linewidth(0)
+# fig, ax = plt.subplots()
+# CS = ax.contour(X, Y, Z)
+# CS.collections[0].set_linewidth(0)
+# CS.collections[1].set_linewidth(0)
+# CS.collections[2].set_linewidth(0)
+# # CS.collections[3].set_linewidth(0)
 # CS.collections[4].set_linewidth(0)
-CS.collections[5].set_linewidth(0)
-CS.collections[6].set_linewidth(0)
-CS.collections[7].set_linewidth(0)
-plt.scatter(inp_GPtrain[12:10000,0],inp_GPtrain[12:10000,1], marker='^',s=100.0,label='HF call (subsequent)')
+# CS.collections[5].set_linewidth(0)
+# CS.collections[6].set_linewidth(0)
+# CS.collections[7].set_linewidth(0)
+# CS.collections[8].set_linewidth(0)
+# CS = ax.contour(X, Y, GP_LF)
+# # ax.clabel(CS, fontsize=9, inline=1)
+# CS.collections[0].set_linewidth(0)
+# CS.collections[1].set_linewidth(0)
+# CS.collections[2].set_linewidth(0)
+# CS.collections[3].set_linewidth(0)
+# # CS.collections[4].set_linewidth(0)
+# CS.collections[5].set_linewidth(0)
+# CS.collections[6].set_linewidth(0)
+# CS.collections[7].set_linewidth(0)
+# plt.scatter(inp_GPtrain[12:10000,0],inp_GPtrain[12:10000,1], marker='^',s=100.0,label='HF call (subsequent)')
 # CS.collections[8].set_linewidth(0)
 # CS.collections[9].set_linewidth(0)
 # plt.scatter(inp1[:,0,0],inp1[:,1,0],label='Sub 0')

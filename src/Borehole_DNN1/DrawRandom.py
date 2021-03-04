@@ -34,18 +34,18 @@ class DrawRandom:
             out[ii] = rv.rvs()
         return out
 
-    def BoreholeRandom(self):
-        out = np.zeros(8)
+    def BoreholeRandom(self,N=1):
+        out = np.zeros((N,8))
         rv1 = norm(loc=(7.71),scale=1.0056)
         rv2 = uniform()
-        out[0] = 0.05 + 0.1 * rv2.rvs()
-        out[1] = (rv1.rvs())
-        out[2] = 63070 + 52530 * rv2.rvs()
-        out[3] = 990 + 120 * rv2.rvs()
-        out[4] = 63.1 + 52.9 * rv2.rvs()
-        out[5] = 700 + 120 * rv2.rvs()
-        out[6] = 1120 + 560 * rv2.rvs()
-        out[7] = 9855 + 2190 * rv2.rvs()
+        out[:,0] = 0.05 + 0.1 * rv2.rvs(size=N)
+        out[:,1] = (rv1.rvs(size=N))
+        out[:,2] = 63070 + 52530 * rv2.rvs(size=N)
+        out[:,3] = 990 + 120 * rv2.rvs(size=N)
+        out[:,4] = 63.1 + 52.9 * rv2.rvs(size=N)
+        out[:,5] = 700 + 120 * rv2.rvs(size=N)
+        out[:,6] = 1120 + 560 * rv2.rvs(size=N)
+        out[:,7] = 9855 + 2190 * rv2.rvs(size=N)
         return out
 
 

@@ -92,6 +92,10 @@ LF_plus_GP = np.empty(1, dtype = float)
 GP_pred = np.empty(1, dtype = float)
 additive = value
 Indicator = np.ones((Nsub,Nlim))
+counter = 1
+file1 = open('/home/dhullaks/projects/Small_Pf_code/src/NS_Alg2/Results.csv','w')
+file1.writelines("0,0,0\n")
+file1.close()
 
 for ii in np.arange(0,Nsub,1):
     inp = DR1.FluidRandom()
@@ -131,6 +135,13 @@ for ii in np.arange(0,Nsub,1):
         ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain,Ndim), obs = Norm3(y_GPtrain,y_GPtrain))
         amp1, len1 = ML.GP_train(amp_init=amp1, len_init=len1, num_iters = Iters)
         subs_info[ii,0] = 1.0
+    file1 = open('/home/dhullaks/projects/Small_Pf_code/src/NS_Alg2/Results.csv','r')
+    Lines = file1.readlines()
+    Lines = np.concatenate((Lines,np.array(str(counter)+","+str(y1[ii,0])+","+str(subs_info[ii,0])+"\n").reshape(1)))
+    file1 = open('/home/dhullaks/projects/Small_Pf_code/src/NS_Alg2/Results.csv','w')
+    file1.writelines(Lines)
+    file1.close()
+    counter = counter + 1
 
 std_GPdiff = np.delete(std_GPdiff, 0)
 LF_plus_GP = np.delete(LF_plus_GP, 0)
@@ -220,6 +231,13 @@ for kk in np.arange(1,Nlim,1):
             inp1[ii,:,kk] = markov_seed
             y1[ii,kk] = markov_out
             Indicator[ii,kk] = 0.0
+        file1 = open('/home/dhullaks/projects/Small_Pf_code/src/NS_Alg2/Results.csv','r')
+        Lines = file1.readlines()
+        Lines = np.concatenate((Lines,np.array(str(counter)+","+str(y1[ii,0])+","+str(subs_info[ii,0])+"\n").reshape(1)))
+        file1 = open('/home/dhullaks/projects/Small_Pf_code/src/NS_Alg2/Results.csv','w')
+        file1.writelines(Lines)
+        file1.close()
+        counter = counter + 1
 
 # for kk in np.arange(1,Nlim,1):
 #     count = np.inf

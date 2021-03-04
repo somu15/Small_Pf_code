@@ -35,58 +35,43 @@ value = 270.0 # 250.0
 LS1 = LSF()
 DR1 = DR()
 num_s = 500
+P = np.array([0.1,5.0,52530,120,52.9,120,560,2190])
 
 def Norm1(X1,X,dim):
     K = np.zeros((len(X1),dim))
     for ii in np.arange(0,dim,1):
-        K[:,ii] = np.reshape(((X1[:,ii])-np.mean((X[:,ii])))/(np.std((X[:,ii]))),len(X1))
+        # K[:,ii] = np.reshape(((X1[:,ii])-np.mean((X[:,ii])))/(np.std((X[:,ii]))),len(X1))
+        K[:,ii] = X1[:,ii]/X[ii]
     return K
 
-def Norm2(X1,X):
-    return ((X1)-np.mean((X)))/(np.std((X)))
-
-def InvNorm2(X1,X):
-    return np.exp(X1*np.std((X))+np.mean((X)))
-
-
 def Norm3(X1,X):
-    return ((X1)-np.mean((X)))/(np.std((X)))
+    # return ((X1)-np.mean((X)))/(np.std((X)))
+    return (X1/300)
 
 def InvNorm3(X1,X):
-    return (X1*np.std((X))+np.mean((X)))
+    # return (X1*np.std((X))+np.mean((X)))
+    return (X1*300)
 
 Ninit_GP = 12
 lhd = DR1.BoreholeLHS(Ninit_GP) #  uniform(loc=-3.5,scale=7.0).ppf(lhd0) #
 inp_LFtrain = lhd
 y_HF_LFtrain = LS1.Scalar_Borehole_HF_nD(inp_LFtrain)
-ML0 = ML_TF(obs_ind = Norm1(inp_LFtrain,inp_LFtrain,Ndim), obs = Norm3(y_HF_LFtrain,y_HF_LFtrain))
+ML0 = ML_TF(obs_ind = Norm1(inp_LFtrain,P,Ndim), obs = Norm3(y_HF_LFtrain,y_HF_LFtrain))
 amp0, len0 = ML0.GP_train(amp_init=1.0, len_init=1.0, num_iters = 10000)
 
 Ninit_GP = 12
 lhd =  DR1.BoreholeLHS(Nsamps=Ninit_GP)
 inp_GPtrain = lhd
-samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, pred_ind = Norm1(inp_GPtrain,inp_LFtrain,Ndim), num_samples=num_s)
+samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, pred_ind = Norm1(inp_GPtrain,P,Ndim), num_samples=num_s)
 y_LF_GP = np.array(InvNorm3(np.mean(np.array(samples0),axis=0),y_HF_LFtrain))
 y_HF_GP = np.array((LS1.Scalar_Borehole_HF_nD(inp_GPtrain)))
 y_GPtrain = y_HF_GP - y_LF_GP
-ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain,Ndim), obs = Norm3(y_GPtrain,y_GPtrain))
+ML = ML_TF(obs_ind = Norm1(inp_GPtrain,P,Ndim), obs = Norm3(y_GPtrain,y_GPtrain))
 amp1, len1 = ML.GP_train(amp_init=1., len_init=1., num_iters = 1000)
-Iters = 600
-
-# Ninit_GP = 500
-# lhd =  DR1.BoreholeLHS(Nsamps=Ninit_GP)
-# inp_GPtrain1 = lhd
-# samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, observation_noise_variance_var=var0, pred_ind = Norm1(inp_GPtrain1,inp_LFtrain,Ndim), num_samples=num_s)
-# y_LF_GP = np.array(InvNorm2(np.mean(np.array(samples0),axis=0),y_HF_LFtrain))
-# y_HF_GP = np.array((LS1.Scalar_Borehole_HF_nD(inp_GPtrain1)))
-# samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, observation_noise_variance_var=var1, pred_ind = Norm1(inp_GPtrain1,inp_GPtrain1,Ndim), num_samples=num_s)
-# K = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
-# std_check = np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
-
-## Subset simultion with HF-LF and GP
+Iters = 300
 
 uni = uniform()
-Nsub = 5000
+Nsub = 50000
 Psub = 0.1
 Nlim = 5
 y1 = np.zeros((Nsub,Nlim))
@@ -102,14 +87,57 @@ LF_plus_GP = np.empty(1, dtype = float)
 GP_pred = np.empty(1, dtype = float)
 additive = value
 Indicator = np.ones((Nsub,Nlim))
+counter = 1
+file1 = open('/home/dhullaks/projects/Small_Pf_code/src/Borehole_GP1/Results.csv','w')
+file1.writelines("0,0,0\n")
+file1.close()
+
+for ii in np.arange(0,100,1):
+    N_doe = 5000
+    inp_doe = DR1.BoreholeRandom(N=N_doe)
+    samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, pred_ind = Norm1(inp_doe,P,Ndim), num_samples=num_s)
+    y_LF_doe = np.array(InvNorm3(np.mean(np.array(samples0),axis=0),y_HF_LFtrain))
+    samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_doe,P,Ndim), num_samples=num_s)
+    GP_diff_doe = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
+    u_doe = (np.abs(y_LF_doe + GP_diff_doe - value))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
+    u_min_doe = np.min(u_doe)
+    while u_min_doe<2:
+        # print("Here")
+        ind_doe = np.argmin(u_doe)
+        HF = np.array((LS1.Scalar_Borehole_HF_nD(inp_doe[ind_doe,:][None,:]))).reshape(1)
+        inp_GPtrain = np.concatenate((inp_GPtrain, inp_doe[ind_doe,:].reshape(1,Ndim)))
+        y_LF_GP = np.concatenate((y_LF_GP, y_LF_doe[ind_doe].reshape(1)))
+        y_HF_GP = np.concatenate((y_HF_GP, HF.reshape(1)))
+        y_GPtrain = np.concatenate((y_GPtrain, (HF.reshape(1)-y_LF_doe[ind_doe].reshape(1))))
+        LF_plus_GP = np.concatenate((LF_plus_GP, (y_LF_doe[ind_doe].reshape(1) + GP_diff_doe[ind_doe].reshape(1))))
+        GP_pred = np.concatenate((GP_pred, (GP_diff_doe[ind_doe].reshape(1))))
+        # ML = ML_TF(obs_ind = (np.array(inp_GPtrain))[:,:,0], obs = (np.array(y_HF_GP)[:,:,0]-np.array(y_LF_GP)[:,:,0])[:,0])
+        ML = ML_TF(obs_ind = Norm1(inp_GPtrain,P,Ndim), obs = Norm3(y_GPtrain,y_GPtrain))
+        amp1, len1 = ML.GP_train(amp_init=amp1, len_init=len1, num_iters = Iters)
+        samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inp_doe,P,Ndim), num_samples=num_s)
+        GP_diff_doe = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
+        u_doe = (np.abs(y_LF_doe + GP_diff_doe - value))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
+        u_min_doe = np.min(u_doe)
+
+# Ninit_GP = 500
+# lhd =  DR1.BoreholeLHS(Nsamps=Ninit_GP)
+# inp_GPtrain1 = lhd
+# samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, observation_noise_variance_var=var0, pred_ind = Norm1(inp_GPtrain1,inp_LFtrain,Ndim), num_samples=num_s)
+# y_LF_GP = np.array(InvNorm2(np.mean(np.array(samples0),axis=0),y_HF_LFtrain))
+# y_HF_GP = np.array((LS1.Scalar_Borehole_HF_nD(inp_GPtrain1)))
+# samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, observation_noise_variance_var=var1, pred_ind = Norm1(inp_GPtrain1,inp_GPtrain1,Ndim), num_samples=num_s)
+# K = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
+# std_check = np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
+
+## Subset simultion with HF-LF and GP
 
 for ii in np.arange(0,Nsub,1):
-    inp = DR1.BoreholeRandom()
+    inp = DR1.BoreholeRandom().reshape(Ndim)
     inpp = inp[None,:]
-    samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, pred_ind = Norm1(inpp,inp_LFtrain,Ndim), num_samples=num_s)
+    samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, pred_ind = Norm1(inpp,P,Ndim), num_samples=num_s)
     LF = np.array(InvNorm3(np.mean(np.array(samples0),axis=0),y_HF_LFtrain))
     inp1[ii,:,0] = inp
-    samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim), num_samples=num_s)
+    samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,P,Ndim), num_samples=num_s)
     GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
     # samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim), num_samples=num_s)
     # GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
@@ -117,6 +145,8 @@ for ii in np.arange(0,Nsub,1):
     # u_check = (np.abs(LF + GP_diff-additive))/ML.GP_predict_std(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
     u_check = (np.abs(LF + GP_diff - additive))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
     u_GP[ii,0] = u_check
+    # print(GP_diff)
+    # print(np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0))
 
     u_lim = u_lim_vec[0]
     print(ii)
@@ -124,16 +154,23 @@ for ii in np.arange(0,Nsub,1):
         y1[ii,0] = LF + GP_diff
     else:
         y1[ii,0] = np.array((LS1.Scalar_Borehole_HF_nD(inpp))).reshape(1)
-        inp_GPtrain = np.concatenate((inp_GPtrain, inp.reshape(1,Ndim)))
+        inp_GPtrain = np.concatenate((inp_GPtrain, inpp.reshape(1,Ndim)))
         y_LF_GP = np.concatenate((y_LF_GP, np.array(LF).reshape(1)))
         y_HF_GP = np.concatenate((y_HF_GP, y1[ii,0].reshape(1)))
         y_GPtrain = np.concatenate((y_GPtrain, (y1[ii,0].reshape(1)-LF)))
         LF_plus_GP = np.concatenate((LF_plus_GP, (LF + np.array(GP_diff).reshape(1))))
         GP_pred = np.concatenate((GP_pred, (np.array(GP_diff).reshape(1))))
         # ML = ML_TF(obs_ind = (np.array(inp_GPtrain))[:,:,0], obs = (np.array(y_HF_GP)[:,:,0]-np.array(y_LF_GP)[:,:,0])[:,0])
-        ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain,Ndim), obs = Norm3(y_GPtrain,y_GPtrain))
+        ML = ML_TF(obs_ind = Norm1(inp_GPtrain,P,Ndim), obs = Norm3(y_GPtrain,y_GPtrain))
         amp1, len1 = ML.GP_train(amp_init=amp1, len_init=len1, num_iters = Iters)
         subs_info[ii,0] = 1.0
+    file1 = open('/home/dhullaks/projects/Small_Pf_code/src/Borehole_GP1/Results.csv','r')
+    Lines = file1.readlines()
+    Lines = np.concatenate((Lines,np.array(str(counter)+","+str(y1[ii,0])+","+str(subs_info[ii,0])+"\n").reshape(1)))
+    file1 = open('/home/dhullaks/projects/Small_Pf_code/src/Borehole_GP1/Results.csv','w')
+    file1.writelines(Lines)
+    file1.close()
+    counter = counter + 1
 
 LF_plus_GP = np.delete(LF_plus_GP, 0)
 GP_pred = np.delete(GP_pred, 0)
@@ -144,6 +181,9 @@ seeds_outs = np.zeros(int(Psub*Nsub))
 seeds = np.zeros((int(Psub*Nsub),Ndim))
 markov_seed = np.zeros(Ndim)
 markov_out = 0.0
+u_req = np.zeros(Nsub)
+u_check1 = 10.0
+std_prop = np.zeros(Ndim)
 
 prop_std_req = np.array([0.0216,0.75,11373.07,25.98,11.453,25.98,121.243,474.148])
 
@@ -156,6 +196,7 @@ for kk in np.arange(1,Nlim,1):
     k = (y1[:,kk-1]).argsort()
     indices = k[int((1-Psub)*Nsub):(len(y1))]
     seeds = inp1[indices,:,kk-1]
+    std_prop = np.log((seeds)).std(0)
 
     for ii in np.arange(0,(Nsub),1):
         print(kk)
@@ -175,32 +216,23 @@ for kk in np.arange(1,Nlim,1):
 
         for jj in np.arange(0,Ndim,1):
 
-            if jj == 0:
-                rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.1)
-            else:
-                rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.75)
-            # rv1 = norm(loc=np.log(inp1[ind_max,jj,kk]),scale=0.5)
-            prop = np.exp(rv1.rvs())
-            # if jj == 1:
-            #     rv1 = rv1 = uniform(loc=(np.log(inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
-            #     prop = np.exp(rv1.rvs())
+            # if jj == 0:
+            #     rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.1)
             # else:
-            #     rv1 = uniform(loc=((inp1[ind_max,jj,kk])-prop_std_req[jj]),scale=(2*prop_std_req[jj]))
-            #     prop = (rv1.rvs())
-
-
-
-            r = np.log(DR1.BoreholePDF(rv_req=prop, index=jj)) - np.log(DR1.BoreholePDF(rv_req=(markov_seed[jj]),index=jj)) # np.log(rv.pdf((prop)))-np.log(rv.pdf((inp1[ind_max,jj,kk])))
+            #     rv1 = norm(loc=np.log(markov_seed[jj]),scale=0.85)
+            rv1 = norm(loc=np.log(markov_seed[jj]),scale=std_prop[jj])
+            prop = np.exp(rv1.rvs())
+            r = np.log(DR1.BoreholePDF(rv_req=prop, index=jj)) - np.log(DR1.BoreholePDF(rv_req=(markov_seed[jj]),index=jj))
             if r>np.log(uni.rvs()):
                 nxt[0,jj] = prop
             else:
                 nxt[0,jj] = markov_seed[jj]
             inpp[0,jj] = nxt[0,jj]
-        samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, pred_ind = Norm1(inpp,inp_LFtrain,Ndim), num_samples=num_s)
+        samples0 = ML0.GP_predict(amplitude_var = amp0, length_scale_var=len0, pred_ind = Norm1(inpp,P,Ndim), num_samples=num_s)
         LF = np.array(InvNorm3(np.mean(np.array(samples0),axis=0),y_HF_LFtrain))
 
         # GP_diff = ML.GP_predict_mean(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim)).reshape(1)
-        samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,inp_GPtrain,Ndim), num_samples=num_s)
+        samples1 = ML.GP_predict(amplitude_var = amp1, length_scale_var=len1, pred_ind = Norm1(inpp,P,Ndim), num_samples=num_s)
         GP_diff = InvNorm3(np.mean(np.array(samples1),axis=0),y_GPtrain)
         additive = y1_lim[kk-1]
         u_check = (np.abs(LF + GP_diff - additive))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
@@ -208,19 +240,23 @@ for kk in np.arange(1,Nlim,1):
 
         u_GP[ii,kk] = u_check
         u_lim = u_lim_vec[kk]
+        if kk == (Nlim-1):
+            additive = value
+            u_check1 = (np.abs(LF + GP_diff-additive))/np.std(InvNorm3(np.array(samples1),y_GPtrain),axis=0)
+            u_req[ii] = u_check1
 
-        if u_check > u_lim: # and ii > (int(Psub*Nsub)+num_retrain):
+        if u_check > u_lim and u_check1 >= u_lim:
             y_nxt = LF + GP_diff
         else:
             y_nxt = np.array((LS1.Scalar_Borehole_HF_nD(inpp))).reshape(1)
-            inp_GPtrain = np.concatenate((inp_GPtrain, inp.reshape(1,Ndim)))
+            inp_GPtrain = np.concatenate((inp_GPtrain, inpp.reshape(1,Ndim)))
             y_LF_GP = np.concatenate((y_LF_GP, np.array(LF).reshape(1)))
             y_HF_GP = np.concatenate((y_HF_GP, y_nxt.reshape(1)))
             y_GPtrain = np.concatenate((y_GPtrain, (y_nxt.reshape(1)-LF)))
             LF_plus_GP = np.concatenate((LF_plus_GP, (LF + np.array(GP_diff).reshape(1))))
             GP_pred = np.concatenate((GP_pred, (np.array(GP_diff).reshape(1))))
             # ML = ML_TF(obs_ind = (np.array(inp_GPtrain))[:,:,0], obs = (np.array(y_HF_GP)[:,:,0]-np.array(y_LF_GP)[:,:,0])[:,0])
-            ML = ML_TF(obs_ind = Norm1(inp_GPtrain,inp_GPtrain,Ndim), obs = Norm3(y_GPtrain,y_GPtrain))
+            ML = ML_TF(obs_ind = Norm1(inp_GPtrain,P,Ndim), obs = Norm3(y_GPtrain,y_GPtrain))
             amp1, len1 = ML.GP_train(amp_init=amp1, len_init=len1, num_iters = Iters)
             subs_info[ii,kk] = 1.0
 
@@ -231,6 +267,13 @@ for kk in np.arange(1,Nlim,1):
             inp1[ii,:,kk] = markov_seed
             y1[ii,kk] = markov_out
             Indicator[ii,kk] = 0.0
+        file1 = open('/home/dhullaks/projects/Small_Pf_code/src/Borehole_GP1/Results.csv','r')
+        Lines = file1.readlines()
+        Lines = np.concatenate((Lines,np.array(str(counter)+","+str(y1[ii,kk])+","+str(subs_info[ii,kk])+"\n").reshape(1)))
+        file1 = open('/home/dhullaks/projects/Small_Pf_code/src/Borehole_GP1/Results.csv','w')
+        file1.writelines(Lines)
+        file1.close()
+        counter = counter + 1
 
 Pf = 1
 Pi_sto = np.zeros(Nlim)
@@ -257,26 +300,3 @@ with open(filename, 'wb') as f:
     pickle.dump(y_LF_GP, f)
     pickle.dump(subs_info, f)
     pickle.dump(Indicator, f)
-
-# with open(filename, 'rb') as handle:
-#     y1 = pickle.load(handle)
-#     y1_lim = pickle.load(handle)
-#     Pf = pickle.load(handle)
-#     cov_req = pickle.load(handle)
-#     Nlim = pickle.load(handle)
-#     Nsub = pickle.load(handle)
-#     Pi_sto = pickle.load(handle)
-#     u_GP = pickle.load(handle)
-#     var_GP = pickle.load(handle)
-#     y_GPtrain = pickle.load(handle)
-#     y_HF_GP = pickle.load(handle)
-#     y_LF_GP = pickle.load(handle)
-
-# plt.plot(Out_data[0:2499]*1e-6,label='Subset 0')
-# plt.plot(Out_data[2500:4999]*1e-6,label='Subset 1')
-# plt.plot(Out_data[4999:7499]*1e-6,label='Subset 2')
-# plt.plot(Out_data[7499:9999]*1e-6,label='Subset 3')
-# # plt.plot(y1[1000:2000,4],label='Subset 4')
-# plt.xlabel('Iteration')
-# plt.ylabel('Stress-strength (MPa)')
-# plt.legend(loc='lower left')

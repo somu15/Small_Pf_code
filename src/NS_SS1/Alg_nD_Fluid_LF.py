@@ -100,6 +100,10 @@ inp1 = np.zeros((Nsub,Ndim,Nlim))
 rv = norm(loc=0,scale=1)
 y_seed = np.zeros(int(Psub*Nsub))
 Indicator = np.ones((Nsub,Nlim))
+counter = 1
+file1 = open('/home/dhullaks/projects/Small_Pf_code/src/NS_SS1/Results.csv','w')
+file1.writelines("0,0,0\n")
+file1.close()
 
 for ii in np.arange(0,Nsub,1):
     inp = (DR1.FluidRandom())
@@ -107,6 +111,13 @@ for ii in np.arange(0,Nsub,1):
     y1[ii,0] = np.array(LS1.Fluid_NS(inpp))
     inp1[ii,:,0] = inp
     print(ii)
+    file1 = open('/home/dhullaks/projects/Small_Pf_code/src/NS_SS1/Results.csv','r')
+    Lines = file1.readlines()
+    Lines = np.concatenate((Lines,np.array(str(counter)+","+str(y1[ii,0])+","+str(subs_info[ii,0])+"\n").reshape(1)))
+    file1 = open('/home/dhullaks/projects/Small_Pf_code/src/NS_SS1/Results.csv','w')
+    file1.writelines(Lines)
+    file1.close()
+    counter = counter + 1
 
 inpp = np.zeros(Ndim)
 count_max = Nsub/(Psub*Nsub)
@@ -168,6 +179,13 @@ for kk in np.arange(1,Nlim,1):
             inp1[ii,:,kk] = markov_seed
             y1[ii,kk] = markov_out
             Indicator[ii,kk] = 0.0
+        file1 = open('/home/dhullaks/projects/Small_Pf_code/src/NS_SS1/Results.csv','r')
+        Lines = file1.readlines()
+        Lines = np.concatenate((Lines,np.array(str(counter)+","+str(y1[ii,0])+","+str(subs_info[ii,0])+"\n").reshape(1)))
+        file1 = open('/home/dhullaks/projects/Small_Pf_code/src/NS_SS1/Results.csv','w')
+        file1.writelines(Lines)
+        file1.close()
+        counter = counter + 1
 
 # value = 0.0
 # y1_lim[Nlim-1] = value

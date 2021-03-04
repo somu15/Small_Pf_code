@@ -141,14 +141,16 @@ class ML_TF:
         np.random.seed(seed)
         random.set_seed(seed)
 
-        def norm(X1,dim):
+        P = np.array([0.1,5.0,52530,120,52.9,120,560,2190])
+
+        def norm(X1,X,dim):
             K = np.zeros((len(X1),dim))
             for ii in np.arange(0,dim,1):
-                K[:,ii] = np.reshape((X1[:,ii]-np.mean(X1[:,ii]))/(np.std(X1[:,ii])),len(X1))
+                K[:,ii] = X1[:,ii]/X[ii]
             return K
 
-        normed_obs_ind = norm(self.obs_ind, dim)
-        normed_obs = norm(self.obs.reshape(len(self.obs),1), 1)
+        normed_obs_ind = norm(self.obs_ind, P, dim)
+        normed_obs = self.obs.reshape(len(self.obs),1)/300
 
         def build_model():
           model = keras.Sequential([
@@ -181,10 +183,12 @@ class ML_TF:
 
     def DNN_pred(self, ref_ind=None, ref_obs=None, model=None, dim=None, pred_ind=None):
 
-        def norm(X1,dim,ref):
+        P = np.array([0.1,5.0,52530,120,52.9,120,560,2190])
+
+        def norm(X1,X,dim):
             K = np.zeros((len(X1),dim))
             for ii in np.arange(0,dim,1):
-                K[:,ii] = np.reshape((X1[:,ii]-np.mean(ref[:,ii]))/(np.std(ref[:,ii])),len(X1))
+                K[:,ii] = X1[:,ii]/X[ii]
             return K
 
         def invnorm(X1, ref):
@@ -193,8 +197,8 @@ class ML_TF:
             #     K[:,ii] = (X1[:,ii] * (np.std(X1[:,ii])),len(X1))+np.mean(X1[:,ii])
             return (X1[:,0] * (np.std(ref[:,0])),len(X1))+np.mean(ref[:,0])
 
-        normed_pred_ind = norm(pred_ind, dim, ref_ind)
+        normed_pred_ind = norm(pred_ind, P, dim)
 
         normed_pred = model.predict(normed_pred_ind)
 
-        return invnorm(normed_pred, ref_obs.reshape(len(ref_obs),1))
+        return (300*normed_pred)
